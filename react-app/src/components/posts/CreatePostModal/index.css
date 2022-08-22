@@ -23,3 +23,29 @@
     color: orange;
     font-size: 2rem;
 }
+.chatIcon{
+    color: rgb(37, 164, 214);
+    font-size: 2rem;
+}
+.textIcon:hover{
+    transform: translateY(-0.2rem);
+}
+
+
+.cameraIcon:hover{
+    transform: translateY(-0.2rem);
+}
+
+.linkIcon:hover{
+    transform: translateY(-0.2rem);
+}
+
+
+.quoteIcon:hover{
+    transform: translateY(-0.2rem);
+
+
+}
+.chatIcon:hover{
+    transform: translateY(-0.2rem);
+}

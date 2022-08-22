@@ -25,6 +25,10 @@ function Posts({post}){
                 {post?.type === 'text' &&<h3 className="postTitle"><i className="fa-solid fa-star titleStar"></i> {post?.title}</h3>}
                 { post?.type === 'text' &&<div className="postDiscriptionContainer"> <p className="postDiscription">{post?.description}</p></div>}
 
+                {post?.type === 'chat' &&<h3 className="postTitle"><i className="fa-solid fa-star titleStar"></i> {post?.title}</h3>}
+                { post?.type === 'chat' &&<div className="postDiscriptionContainer">
+                    {post?.description?.split('/')?.map((txt) => <p className="postDiscription">{txt}</p>)}
+                </div>}
 
                 {post?.type === 'quote' && <p className="postQuote">"{post?.title}"</p>}
                 { post?.type === 'quote' && <h4 className="quoteDesc postDiscription"> - {post?.description}</h4>}
