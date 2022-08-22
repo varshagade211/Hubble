@@ -21,7 +21,10 @@ function User() {
   }
 
   return (
+    
+    
     <ul>
+       <div>{user.profileImage}</div>
       <li>
         <strong>User Id</strong> {userId}
       </li>

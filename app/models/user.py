@@ -62,3 +62,21 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'profileImage':self.profile_image
         }
+
+
+    def to_dict_get_followings(self):
+        print('.....', self.following.all()[0].to_dict())
+        return {
+           
+            'followings': [x.to_dict() for x in self.following.all()]
+        
+        }
+
+
+    def to_dict_get_followers(self):
+        print('.....', self.followers.all()[0].to_dict())
+        return {
+           
+            'followers': [x.to_dict() for x in self.followers.all()]
+        
+        }
