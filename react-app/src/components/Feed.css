@@ -13,7 +13,7 @@
 .createPostIconConainer{
     display: grid;
 
-    grid-template-columns: 1fr 1fr 1fr 1fr ;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     background-color: white;
      margin: 0 0 0 4.3rem
 
@@ -88,5 +88,3 @@
     grid-template-columns:50px 4fr;
     column-gap:20px ;
 }
-
-

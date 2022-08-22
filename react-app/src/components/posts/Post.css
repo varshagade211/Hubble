@@ -68,6 +68,7 @@ display: block;
 .deleteIconBtn{
     background-color: white;
     border: none;
+    cursor: pointer;
 
 
 }
