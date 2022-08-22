@@ -1,0 +1,78 @@
+.postOuterContainer{
+    background-color: white;
+    border-radius:10px;
+
+}
+
+.postUserName{
+    padding: 1rem 0 0 1rem;
+}
+.postLink{
+display: block;
+}
+.postTitle{
+    margin:  2rem 0 0 1rem;
+
+}
+
+
+.postLink,.postQuote{
+    margin:  2rem 0 0 2rem;
+
+}
+.postImage{
+    width:100%;
+    margin-top:  2rem ;
+}
+
+.postOtherLinksContainer{
+    display: flex;
+    justify-content: space-between;
+}
+
+.deleteEditBtnContainer{
+    display: flex;
+    width: 20%;
+    justify-content: space-between;
+}
+
+.followLikeNoteLinkCotainer{
+    display: flex;
+
+    justify-content: space-between;
+}
+
+.quoteDesc{
+    color: rgba(0, 0, 0, 0.456);
+    margin:  2rem 2rem 0 2rem;
+}
+
+.titleStar{
+    font-size:0.8rem;
+}
+
+.postDiscriptionContainer{
+   min-width: 600px;
+   text-align: justify;
+   margin:  2rem 2rem 0 2rem
+
+}
+
+
+
+.deletePenIcon{
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+.deleteIconBtn{
+    background-color: white;
+    border: none;
+
+
+}
+
+.deleteIconBtn:hover{
+    background-color: rgba(128, 128, 128, 0.181);
+    border-radius: 50%;
+}
