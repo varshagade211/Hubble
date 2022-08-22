@@ -3,6 +3,7 @@ import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import {deletePostThunk} from '../../store/post'
 import EditPostModal from './EditPostModal'
+import Notes from "../notes/Notes"
 import './Post.css'
 
 function Posts({post}){
@@ -56,7 +57,7 @@ function Posts({post}){
                            <p> follower icon code | </p>
                         </div>
                         <div>
-                          <p> note icon code | </p>
+                          <p>  <Notes post={post} id={post.id}/> </p>
                         </div>
                         <div>
                            <p>like icon code </p>

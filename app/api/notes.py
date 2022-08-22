@@ -9,14 +9,16 @@ note_routes = Blueprint('notes', __name__, "")
 @note_routes.route("/note/all")
 def get_all_post():
     notes = Note.query.all()
+    print("THIS IS NOTES", notes)
     response = [note.to_dict() for note in notes ]
     return {'note': response}
+ 
 
 # get all notes by post id  DONE
 @note_routes.route('/posts/<int:post_id>/notes')
 def one_note(post_id):
-    note = Note.query.get(post_id)
-    response = [note.to_dict()]
+    notes = Note.query.filter(Note.post_id == post_id).all()
+    response = [note.to_dict() for note in notes ]
     return {'note': response}
 
 # delete note by id DONE 
