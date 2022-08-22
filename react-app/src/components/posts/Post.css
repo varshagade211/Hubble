@@ -1,7 +1,6 @@
 .postOuterContainer{
     background-color: white;
     border-radius:10px;
-
 }
 
 .postUserName{
@@ -12,9 +11,7 @@ display: block;
 }
 .postTitle{
     margin:  2rem 0 0 1rem;
-
 }
-
 
 .postLink,.postQuote{
     margin:  2rem 0 0 2rem;
@@ -36,15 +33,11 @@ display: block;
     justify-content: space-between;
 }
 
-.followLikeNoteLinkCotainer{
-    display: flex;
-
-    justify-content: space-between;
-}
 
 .quoteDesc{
     color: rgba(0, 0, 0, 0.456);
     margin:  2rem 2rem 0 2rem;
+
 }
 
 .titleStar{
@@ -57,7 +50,60 @@ display: block;
    margin:  2rem 2rem 0 2rem
 
 }
+/* follow like icon container */
+.followLikeNoteLinkCotainer{
+    display: flex;
+    width: 30%;
+    justify-content: space-between;
+    align-items: center;
+}
+.followBtn{
+    background-color: rgb(12, 125, 169);
+    border:none;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    color: white;
+}
+.likeBtn{
+    background-color:white;
+    border:none;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    color: white;
+}
+.likedIcon{
+    color: red;
+    font-size: 1.5rem;
+}
+.dislikeIcon{
+    color:black;
+    font-size: 1.5rem;
+}
 
+.likeBtn:hover{
+    background-color: rgba(128, 128, 128, 0.181);
+    border-radius: 60%;
+}
+
+.notepenIcon{
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+.noteIcon{
+    background-color: white;
+    border: none;
+    cursor: pointer;
+
+
+}
+
+.notepenIcon:hover{
+    background-color: rgba(128, 128, 128, 0.181);
+    border-radius: 50%;
+}
+
+
+
+/*  */
 
 
 .deletePenIcon{
@@ -76,4 +122,10 @@ display: block;
 .deleteIconBtn:hover{
     background-color: rgba(128, 128, 128, 0.181);
     border-radius: 50%;
+}
+
+
+.notesDiv{
+    /* width:400px; */
+    min-height: 200px;
 }

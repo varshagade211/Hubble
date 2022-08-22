@@ -28,8 +28,19 @@ class Post(db.Model):
     posts_likes = db.relationship(
         "User",
         secondary="likes",
-        back_populates="user_likes"
+        back_populates="user_likes",
+        # uselist=False
     )
+
+
+
+    # def to_dict_get_likes(self):
+    #     # print('.....', self.following.all()[0].to_dict())
+    #     return {
+
+    #         'likes': [x.to_dict() for x in self.posts_likes.all()]
+
+    #     }
 
 
     def to_dict(self):
@@ -39,6 +50,7 @@ class Post(db.Model):
             'description': self.description,
             'type': self.type,
             'link': self.link,
+            "likes": len(self.posts_likes),
             'user':self.user.to_dict(),
             'image': self.image.to_dict() if self.image is not None else {}
         }

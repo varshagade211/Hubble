@@ -17,7 +17,7 @@ function Feed(){
         })();
     },[dispatch]);
 
-
+   console.log(posts)
 
     return(
         <div className='feedContainerWraper'>
@@ -65,9 +65,9 @@ function Feed(){
                 <div className='postNavLink'>
                       <NavLink className={'postBtn'} to={'/user/posts'}> <i className="fa-brands fa-blogger postIcon"></i> Post</NavLink>
                       <hr></hr>
-                      <p className={'postBtn'} >Nav link for liked post page</p>
+                      <NavLink className={'postBtn'} to={''}> <i class="fa-solid fa-heart postIcon"></i>Likes</NavLink>
                       <hr></hr>
-                      <p className={'postBtn'}> Nav link for followed user page</p>
+                      <NavLink className={'postBtn'} to={''}> <i class="fa-solid fa-users postIcon"></i>Follow user</NavLink>
                       <hr></hr>
                 </div>
                 <div className='suggestedFollower'>
