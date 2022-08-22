@@ -1,4 +1,4 @@
-from app.models import db, User, Post, Note , Image 
+from app.models import db, User, Post, Note , Image
 
 
 # Adds a demo user, you can add other users here if you want
@@ -55,7 +55,7 @@ def seed_post():
         At night over the ground where he
         Is buried with the pole.
         """,
-        type="Text",
+        type="text",
         user= user3,
         posts_likes=[user4,user2]
     )
