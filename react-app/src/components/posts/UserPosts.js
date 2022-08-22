@@ -20,7 +20,9 @@ function UserPosts(){
     return(
     <div className='userPostContainerWraper'>
       <div className='userImageContainer'>
-        <img className='userImage' src={user?.profileImage} />
+      {user?.profileImage ? <img className='userImage' src={user?.profileImage} />
+                        :<i className ="fa-solid fa-user-astronaut userProfileLogo"></i>}
+
         <p className='userName'>{user?.username}</p>
      </div>
         <div className='postIconContainer'>
@@ -46,6 +48,11 @@ function UserPosts(){
                     <CreatePostModal type={'quote'}/>
 
                 </div>
+                <div  className='createUserPostIcon'>
+                    <CreatePostModal type={'chat'}/>
+
+                </div>
+
 
             </div>
         <div>
@@ -58,7 +65,7 @@ function UserPosts(){
         <div className='userSideBar'>
 
                 <div className='userPostNavLink'>
-                      <NavLink className={'userPostIcon'} to={'/user/posts'}> <i className="fa-brands fa-blogger postIcon"></i> Post</NavLink>
+                      <NavLink className={'userPostIcon'} to={'/user/posts'}> <i className="fa-brands fa-blogger postIcon"></i> Posts</NavLink>
                       <hr></hr>
                       <p className={'userPostIcon'} >Nav link for liked post page</p>
                       <hr></hr>
