@@ -6,6 +6,9 @@ import EditPostModal from './EditPostModal'
 import './Post.css'
 
 function Posts({post}){
+    const[isfollow , setIsFollow] = useState(false)
+    const[isLiked , setIsLiked] = useState(false)
+    const[isNote, setIsNote] = useState(false)
     const dispatch = useDispatch()
     const user = useSelector(state => state?.session?.user)
 
@@ -13,6 +16,23 @@ function Posts({post}){
 
     const deleteHandler = async() =>{
         const response= await dispatch(deletePostThunk(post.id))
+
+     }
+
+    const followHandler = async() =>{
+        setIsFollow((prev) => !prev)
+        // follow dispatch will be here
+     }
+
+     const likeHandler = async() =>{
+        setIsLiked((prev) => !prev)
+        // like dispatch will be here
+
+     }
+
+     const noteHandler = async() =>{
+        setIsNote((prev) => !prev)
+        // note dispatch will be here
 
      }
 
@@ -52,20 +72,29 @@ function Posts({post}){
 
                     </div>
                     <div className="followLikeNoteLinkCotainer">
+
                         <div>
-                           <p> follower icon code | </p>
+                            <button className="followBtn" onClick={followHandler}>{isfollow?"Follow":"Unfollow"}</button>
                         </div>
                         <div>
-                          <p> note icon code | </p>
+                          <button className="noteIcon" onClick={noteHandler}><i className="fa-solid fa-pen-to-square notepenIcon"></i></button>
                         </div>
                         <div>
-                           <p>like icon code </p>
+                            <button className="likeBtn"  onClick={likeHandler}>{isLiked ? <i class="fa-solid fa-heart likedIcon"></i>:
+                              <i class="fa-regular fa-heart dislikeIcon"></i>}
+                            </button>
                         </div>
 
 
                     </div>
 
                 </div>
+                {isNote && <div className='notesDiv'>
+                    <hr></hr>
+
+                    place for notes
+
+                </div>}
 
 
             </div>

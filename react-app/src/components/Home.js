@@ -14,17 +14,21 @@ const Home = () => {
   return (
     <div className='loginSignupLinks'>
 
-
-         <NavLink to='/login' className={'loginLi'} exact={true} activeClassName='active'>
+        <div className=''>
+        <NavLink to='/login' className={'loginLi'} exact={true} activeClassName='active'>
             Login
           </NavLink>
+        </div>
 
 
-          <NavLink to='/sign-up' className={'signupLi'} exact={true} activeClassName='active'>
-            Sign Up
-          </NavLink>
+        <div>
+            <NavLink to='/sign-up' className={'signupLi'} exact={true} activeClassName='active'>
+               Sign Up
+            </NavLink>
+        </div>
 
-          <h4>demo user code will go here</h4>
+
+
 
      </div>
 

@@ -13,7 +13,7 @@ function EditPostModal({type , post}) {
   return (
     <>
 
-      <button className='editIconBtn' onClick={() =>setShowModal(true)}><i className="fa-solid fa-pen-to-square editPenIcon"></i></button>
+      <button className='editIconBtn' onClick={() =>setShowModal(true)}><i className="fa-solid fa-pen editPenIcon"></i></button>
 
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
