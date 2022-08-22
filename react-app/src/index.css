@@ -1,1 +1,8 @@
 /* TODO Add site wide styles */
+body{
+
+    background: url("https://images.unsplash.com/photo-1593371256584-ac70d0ab43d1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8YmxhY2slMjBzcGFjZXxlbnwwfHwwfHw%3D&w=1000&q=80") no-repeat center center fixed;
+    background-size: cover;
+    /* background-color: #36465d; */
+
+}

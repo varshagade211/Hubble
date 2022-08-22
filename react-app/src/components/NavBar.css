@@ -1,0 +1,30 @@
+.navUl{
+    display: flex;
+    justify-content: space-between;
+
+
+
+}
+.navContainer{
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index: 1;
+    background-color:black;
+}
+.navLi{
+    color: white;
+    text-decoration: none;
+}
+
+.logo{
+    font-size: 2rem;
+}
+
+.logout{
+    margin: 0 4rem 0rem 0
+}
+.signUp{
+    margin: 0 4rem 0rem 0
+}

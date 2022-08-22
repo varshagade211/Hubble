@@ -17,3 +17,21 @@ def users():
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
+
+
+
+@user_routes.route('/<int:id>/followings')
+@login_required
+def user_following(id):
+    following_users = User.query.get(id).to_dict_get_followings()
+    print ('routes following ------------',  following_users)
+    return  following_users
+
+
+@user_routes.route('/<int:id>/followers')
+@login_required
+def user_follower(id):
+    follower_users = User.query.get(id).to_dict_get_followers()
+    print ('routes following ------------',  follower_users)
+    return  follower_users
+   
