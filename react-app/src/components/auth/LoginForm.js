@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import './LoginForm.css'
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -37,10 +38,11 @@ const LoginForm = () => {
   };
 
   if (user) {
-    return <Redirect to='/' />;
+    return <Redirect to='/posts' />;
   }
 
   return (
+    <div className='loginFormContainer'>
     <form onSubmit={onLogin}>
       <div>
         {errors.map((error, ind) => (
@@ -70,6 +72,7 @@ const LoginForm = () => {
         <button onClick={demoUser} >Demo User</button>
       </div>
     </form>
+    </div>
   );
 };
 

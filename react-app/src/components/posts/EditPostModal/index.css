@@ -1,0 +1,16 @@
+.editPenIcon{
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+
+.editIconBtn{
+    background-color: white;
+    border: none;
+
+
+}
+
+.editIconBtn:hover{
+    background-color: rgba(128, 128, 128, 0.181);
+    border-radius: 50%;
+}
