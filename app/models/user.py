@@ -21,7 +21,7 @@ class User(db.Model, UserMixin):
     hashed_password = db.Column(db.String(255), nullable=False)
     profile_image = db.Column(db.String(1000))
     # relationships
-
+    #change in profile
 
     posts = db.relationship('Post', back_populates='user',cascade='all, delete')
 
