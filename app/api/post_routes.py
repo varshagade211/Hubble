@@ -1,8 +1,24 @@
 from flask import Blueprint, redirect, request
 from flask_login import login_required, current_user
-from app.models import Post , Image
+from app.models import Post , Image ,db
 from app.forms import PostForm
 post_routes = Blueprint('posts', __name__)
+
+
+
+
+def validation_errors_to_error_messages(validation_errors):
+    """
+    Simple function that turns the WTForms validation errors into a simple list
+    """
+    # return
+    # errorMessages = []
+    # for field in validation_errors:
+    #     for error in validation_errors[field]:
+    #         errorMessages.append(f'{field} : {error}')
+    # return errorMessages
+
+
 
 
 @post_routes.route('/')
@@ -24,6 +40,7 @@ def user_posts():
 def create_post():
     form = PostForm()
 
+
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         post_type = form.data['type']
@@ -32,6 +49,7 @@ def create_post():
             description=form.data['description'],
             type=form.data['type'],
             link=form.data['link'],
+            user=current_user
         )
         db.session.add(post)
         db.session.commit()
@@ -40,12 +58,11 @@ def create_post():
             image = Image(url= form.data['image'],post = post)
             db.session.add(image)
             db.session.commit()
-            post_dict.image = image.to_dict()
+            post_dict["image"] = image.to_dict()
 
-      
         return post_dict
 
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+    return {'errors': form.errors}, 401
 
 
 
@@ -54,6 +71,7 @@ def create_post():
 @login_required
 def edit_post(post_id):
     post = Post.query.get(post_id)
+
     if post.user_id != current_user.id:
         redirect('api/auth/unauthorized')
 
@@ -65,10 +83,16 @@ def edit_post(post_id):
         post.description=form.data['description']
         post.type=form.data['type']
         post.link=form.data['link']
+
+        if(form.data['type'] == 'image'):
+          image = post.image
+          image.url= form.data['image']
+
+
         db.session.commit()
         return post.to_dict()
 
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+    return {'errors': form.errors}, 401
 
 
 

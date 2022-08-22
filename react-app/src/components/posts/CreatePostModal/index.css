@@ -1,0 +1,25 @@
+.createPosttBtn{
+    border: none;
+    background-color: white;
+    margin: auto;
+    cursor: pointer;
+}
+
+.textIcon{
+    /* color: red; */
+    font-size: 2rem;
+}
+.cameraIcon{
+ color: red;
+ font-size: 2rem;
+}
+
+.linkIcon{
+    color: green;
+    font-size: 2rem;
+}
+
+.quoteIcon{
+    color: orange;
+    font-size: 2rem;
+}
