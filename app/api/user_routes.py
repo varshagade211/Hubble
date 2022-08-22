@@ -24,7 +24,7 @@ def user(id):
 @login_required
 def user_following(id):
     following_users = User.query.get(id).to_dict_get_followings()
-    print ('routes following ------------',  following_users)
+    # print ('routes following ------------',  following_users)
     return  following_users
 
 
@@ -32,6 +32,14 @@ def user_following(id):
 @login_required
 def user_follower(id):
     follower_users = User.query.get(id).to_dict_get_followers()
-    print ('routes following ------------',  follower_users)
+    # print ('routes following ------------',  follower_users)
     return  follower_users
+   
+
+@user_routes.route('/<int:id>/likes')
+@login_required
+def user_likes(id):
+    likes_users = User.query.get(id).to_dict_get_likes()
+    # print ('routes following ------------',  follower_users)
+    return  likes_users
    

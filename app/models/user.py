@@ -19,9 +19,9 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
-    profile_image = db.Column(db.String(20))
+    profile_image = db.Column(db.String(1000))
     # relationships
-
+    #change in profile
 
     posts = db.relationship('Post', back_populates='user',cascade='all, delete')
 
@@ -65,18 +65,25 @@ class User(db.Model, UserMixin):
 
 
     def to_dict_get_followings(self):
-        print('.....', self.following.all()[0].to_dict())
+        # print('.....', self.following.all()[0].to_dict())
         return {
-           
+
             'followings': [x.to_dict() for x in self.following.all()]
-        
+
         }
 
 
     def to_dict_get_followers(self):
-        print('.....', self.followers.all()[0].to_dict())
+        # print('.....', self.followers.all()[0].to_dict())
         return {
-           
+
             'followers': [x.to_dict() for x in self.followers.all()]
-        
+
+        }
+
+
+    def to_dict_get_likes(self):
+        # print('.....', self.user_likes)
+        return {
+            'likes': [post.to_dict() for post in self.user_likes]
         }
