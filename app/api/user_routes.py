@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import User
+from app.models import User, Post, db
 
 user_routes = Blueprint('users', __name__)
 
@@ -40,6 +40,21 @@ def user_follower(id):
 @login_required
 def user_likes(id):
     likes_users = User.query.get(id).to_dict_get_likes()
-    # print ('routes following ------------',  follower_users)
+    # print ('routes likes ------------',  user_likes)
     return  likes_users
    
+
+# @user_routes.route('/<int:id>/likes/<int:post_id>', methods=['POST', 'DELETE'])
+# @login_required
+# def post_like(id, post_id):
+#     post = Post.query.get(post_id) 
+#     liked_posts = User.query.get(id).to_dict_get_likes()
+#     if post not in liked_posts:
+#         liked_posts.append(post)
+#         db.session.commit()
+#         return {'message': 'Post Liked'}
+#     else:
+#         index = liked_posts.index(post)
+#         liked_posts.pop(index)
+#         db.session.commit()
+#         return {'message': 'Post Unliked'}
