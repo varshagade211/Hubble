@@ -65,7 +65,7 @@ class User(db.Model, UserMixin):
 
 
     def to_dict_get_followings(self):
-        print('.....', self.following.all()[0].to_dict())
+        # print('.....', self.following.all()[0].to_dict())
         return {
 
             'followings': [x.to_dict() for x in self.following.all()]
@@ -74,9 +74,16 @@ class User(db.Model, UserMixin):
 
 
     def to_dict_get_followers(self):
-        print('.....', self.followers.all()[0].to_dict())
+        # print('.....', self.followers.all()[0].to_dict())
         return {
 
             'followers': [x.to_dict() for x in self.followers.all()]
 
+        }
+
+
+    def to_dict_get_likes(self):
+        # print('.....', self.user_likes)
+        return {
+            'likes': [post.to_dict() for post in self.user_likes]
         }
