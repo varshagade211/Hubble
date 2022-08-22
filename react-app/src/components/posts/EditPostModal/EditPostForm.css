@@ -1,0 +1,26 @@
+
+
+.textTypeTitalInput,.textDescriptionInput{
+    width: 90%;
+    border: none;
+    margin-top: 2rem;
+
+
+}
+.textTypeTitalInput {
+    display: block;
+    width: 400px;
+    padding: 0 20px;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+.editPostBtn{
+    margin:1rem 0 1rem 0;
+    background-color: black;
+    color: white;
+    padding:0.3rem 0.5rem 0.3rem 0.5rem;
+    font-size: 1rem;
+}

@@ -13,10 +13,10 @@ class Post(db.Model):
     __tablename__ = 'posts'
 
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(50),nullable=False)
+    title = db.Column(db.String(200),nullable=False)
     description = db.Column(db.Text)
     type = db.Column(db.String(50),nullable=False)
-    link = db.Column(db.String(50))
+    link = db.Column(db.String(1000))
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     user = db.relationship('User', back_populates='posts')

@@ -8,6 +8,9 @@ from flask_login import LoginManager
 from .models import db, User
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
+# Isabel Edit 
+from .api.notes import note_routes
+# Isabel Edit
 from .api.post_routes import post_routes
 from .api.likes_routes import likes_routes ##########
 

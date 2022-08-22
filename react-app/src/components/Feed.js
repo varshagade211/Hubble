@@ -36,6 +36,9 @@ function Feed(){
                 <div  className='createPostIcon'>
                     <CreatePostModal type={'quote'}/>
                 </div>
+                <div  className='createPostIcon'>
+                    <CreatePostModal type={'chat'}/>
+                </div>
 
             </div>
             <div className='allFeedPostContainer'>

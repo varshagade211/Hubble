@@ -14,17 +14,6 @@
 
 }
 
-/* .textTypeTitalInput{
-    display: block;
-    width: 400px;
-    padding: 0 20px;
-}
-.textTypeTitalInput::placeholder {
-    font-size: 2rem ;
-} */
-
-
-
 .textTypeTitalInput {
     display: block;
     width: 400px;
@@ -34,7 +23,7 @@
 .textTypeTitalInput,
 .textTypeTitalInput::placeholder {
 
-    font-size: 2rem ;
+    font-size: 1.5rem ;
 
 }
 .textDescriptionInput{
@@ -66,4 +55,9 @@ textarea:focus, input:focus{
     width:200px;
     color: red;
     text-align: left;
+}
+
+.closeAndPostBtnContainer{
+    display: flex;
+    justify-content: space-around;
 }
