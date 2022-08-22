@@ -39,6 +39,6 @@ class Post(db.Model):
             'description': self.description,
             'type': self.type,
             'link': self.link,
-            'user_id': self.user_id,
+            'user':self.user.to_dict(),
             'image': self.image.to_dict() if self.image is not None else {}
         }
