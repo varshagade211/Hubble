@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import User
+from app.models import User, db
+
 
 user_routes = Blueprint('users', __name__)
 
@@ -27,13 +28,21 @@ def user_following(id):
     print ('routes following ------------',  following_users)
     return  following_users
 
-@user_routes.route('/<int:id>/followings', methods=['PUT'])
+@user_routes.route('/<int:id>/followings/<int:newUserId>', methods=['PUT'])
 @login_required
-def user_add_following(id):
-    # following_users = User.query.get(id).to_dict_get_followings()
-    # print ('routes following ------------',  following_users)
-    # return  following_users
-    return
+def user_add_following(id, newUserId):
+    user_current_following_list = User.query.get(id).following.all()
+    print('current following list-----', user_current_following_list )
+    new_following_user = User.query.get(newUserId)
+    print('*******new user-----', new_following_user)
+  
+    
+    if new_following_user not in user_current_following_list:
+            user_current_following_list.append(new_following_user)
+            
+            db.session.commit()
+    return {'followings': [x.to_dict() for x in user_current_following_list]}
+    
 
 @user_routes.route('/<int:id>/followers')
 @login_required
