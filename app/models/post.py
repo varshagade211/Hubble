@@ -38,7 +38,7 @@ class Post(db.Model):
     #     # print('.....', self.following.all()[0].to_dict())
     #     return {
 
-    #         'likes': [x.to_dict() for x in self.posts_likes.all()]
+    #         'likes': [x.to_dict() for x in Post.posts_likes.all()]
 
     #     }
 

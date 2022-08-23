@@ -26,6 +26,7 @@ function Posts({post}){
 
      const likeHandler = async() =>{
         setIsLiked((prev) => !prev)
+
         // like dispatch will be here
 
      }
@@ -79,10 +80,14 @@ function Posts({post}){
                         <div>
                           <button className="noteIcon" onClick={noteHandler}><i className="fa-solid fa-pen-to-square notepenIcon"></i></button>
                         </div>
+
                         <div>
                             <button className="likeBtn"  onClick={likeHandler}>{isLiked ? <i class="fa-solid fa-heart likedIcon"></i>:
                               <i class="fa-regular fa-heart dislikeIcon"></i>}
                             </button>
+                        </div>
+                        <div className="likeContainer">
+                            <p className="likes">{post.likes}</p>
                         </div>
 
 

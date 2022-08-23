@@ -14,14 +14,14 @@ const Home = () => {
   return (
     <div className='loginSignupLinks'>
 
-        <div className=''>
+        <div className='loginBtnWrapper'>
         <NavLink to='/login' className={'loginLi'} exact={true} activeClassName='active'>
             Login
           </NavLink>
         </div>
 
 
-        <div>
+        <div  className='signUpBtnWrapper' >
             <NavLink to='/sign-up' className={'signupLi'} exact={true} activeClassName='active'>
                Sign Up
             </NavLink>
