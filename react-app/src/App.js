@@ -11,6 +11,7 @@ import { authenticate } from './store/session';
 import Feed from './components/Feed';
 import UserPosts from './components/posts/UserPosts';
 import Home from './components/Home'
+import LikedPosts from './components/posts/LikedPosts'
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -55,9 +56,9 @@ function App() {
           <UserPosts />
         </ProtectedRoute>
 
-        {/* <ProtectedRoute path='/posts' exact={true} >
-          <Feed />
-        </ProtectedRoute> */}
+        <ProtectedRoute path='/user/likes' exact={true} >
+          <LikedPosts />
+        </ProtectedRoute>
 
 
 

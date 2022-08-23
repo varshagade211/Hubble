@@ -4,6 +4,7 @@ const GET_ALL_USER_POST = 'posts/GET_ALL_USER_POST'
 const DELETE_POST = 'posts/DELETE_POST'
 const CREATE_POST = 'posts/CREATE_POST'
 const EDIT_POST = 'post/EDIT_POST'
+const GET_ALL_LIKED_POSTS = 'posts/GET_ALL_LIKED_POSTS'
 // ---------------------------------------------action creator-----------------------------------
 const getPosts = (posts) => {
    return{
@@ -36,6 +37,13 @@ const editPost = (post) => {
   return{
     type:EDIT_POST,
     post
+  }
+}
+
+const getAllLikedPosts = (likedPosts) => {
+  return{
+    type:GET_ALL_LIKED_POSTS,
+    likedPosts
   }
 }
 // --------------------------------------------thunk action creator---------------------------------------
@@ -133,22 +141,30 @@ export const editPostThunkCreator = (post) => async (dispatch) => {
 
 }
 
+  export const getAllLikedThunkCreator = (id) => async(dispatch) => {
+    const response = await fetch(`/api/users/${id}/likes`, {
+       headers: {}
+    });
+    const posts = await response.json()
+    // console.log('in like thunk.....', posts.likes)
+     dispatch(getAllLikedPosts(posts.likes))
+  }
 
 // ----------------------------------------reducer----------------------------------------------------
 
-const initialState = { posts: [] , userPosts:[]}
+const initialState = { posts: [] , userPosts:[] , likedPosts:[]}
 export default function reducer(state = initialState, action) {
     let newState
     switch (action.type) {
       case GET_ALL_POSTS:{
-        newState= {...state, posts:[...action?.posts], userPosts:[...state?.userPosts]}
+        newState= {...state, posts:[...action?.posts], userPosts:[...state?.userPosts], likedPosts:[...state?.likedPosts]}
         action?.posts?.forEach((post)=>{
           newState[post.id] = post
         })
         return newState
       }
       case GET_ALL_USER_POST:{
-        newState= {...state, posts:[...state?.posts],userPosts:[...action?.userPosts]}
+        newState= {...state, posts:[...state?.posts],userPosts:[...action?.userPosts],likedPosts:[...state?.likedPosts]}
 
         return newState
       }
@@ -156,11 +172,12 @@ export default function reducer(state = initialState, action) {
         delete state?.action?.postId
         let newPosts = state?.posts?.filter((post) => post?.id !== action?.postId)
         let newUserPosts = state?.userPosts?.filter((post) => post?.id !== action?.postId)
-        newState = {...state, posts:newPosts,userPosts:newUserPosts}
+        let newLikedPosts = state?.userLikedPosts?.filter((post) => post?.id !== action?.postId)
+        newState = {...state, posts:newPosts,userPosts:newUserPosts,likedPosts:newLikedPosts}
         return newState
       }
       case CREATE_POST:{
-        newState = {...state,posts:[...state?.posts, action?.post],userPosts:[...state?.userPosts, action?.post]}
+        newState = {...state,posts:[...state?.posts, action?.post],userPosts:[...state?.userPosts, action?.post],likedPosts:[...state?.likedPosts]}
         newState[action?.post?.id] =action?.post
         return newState
       }
@@ -180,7 +197,12 @@ export default function reducer(state = initialState, action) {
           }
         } )
         state[action?.post?.id] = action?.post
-        newState = {...state, posts:[...state?.posts], userPosts:[...state?.userPosts]}
+        newState = {...state, posts:[...state?.posts], userPosts:[...state?.userPosts],likedPosts:[...state?.likedPosts]}
+        return newState
+      }
+      case GET_ALL_LIKED_POSTS:{
+        // console.log(action?.likes)
+        newState= {...state, posts:[...state?.posts], userPosts:[...state?.userPosts], likedPosts:[...action?.likedPosts]}
         return newState
       }
       default:{
