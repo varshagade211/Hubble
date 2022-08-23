@@ -14,8 +14,8 @@ function FollowingList() {
     const [isloaded, setIsloaded] = useState(false);
     const followings = useSelector(state => Object.values(state.follows.followings));
     
-    
-    
+    // const posts = useSelector(state => state?.post?.posts)
+    // console.log("1111111--------", posts)
     
     
     useEffect(()=>{

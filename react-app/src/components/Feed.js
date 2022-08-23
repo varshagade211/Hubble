@@ -9,6 +9,7 @@ import './Feed.css'
 function Feed(){
     const dispatch = useDispatch()
     const posts = useSelector(state => state?.post?.posts)
+    const user_id = useSelector(state => state?.session?.user?.id)
 
     useEffect(()=>{
         (async()=>{
@@ -67,7 +68,7 @@ function Feed(){
                       <hr></hr>
                       <NavLink className={'postBtn'} to={''}> <i class="fa-solid fa-heart postIcon"></i>Likes</NavLink>
                       <hr></hr>
-                      <NavLink className={'postBtn'} to={'/user/followings'}> <i class="fa-solid fa-users postIcon"></i>Follow user</NavLink>
+                      <NavLink className={'postBtn'} to={`/user/${user_id}/followings`}> <i class="fa-solid fa-users postIcon"></i>Follow user</NavLink>
                       <hr></hr>
                 </div>
                 <div className='suggestedFollower'>

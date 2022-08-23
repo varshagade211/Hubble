@@ -14,6 +14,7 @@ import Home from './components/Home'
 
 import FollowingList from './components/follows/followinglist'
 import FollowerList from './components/follows/followerlist'
+import FollowingUserPosts from './components/follows/followinguserposts'
 
 
 function App() {
@@ -68,6 +69,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/user/:id/followers' exact={true} >
           <FollowerList/>
+        </ProtectedRoute>
+        <ProtectedRoute path='/user/:id/posts' exact={true} >
+          <FollowingUserPosts/>
         </ProtectedRoute>
 
       </Switch>

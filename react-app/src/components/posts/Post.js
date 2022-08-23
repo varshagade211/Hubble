@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 import {deletePostThunk} from '../../store/post'
 import EditPostModal from './EditPostModal'
 import './Post.css'
+import {addFollowingThunk} from '../../store/follows'
 
 function Posts({post}){
     const[isfollow , setIsFollow] = useState(false)
@@ -19,9 +20,11 @@ function Posts({post}){
 
      }
 
-    const followHandler = async() =>{
-        setIsFollow((prev) => !prev)
-        // follow dispatch will be here
+    const handleFollowing = async(e) =>{
+         e.preventDefault();
+         setIsFollow(true)
+
+         dispatch(addFollowingThunk(user.id, post.user.id))
      }
 
      const likeHandler = async() =>{
@@ -74,7 +77,7 @@ function Posts({post}){
                     <div className="followLikeNoteLinkCotainer">
 
                         <div>
-                            <button className="followBtn" onClick={followHandler}>{isfollow?"Follow":"Unfollow"}</button>
+                           {!isfollow && <button className="followBtn" onClick={handleFollowing} >Follow</button>}
                         </div>
                         <div>
                           <button className="noteIcon" onClick={noteHandler}><i className="fa-solid fa-pen-to-square notepenIcon"></i></button>

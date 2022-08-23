@@ -16,7 +16,7 @@ function FollowerList() {
     },[dispatch, id])
     console.log("followers to render -----", followers)
     return (
-        <div class='following-list-container'>
+        <div className='following-list-container'>
             <div className="following-list">
                 <div className="following-list-title"> {followers.length} Followers</div>
                  {
