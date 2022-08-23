@@ -1,6 +1,6 @@
 from flask import Blueprint, redirect, request
 from flask_login import login_required, current_user
-from app.models import Post , Image ,db
+from app.models import Post , Image ,db ,User
 from app.forms import PostForm
 post_routes = Blueprint('posts', __name__)
 
@@ -32,6 +32,16 @@ def posts():
 @login_required
 def user_posts():
     posts = Post.query.filter(Post.user_id == current_user.id).all()
+    return {'posts':[post.to_dict() for post in posts]}
+
+
+# get posts by user id
+
+
+@post_routes.route('/<int:userId>/posts')
+@login_required
+def post_by_user_id(userId):
+    posts = Post.query.filter(Post.user_id == userId).all()
     return {'posts':[post.to_dict() for post in posts]}
 
 
@@ -97,7 +107,6 @@ def edit_post(post_id):
 
 
 
-
 @post_routes.route('/user/post/<int:post_id>', methods=['DELETE'])
 @login_required
 def delete_post(post_id):
@@ -109,3 +118,39 @@ def delete_post(post_id):
     db.session.delete(post)
     db.session.commit()
     return {'message': 'Post Deleted'}
+
+
+
+@post_routes.route('/<int:postId>/like', methods=["PUT"])
+@login_required
+def like(postId):
+    user = User.query.get(current_user.id)
+    post = Post.query.get(postId)
+    isUserLikes = False
+    for likedUser in post.posts_likes:
+        if(likedUser.id == current_user.id ):
+             isUserLikes = True
+
+    if(not isUserLikes):
+        post.posts_likes.append(user)
+        db.session.commit()
+
+    return {"like":post.to_dict()}
+
+
+
+
+@post_routes.route('/<int:postId>/like',methods=["DELETE"])
+@login_required
+def unlike(postId):
+    user = User.query.get(current_user.id)
+    post = Post.query.get(postId)
+    isUserLikes = False
+    for likedUser in post.posts_likes:
+        if(likedUser.id == current_user.id ):
+             isUserLikes = True
+
+    if(isUserLikes):
+        post.posts_likes.remove(user)
+        db.session.commit()
+    return {"likes":post.to_dict()}

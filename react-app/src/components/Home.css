@@ -1,14 +1,35 @@
 .loginSignupLinks{
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.014);
     max-width: 20%;
     min-height:100px;
-    margin:10rem auto auto auto;
+    margin:15rem auto auto auto;
     display: flex;
     flex-direction: column;
 }
 
 
 .loginLi,.signupLi{
-
+    color: white;
     text-decoration: none;
+    width: 100%;
+    padding: 0.3rem 0 0.3rem 0;
+    display: block;
+}
+
+
+.loginBtnWrapper,.signUpBtnWrapper{
+    /* background-color: grey; */
+    border: 1px solid white;
+    margin: 2rem 0 0rem 0;
+    text-align: center;
+    padding: 1rem;
+
+}
+
+.loginBtnWrapper:hover{
+    box-shadow: 0px 0px 3px 2px white;
+}
+
+.signUpBtnWrapper:hover{
+    box-shadow: 0px 0px 3px 2px white;
 }
