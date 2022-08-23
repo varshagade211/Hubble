@@ -27,6 +27,13 @@ def user_following(id):
     print ('routes following ------------',  following_users)
     return  following_users
 
+@user_routes.route('/<int:id>/followings', methods=['PUT'])
+@login_required
+def user_add_following(id):
+    # following_users = User.query.get(id).to_dict_get_followings()
+    # print ('routes following ------------',  following_users)
+    # return  following_users
+    return
 
 @user_routes.route('/<int:id>/followers')
 @login_required
