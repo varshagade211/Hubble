@@ -1,31 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
-import {getUserFollowing} from '../../store/follows'
-import './followinglist.css'
+import {getUserFollowers} from '../../store/follows'
 
-
-
-
-
-function FollowingList() {
+function FollowerList() {
     const {id} = useParams()
     const dispatch = useDispatch();
     const [isloaded, setIsloaded] = useState(false);
-    const followings = useSelector(state => Object.values(state.follows.followings));
+    const followers = useSelector(state => Object.values(state.follows.followers));
     
     
     useEffect(()=>{
-        dispatch(getUserFollowing(id)).then(() => setIsloaded(true))
+        dispatch(getUserFollowers(id)).then(() => setIsloaded(true))
     },[dispatch, id])
-    console.log("followings to render -----", followings)
+    console.log("followers to render -----", followers)
     return (
         <div class='following-list-container'>
             <div className="following-list">
-                <div className="following-list-title"> {followings.length} Following</div>
+                <div className="following-list-title"> {followers.length} Followers</div>
                  {
                     isloaded  && 
-                     followings.map(user =>(
+                     followers?.map(user =>(
                          <div key={user.id} className="following-users" >{user.username}</div>
                      ))
                 }                    
@@ -34,6 +29,4 @@ function FollowingList() {
     )
 }
 
-export default FollowingList
-
-
+export default FollowerList

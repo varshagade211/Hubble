@@ -12,6 +12,10 @@ import Feed from './components/Feed';
 import UserPosts from './components/posts/UserPosts';
 import Home from './components/Home'
 
+import FollowingList from './components/follows/followinglist'
+import FollowerList from './components/follows/followerlist'
+
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -59,7 +63,12 @@ function App() {
           <Feed />
         </ProtectedRoute> */}
 
-
+        <ProtectedRoute path='/user/:id/followings' exact={true} >
+          <FollowingList/>
+        </ProtectedRoute>
+        <ProtectedRoute path='/user/:id/followers' exact={true} >
+          <FollowerList/>
+        </ProtectedRoute>
 
       </Switch>
     </BrowserRouter>

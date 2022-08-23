@@ -14,10 +14,10 @@ const loadFollowers= (followers) => ({
 
 
 export const getUserFollowing= (id) => async dispatch => {
-    const response = await csrfFetch(`/api/users/${id}/followings`);
+    const response = await fetch(`/api/users/${id}/followings`);
     if (response.ok) {
         const data = await response.json();
- 
+        // console.log('data from backend before dispatch---', data)
         dispatch(loadFollowings(data.followings));
         return response;
     }
@@ -25,7 +25,7 @@ export const getUserFollowing= (id) => async dispatch => {
 
 
 export const getUserFollowers= (id) => async dispatch => {
-    const response = await csrfFetch(`/api/users/${id}/followers`);
+    const response = await fetch(`/api/users/${id}/followers`);
     if (response.ok) {
         const data = await response.json();
  
@@ -39,10 +39,11 @@ const followsReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LOAD_FOLLOWINGS:  
-            newState = {...state} 
-            
-            action.followings.forEach(user => {
-                newState[user.id] = user
+           
+            newState = {...state}
+            action?.followings?.forEach(user => {
+                console.log('inside reducer, user ---', user)
+                newState.followings.push(user)
             })
             return newState;
 
@@ -50,8 +51,8 @@ const followsReducer = (state = initialState, action) => {
         case LOAD_FOLLOWERS:  
             newState = {...state} 
             
-            action.followers.forEach(user => {
-                newState[user.id] = user
+            action.followers?.forEach(user => {
+                newState.followers.push(user)
             })
             return newState;
 

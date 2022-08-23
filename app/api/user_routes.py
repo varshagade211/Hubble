@@ -24,7 +24,7 @@ def user(id):
 @login_required
 def user_following(id):
     following_users = User.query.get(id).to_dict_get_followings()
-    # print ('routes following ------------',  following_users)
+    print ('routes following ------------',  following_users)
     return  following_users
 
 
