@@ -1,6 +1,6 @@
 from flask import Blueprint, redirect, request
 from flask_login import login_required, current_user
-from app.models import Post , Image ,db
+from app.models import Post, Image, User, db
 from app.forms import PostForm
 post_routes = Blueprint('posts', __name__)
 
@@ -109,3 +109,71 @@ def delete_post(post_id):
     db.session.delete(post)
     db.session.commit()
     return {'message': 'Post Deleted'}
+
+
+
+# @post_routes.route('/<int:user_id>/likes', methods=['PUT'])
+# @login_required
+# def user_likes_post(user_id):
+#     posts = Post.query.filter(Post.user_id == user_id).all()
+#     user_likes = []
+#     for post in posts:
+#         for like in post.user_likes:
+#             if like.user_id == user_id:
+#                 user_likes.append(like)
+#                 db.session.commit()
+#     return {'likes':user_likes}
+
+
+# @post_routes.route("/<int:post_id>/likes", methods=['POST', 'DELETE'])
+# @login_required
+# def like_post(post_id):
+#     users_likes = User.query.get(current_user.id).to_dict_get_likes()
+#     post = Post.query.get(post_id)
+    
+#     if post not in users_likes:
+#         users_likes.append(post)
+#         db.session.commit()
+#         return {'message': 'Post Liked'}
+#     else:
+#         index = users_likes.index(post)
+#         users_likes.pop(index)
+#         db.session.commit()
+#         return {'message': 'Post Unliked'}
+
+
+# @post_routes.route("/<int:user_id>/likes/<int:post_id>", methods=['PUT'])
+# @login_required
+# def like_post(post_id, user_id):
+#     users_liked_posts = User.query.get(current_user.id).to_dict_get_likes()
+#     post = Post.query.get(post_id)
+#     likes = users_liked_posts['likes']
+#     for like in likes:
+#         print('post================', post.to_dict()['id'])
+#         print('users_liked_posts================', users_liked_posts['likes'])
+#         if like['id'] == post.to_dict()['id']:
+#             return {'message': 'Already Liked'}
+        
+#     users_liked_posts['likes'].append(post)
+#     # post.posts_likes.to_dict().append(User.query.get(current_user.id))
+#     db.session.commit()
+#     # return {'likes':len(post.posts_likes)}   #hopefully returns the array of users instances
+#     return {'message': 'Post Liked'}
+
+
+@post_routes.route("/<int:post_id>/likes", methods=['DELETE'])
+@login_required
+def unlike_post(post_id):
+    users_liked_posts = User.query.get(current_user.id).to_dict_get_likes()
+    post = Post.query.get(post_id)
+    for liked_post in users_liked_posts:
+        if liked_post.id == post.id:
+            i = users_liked_posts.index(liked_post)
+            j = post.posts_likes.index(User.query.get(current_user.id))
+            users_liked_posts.pop(i)
+            post.posts_likes.to_dict().pop(j)
+            db.session.commit()
+            # return {'likes':post.posts_likes.to_dict()}   #hopefully returns the array of users instances
+            return {'message': 'Post Unliked'}
+    
+    return {'message': 'Post Can Not Be Unliked twice'}
