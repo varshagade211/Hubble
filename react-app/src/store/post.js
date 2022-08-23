@@ -5,6 +5,7 @@ const DELETE_POST = 'posts/DELETE_POST'
 const CREATE_POST = 'posts/CREATE_POST'
 const EDIT_POST = 'post/EDIT_POST'
 const GET_ALL_LIKED_POSTS = 'posts/GET_ALL_LIKED_POSTS'
+const CREATE_LIKE = 'post/CREATE_LIKE'
 // ---------------------------------------------action creator-----------------------------------
 const getPosts = (posts) => {
    return{
@@ -46,6 +47,15 @@ const getAllLikedPosts = (likedPosts) => {
     likedPosts
   }
 }
+
+const createLike = (post) => {
+  return {
+    type:CREATE_LIKE,
+    post
+  }
+}
+
+
 // --------------------------------------------thunk action creator---------------------------------------
  export const allPostThunkCreator = () => async(dispatch) => {
     const response = await fetch('/api/posts/', {
@@ -141,14 +151,38 @@ export const editPostThunkCreator = (post) => async (dispatch) => {
 
 }
 
-  export const getAllLikedThunkCreator = (id) => async(dispatch) => {
-    const response = await fetch(`/api/users/${id}/likes`, {
-       headers: {}
-    });
-    const posts = await response.json()
-    // console.log('in like thunk.....', posts.likes)
-     dispatch(getAllLikedPosts(posts.likes))
+export const getAllLikedThunkCreator = (id) => async(dispatch) => {
+  const response = await fetch(`/api/users/${id}/likes`, {
+      headers: {}
+  });
+  const posts = await response.json()
+  // console.log('in like thunk.....', posts.likes)
+    dispatch(getAllLikedPosts(posts.likes))
+}
+
+
+export const createLikeThunkCreator = (post_id) => async(dispatch) => {
+  console.log('from createLike thunk...........', post_id)
+  const response = await fetch(`/api/posts/${post_id}/likes`, {
+    method: 'PUT',
+    headers: {
+      
+    },
+  })
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(createLike(data))
+    return data;
+  } else if (response.status < 500) {
+    const data = await response.json();
+    if (data.errors) {
+      return data.errors;
+    }
+  } else {
+    return ['An error occurred. Please try again.']
   }
+}
 
 // ----------------------------------------reducer----------------------------------------------------
 
@@ -203,6 +237,17 @@ export default function reducer(state = initialState, action) {
       case GET_ALL_LIKED_POSTS:{
         // console.log(action?.likes)
         newState= {...state, posts:[...state?.posts], userPosts:[...state?.userPosts], likedPosts:[...action?.likedPosts]}
+        return newState
+      }
+      case CREATE_LIKE:{
+        // state?.likedPosts?.forEach((user, i) => {
+        //   if (user?.id === action?.user_id) {
+        //     newState= {...state, posts:[...state?.posts], userPosts:[...state?.userPosts], likedPosts:[...state.likedPosts]}
+        //     return newState
+        //   }
+        // })
+        state[action?.post?.id] = action?.post
+        newState = {...state, posts:[...state?.posts], userPosts:[...state?.userPosts], likedPosts:[...state?.likedPosts, ...action?.post]}
         return newState
       }
       default:{
