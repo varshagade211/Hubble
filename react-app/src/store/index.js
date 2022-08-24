@@ -2,6 +2,7 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import session from './session'
 import post  from './post'
+import note from './note'
 
 import followsReducer from './follows'
 
@@ -10,7 +11,7 @@ import followsReducer from './follows'
 const rootReducer = combineReducers({
   session,
   post,
-
+  note,
   follows: followsReducer
 
 });

@@ -18,11 +18,6 @@ const NavBar = () => {
           </NavLink>
         </li>
 
-        {/* <li>
-          <NavLink to='/users' className={'navLi'} exact={true} activeClassName='active'>
-            Users
-          </NavLink>
-        </li> */}
        {user && <li className='logout'>
           <LogoutButton />
         </li>}

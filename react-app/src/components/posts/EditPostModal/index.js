@@ -8,7 +8,7 @@ import './index.css'
 function EditPostModal({type , post}) {
   const [showModal, setShowModal] = useState(false);
 
-   console.log(showModal)
+  //  console.log(showModal)
 
   return (
     <>

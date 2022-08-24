@@ -69,7 +69,7 @@ def user_follower(id):
     follower_users = User.query.get(id).to_dict_get_followers()
     
     return  follower_users
-   
+
 
 @user_routes.route('/<int:id>/likes')
 @login_required
@@ -77,6 +77,7 @@ def user_likes(id):
     likes_users = User.query.get(id).to_dict_get_likes()
     
     return  likes_users
+
 
 
 @user_routes.route('/<int:id>/unfollowed')
@@ -91,3 +92,4 @@ def user_unfollowed(id):
     unfollowed_list = [x.to_dict() for x in selected if x not in user_current_following_list]
     return { "unfollowed": unfollowed_list }
    
+

@@ -53,7 +53,7 @@ display: block;
 /* follow like icon container */
 .followLikeNoteLinkCotainer{
     display: flex;
-    width: 30%;
+    width: 40%;
     justify-content: space-between;
     align-items: center;
 }
@@ -128,4 +128,12 @@ display: block;
 .notesDiv{
     /* width:400px; */
     min-height: 200px;
+}
+
+.likeContainer{
+    margin-right: 3rem;
+}
+
+.likes{
+    color: black;
 }
