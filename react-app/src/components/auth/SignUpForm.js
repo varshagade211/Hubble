@@ -5,7 +5,7 @@ import { signUp } from '../../store/session';
 import './SignUpForm.css'
 
 const SignUpForm = () => {
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({});
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -21,9 +21,12 @@ const SignUpForm = () => {
       if (data) {
         setErrors(data)
       }
+    }else{
+        let err = {'repeatePassword':['Password and Repeat password does not match']}
+        setErrors(err)
     }
   };
-
+  console.log(errors)
   const updateUsername = (e) => {
     setUsername(e.target.value);
   };
@@ -49,60 +52,98 @@ const SignUpForm = () => {
 
   return (
     <div className='signUpFormContainer'>
-    <form onSubmit={onSignUp}>
+      <h1>HUBBLE</h1>
+      <form className='signUpForm' onSubmit={onSignUp} >
+        <div>
+          <input className='signupInput'
+            type='text'
+            name='username'
+            onChange={updateUsername}
+            placeholder='Username'
+            value={username}
+          ></input>
+          {errors?.username &&
+          <div className="error">
+              {errors?.username?.map((error, ind) => (
+                <div key={ind}>{error}</div>
+              ))}
+          </div>
+          }
+        </div>
       <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
-      <div>
-        <label>User Name</label>
-        <input
-          type='text'
-          name='username'
-          onChange={updateUsername}
-          value={username}
-        ></input>
-      </div>
-      <div>
-        <label>Email</label>
         <input
           type='text'
           name='email'
           onChange={updateEmail}
+          placeholder='Email'
           value={email}
+          className='signupInput'
         ></input>
+        {errors?.email &&
+          <div className="error">
+            {errors?.email?.map((error, ind) => (
+              <div key={ind}>{error}</div>
+            ))}
+          </div>
+        }
       </div>
       <div>
-        <label>Password</label>
         <input
           type='password'
           name='password'
+          placeholder='Password'
           onChange={updatePassword}
           value={password}
+          className='signupInput'
+
         ></input>
+        {errors?.password &&
+          <div className="error">
+              {errors?.password?.map((error, ind) => (
+                <div key={ind}>{error}</div>
+              ))}
+          </div>}
+
       </div>
       <div>
-        <label>Repeat Password</label>
+
         <input
           type='password'
           name='repeat_password'
+          placeholder='Repeate Password'
           onChange={updateRepeatPassword}
           value={repeatPassword}
-          required={true}
+          className='signupInput'
+
+
         ></input>
+        {errors?.repeatePassword &&
+          <div className="error">
+              {errors?.repeatePassword?.map((error, ind) => (
+                <div key={ind}>{error}</div>
+              ))}
+          </div>}
       </div>
       <div>
-        <label>Profile Image</label>
+
         <input
           type='url'
           name='profile_image'
+          placeholder='Profile Image'
           onChange={updateProfileImage}
           value={profileImage}
-          
+          className='signupInput'
+
         ></input>
+          {errors?.profile_image &&
+          <div className="error">
+              {errors?.profile_image?.map((error, ind) => (
+                <div key={ind}>{error}</div>
+              ))}
+          </div>
+          }
       </div>
-      <button type='submit'>Sign Up</button>
+      <button className = 'signupBtn' type='submit'>Sign Up</button>
     </form>
     </div>
   );

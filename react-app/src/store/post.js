@@ -5,7 +5,10 @@ const DELETE_POST = 'posts/DELETE_POST'
 const CREATE_POST = 'posts/CREATE_POST'
 const EDIT_POST = 'post/EDIT_POST'
 const GET_ALL_LIKED_POSTS = 'posts/GET_ALL_LIKED_POSTS'
-const CREATE_LIKE = 'post/CREATE_LIKE'
+
+const CREATE_LIKE = 'posts/CREATE_LIKE'
+const UNLIKE_POST = 'posts/UNLIKE_POST'
+
 // ---------------------------------------------action creator-----------------------------------
 const getPosts = (posts) => {
    return{
@@ -48,13 +51,22 @@ const getAllLikedPosts = (likedPosts) => {
   }
 }
 
-const createLike = (post) => {
-  return {
+
+const createLikePost = (likedPost,userId) => {
+  return{
     type:CREATE_LIKE,
-    post
+    likedPost,
+    userId
   }
 }
 
+const unLikePost = (unLikedPost,userId) => {
+  return{
+    type:UNLIKE_POST,
+    unLikedPost,
+    userId
+  }
+}
 
 // --------------------------------------------thunk action creator---------------------------------------
  export const allPostThunkCreator = () => async(dispatch) => {
@@ -86,7 +98,6 @@ export const deletePostThunk = (postId) => async (dispatch) => {
 }
 
 export const createPostThunkCreator = (post) => async (dispatch) => {
-  console.log('from thunk...........', post)
   const response = await fetch('/api/posts/user/post', {
     method: 'POST',
     headers: {
@@ -161,29 +172,29 @@ export const getAllLikedThunkCreator = (id) => async(dispatch) => {
 }
 
 
-export const createLikeThunkCreator = (post_id) => async(dispatch) => {
-  console.log('from createLike thunk...........', post_id)
-  const response = await fetch(`/api/posts/${post_id}/likes`, {
-    method: 'PUT',
-    headers: {
-      
-    },
-  })
 
-  if (response.ok) {
-    const data = await response.json();
-    dispatch(createLike(data))
-    return data;
-  } else if (response.status < 500) {
-    const data = await response.json();
-    if (data.errors) {
-      return data.errors;
-    }
-  } else {
-    return ['An error occurred. Please try again.']
-  }
+
+  export const createLikeThunkCreator = (postId, userId) => async(dispatch) => {
+    console.log('inside create')
+    const response = await fetch(`/api/posts/${postId}/like`, {
+        method: 'PUT',
+        headers: {}
+      });
+    const likes = await response.json()
+    console.log('response', likes.like)
+    dispatch(createLikePost(likes.like,userId))
 }
 
+export const unLikeThunkCreator = (postId,userId) => async(dispatch) => {
+  console.log('inside create')
+  const response = await fetch(`/api/posts/${postId}/like`, {
+      method: 'DELETE',
+
+    });
+  const likes = await response.json()
+  console.log('response', likes.likes)
+  dispatch(unLikePost(likes.likes,userId))
+}
 // ----------------------------------------reducer----------------------------------------------------
 
 const initialState = { posts: [] , userPosts:[] , likedPosts:[]}
@@ -199,7 +210,6 @@ export default function reducer(state = initialState, action) {
       }
       case GET_ALL_USER_POST:{
         newState= {...state, posts:[...state?.posts],userPosts:[...action?.userPosts],likedPosts:[...state?.likedPosts]}
-
         return newState
       }
       case DELETE_POST:{
@@ -235,8 +245,52 @@ export default function reducer(state = initialState, action) {
         return newState
       }
       case GET_ALL_LIKED_POSTS:{
-        // console.log(action?.likes)
-        newState= {...state, posts:[...state?.posts], userPosts:[...state?.userPosts], likedPosts:[...action?.likedPosts]}
+          newState= {...state, posts:[...state?.posts], userPosts:[...state?.userPosts], likedPosts:[...action?.likedPosts]}
+          return newState
+      }
+      case CREATE_LIKE:{
+        state?.posts?.forEach((post => {
+           if(post?.id === action?.likedPost?.id){
+            let myIndex = post?.liked_by?.indexOf(action?.userId);
+            if (myIndex === -1) {
+              post?.liked_by?.push(action?.userId)
+            }
+
+           }
+        }))
+        state?.userPosts?.forEach((post => {
+          if(post?.id === action?.likedPost?.id){
+            let myIndex = post?.liked_by?.indexOf(action?.userId);
+            if (myIndex === -1) {
+              post?.liked_by?.push(action?.userId)
+            }
+          }
+       }))
+        newState= {...state, posts:[...state?.posts], userPosts:[...state?.userPosts], likedPosts:[...state?.likedPosts,action?.likedPost]}
+
+        return newState
+      }
+
+      case UNLIKE_POST:{
+        state?.posts?.forEach((post => {
+          if(post?.id === action?.unLikedPost?.id){
+            let myIndex = post?.liked_by?.indexOf(action?.userId);
+            if (myIndex !== -1) {
+              post?.liked_by?.splice(myIndex, 1);
+            }
+          }
+        }))
+        state?.userPosts?.forEach((post => {
+          if(post?.id === action?.unLikedPost?.id){
+            let myIndex = post?.liked_by?.indexOf(action?.userId);
+            if (myIndex !== -1) {
+              post?.liked_by?.splice(myIndex, 1);
+            }
+          }
+        }))
+
+        let sortedLikedPosts = state?.likedPosts?.filter((post) => post?.id !== action?.unLikedPost?.id)
+        newState= {...state, posts:[...state?.posts], userPosts:[...state?.userPosts], likedPosts : [...sortedLikedPosts]}
         return newState
       }
       case CREATE_LIKE:{

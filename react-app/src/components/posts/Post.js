@@ -1,24 +1,26 @@
 
 import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { createLikeThunkCreator } from "../../store/post"
-import { deletePostThunk } from '../../store/post'
+
+import {deletePostThunk, createLikeThunkCreator,unLikeThunkCreator} from '../../store/post'
+
 import EditPostModal from './EditPostModal'
 import Notes from "../notes/Notes"
 // import CreateComment from '../notes/createNote'
 import './Post.css'
 
 function Posts({post}){
+    const user = useSelector(state => state?.session?.user)
     const[isfollow , setIsFollow] = useState(false)
-    const[isLiked , setIsLiked] = useState(false)
+    const[isLiked , setIsLiked] = useState(post?.liked_by.includes(user?.id))
     const[isNote, setIsNote] = useState(false)
     const dispatch = useDispatch()
-    const user = useSelector(state => state?.session?.user)
+
 
 
 
     const deleteHandler = async() =>{
-        const response= await dispatch(deletePostThunk(post.id))
+        const response= await dispatch(deletePostThunk(post?.id))
 
      }
 
@@ -27,12 +29,23 @@ function Posts({post}){
         // follow dispatch will be here
     }
 
-    const likeHandler = async() =>{
-        setIsLiked((prev) => !prev)
 
+     const likeHandler = async() =>{
+
+
+        console.log('post', post?.id ,'user',user?.id)
+        if(!isLiked){
+           await dispatch(createLikeThunkCreator(post?.id,user?.id))
+           setIsLiked(true)
+        }else{
+           await dispatch(unLikeThunkCreator(post?.id,user?.id))
+           setIsLiked(false)
+        }
+        // like dispatch will be here
     }
 
-    const noteHandler = async() =>{
+     const noteHandler = async() =>{
+
         setIsNote((prev) => !prev)
         // note dispatch will be here
 
@@ -88,7 +101,7 @@ function Posts({post}){
                             </button>
                         </div>
                         <div className="likeContainer">
-                            <p className="likes">{post.likes}</p>
+                            <p className="likes">{post?.liked_by?.length}</p>
                         </div>
 
 
