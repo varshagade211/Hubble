@@ -3,6 +3,8 @@ import { useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import {deletePostThunk} from '../../store/post'
 import EditPostModal from './EditPostModal'
+import Notes from "../notes/Notes"
+// import CreateComment from '../notes/createNote'
 import './Post.css'
 
 function Posts({post}){
@@ -41,7 +43,7 @@ function Posts({post}){
     return(
         <div className={"postOuterContainer"}>
             <div className="postContainer" key={post.id}>
-                <h3 className="postUserName">Dr. {post?.user?.username}</h3>
+                <h3 className="postUserName">{post?.user?.username}</h3>
 
                 {post?.type === 'text' &&<h3 className="postTitle"><i className="fa-solid fa-star titleStar"></i> {post?.title}</h3>}
                 { post?.type === 'text' &&<div className="postDiscriptionContainer"> <p className="postDiscription">{post?.description}</p></div>}
@@ -96,8 +98,8 @@ function Posts({post}){
                 </div>
                 {isNote && <div className='notesDiv'>
                     <hr></hr>
-
-                    place for notes
+                    {/* <CreateComment post={post}/> */}
+                    <Notes post={post}/>
 
                 </div>}
 
