@@ -4,10 +4,16 @@ import session from './session'
 import post  from './post'
 import note from './note'
 
+import followsReducer from './follows'
+
+
+
 const rootReducer = combineReducers({
   session,
   post,
-  note
+  note,
+  follows: followsReducer
+
 });
 
 
