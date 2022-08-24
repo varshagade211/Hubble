@@ -17,7 +17,7 @@ function Feed(){
         })();
     },[dispatch]);
 
-   console.log(posts)
+   
 
     return(
         <div className='feedContainerWraper'>

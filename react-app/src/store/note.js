@@ -1,7 +1,7 @@
 const CREATE = 'note/createNote'
 const LOAD= 'notes/load'
 const DELETE = 'posts/delete-note'
-
+const EDIT = 'notes/editNote'
 // ---------------------------------------------action creator-----------------------------------
 
 const loadNotes = (payload) => ({
@@ -17,16 +17,48 @@ const create = (payload) => ({
 })
 
 
-const deletenote = (payload) => {
+const deleteNote = (id) => {
     return {
         type: DELETE,
-        payload,
+        id,
     };
 };
 
+const editNote = (updatedComment) => {
+    return {
+        type: EDIT,
+        updatedComment
+    }
+}
 // --------------------------------------------thunk action creator---------------------------------------
 
-export const getAllNotesByNoteId = (id) => async (dispatch) => {
+export const editComment = (data, id) => async (dispatch) => {
+    console.log("DATA", data)
+    
+   
+ 
+
+    const response = await fetch(`/api/note/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        description: data.description,
+       
+      }),
+
+      
+  
+    })
+
+    
+    const updatedComment = await response.json();
+    console.log("!!UPDATED COMMENT!!", updatedComment)
+    return dispatch(editNote(updatedComment));
+}
+
+export const getAllNotesByPostId = (id) => async (dispatch) => {
     const response = await fetch(`/api/posts/${id}/notes`)
 
     if (response.ok) {
@@ -48,39 +80,34 @@ export const getAllNotes = () => async (dispatch) => {
         
 
         dispatch(loadNotes(comment.note))
-        console.log("THIS IS COMMENT", comment)   
+         
         
     }
 }
 
-export const createnote = (data, spotId) => async (dispatch) => {
+export const createNote = (data, postId) => async (dispatch) => {
 
-    const response = await fetch(`/Notes/${spotId}`, {
+    const response = await fetch(`/api/post/${postId}/notes`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
     });
 
-
     const newnote = await response.json();
     dispatch(create(newnote));
     return newnote
-
-
 };
 
 
 
 export const noteDelete = (id) => async (dispatch) => {
-    const response = await fetch(`/Notes/${id}`, {
+    const response = await fetch(`/api/notes/${id}`, {
         method: "DELETE",
-        body: JSON.stringify({
-            id,
-        }),
     });
     if (response.ok) {
         const res = await response.json();
-        dispatch(deletenote(res));
+        console.log("!!!RESPOSE DELETE ROUTE!!",res.noteId)
+        dispatch(deleteNote(res.noteId));
         return res;
     }
 };
@@ -88,30 +115,46 @@ export const noteDelete = (id) => async (dispatch) => {
 
 // ----------------------------------------reducer----------------------------------------------------
 
-const initialState = [];
+const initialState = {notes: []};
 
 const notesReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
 
         case LOAD:
-            newState = {};
             
-            action.payload.forEach((note) => { newState[note.id] = note });
-            return { ...newState};
+            newState = {...state, notes:[...action?.payload]};
+            
+            action?.payload?.forEach((note) => { newState[note?.id] = note });
+            return newState;
 
         case CREATE:
-            //console.log("ACTION ITEM", state);
-            newState = { ...state }
-            newState[action.payload.id] = action.payload
-
-            //console.log("ACTION ", newState);
+            
+            newState = {...state, notes:[...state?.notes, ...action?.payload?.note]};
+            newState[action?.payload.id] = action?.payload?.note
             return newState;
 
         case DELETE: {
-             newState = { ...state };
-            delete newState[action.payload];
-            return newState;
+
+          let newNote = state?.notes?.filter(note => { return note?.id !== action?.id})
+         
+             newState = {...state, notes:[...newNote]}
+             return newState;
+        }
+
+        case EDIT: {
+
+           console.log("ACTION.NOTE", action?.updatedComment)
+           state?.notes?.forEach((note, i)=>{ 
+            
+            if(note?.id === action?.updatedComment?.id)
+            
+            state?.notes?.splice(i, 1, action?.updatedComment)
+            })
+        //    always do line 155 BEFORE line 156 to return updated state
+           newState[action?.updatedComment?.id] = action?.updatedComment
+           const newState = {...state, notes:[...state?.notes]}
+           return newState
         }
 
         default:

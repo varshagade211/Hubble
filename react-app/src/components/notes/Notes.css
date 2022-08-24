@@ -1,7 +1,19 @@
 .Notes{
-    border: solid;
-    width: 10px;
-    height: 10px;
-    text-align: auto;
-    margin-top: px;
+    border: 2px solid black;
+    font-size: 500px;
+
 }
+
+.deleteIconBtn{
+    
+    border: none;
+    cursor: pointer;
+    
+
+
+}
+.deleteIconBtn:hover{
+    background-color: rgba(128, 128, 128, 0.181);
+    border-radius: 50%;
+}
+

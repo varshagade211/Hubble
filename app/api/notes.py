@@ -25,13 +25,13 @@ def one_note(post_id):
 @note_routes.route("/notes/<int:id>", methods=["Delete"])
 @login_required
 def make_note(id):
-        note = Note.query.get(id)
-        if note.user_id != current_user.get_id():
-         redirect('api/auth/unauthorized')
 
+        note = Note.query.get(id)
+ 
+        
         db.session.delete(note)
         db.session.commit()
-
+        return{"noteId": note.id} 
 
 # post comment by post id
 @note_routes.route("/post/<int:post_id1>/notes", methods=["POST"])
@@ -64,13 +64,14 @@ def post_note(post_id1):
 @login_required
 def edit_post(id):
     note = Note.query.get(id)
-
-    if note.user_id != current_user.get_id():
-        redirect('api/auth/unauthorized')
+    print(note.description)
+    # if note.user_id != current_user.get_id():
+    #     redirect('api/auth/unauthorized')
 
     form = NoteForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-
+    
+    print("THIS IS SECOND PRINT",form.data['description'])
     if form.validate_on_submit():
         note.description=form.data['description']
 
