@@ -17,7 +17,7 @@ function LikedPosts(){
         dispatch(getAllLikedThunkCreator(user?.id))
     },[dispatch])
 
-   console.log('in likepost componenet',likedPosts)
+
 
     return(
     <div className='likedPostContainerWraper'>
@@ -46,7 +46,9 @@ function LikedPosts(){
                       <hr></hr>
                       <NavLink className={'postBtn'} to={'/user/likes'}> <i class="fa-solid fa-heart postIcon"></i>Likes</NavLink>
                       <hr></hr>
-                      <NavLink className={'postBtn'} to={''}> <i class="fa-solid fa-users postIcon"></i>Follow user</NavLink>
+                      <NavLink className={'postBtn'} to={`/user/${user?.id}/followings`}> <i class="fa-solid fa-users postIcon"></i>Following</NavLink>
+                      <hr></hr>
+                      <NavLink className={'postBtn'} to={`/user/${user?.id}/followers`}> <i class="fa-solid fa-users postIcon"></i>Follower </NavLink>
                       <hr></hr>
                 </div>
                 {/* </div> */}

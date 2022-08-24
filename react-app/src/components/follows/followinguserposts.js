@@ -17,7 +17,7 @@ function FollowingUserPosts(){
 
         })();
     },[dispatch]);
-    
+
     const user_posts = []
     posts.forEach(post => {
         if (post.user.id === parseInt(id)) {
@@ -26,11 +26,11 @@ function FollowingUserPosts(){
   })
 
 
-   console.log(user_posts)
+   
 
     return(
     <div className='userPostContainerWraper'>
-      <div className='userImageContainer'>    
+      <div className='userImageContainer'>
         <div>
 
             {user_posts.map((post)=>{
@@ -40,14 +40,14 @@ function FollowingUserPosts(){
         </div>
         <div className='userSideBar'>
 
-                
+
                 <div className='suggestedUserFollower'>
                    suggested followers will go here
                 </div>
 
         </div>
         </div>
-  
+
     )
 }
 

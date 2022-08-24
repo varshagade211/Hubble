@@ -26,7 +26,7 @@ const SignUpForm = () => {
         setErrors(err)
     }
   };
-  console.log(errors)
+
   const updateUsername = (e) => {
     setUsername(e.target.value);
   };
