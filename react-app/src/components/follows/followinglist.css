@@ -1,0 +1,27 @@
+.following-list-container {
+    position: relative;
+    color:red;
+    /* background-color: beige; */
+    top:80px;
+    height:100%;
+    width:80%;
+    margin: auto;
+}
+
+.following-list {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.following-list-title{
+    font-size: large;
+    font-weight: bold;
+    margin: 20px 0px;
+}
+
+.following-list a {
+    color:whitesmoke
+    
+}
