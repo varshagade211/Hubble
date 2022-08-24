@@ -40,9 +40,10 @@
     position: sticky;
     top: 20rem;
     width:100%;
-    min-height: 100px;
-    background-color: white;
+    height: 100%;
+    /* background-color: white; */
 }
+
 .postBtn{
     color: white;
     text-decoration: none;

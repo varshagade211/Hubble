@@ -21,6 +21,7 @@ def user(id):
 
 
 
+
 @user_routes.route('/<int:id>/followings')
 @login_required
 def user_following(id):
@@ -36,7 +37,7 @@ def user_add_following(id, newUserId):
     #----why the list cannot work out to append a new following to db?-------
     # user_current_following_list = User.query.get(id).following.all()
   
-    # print('current following list-----', user_current_following_list ) => it prints like raw sql commend
+    # print('current following list-----', user_current_following_list ) #=> it prints like raw sql commend
     # print('8888888888888888-----', user_current_following_list.all() )
     new_following_user = User.query.get(newUserId)
     
