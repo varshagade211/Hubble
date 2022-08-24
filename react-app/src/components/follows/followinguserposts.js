@@ -28,7 +28,6 @@ function FollowingUserPosts() {
     }
   });
 
-  //    console.log(user_posts)
 
   return (
     <div className="followinguserPostContainerWraper">
