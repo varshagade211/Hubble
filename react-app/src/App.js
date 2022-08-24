@@ -57,7 +57,7 @@ function App() {
         </ProtectedRoute>
 
         <ProtectedRoute path='/user/likes' exact={true} >
-          <LikedPosts />
+           <LikedPosts />
         </ProtectedRoute>
 
 
