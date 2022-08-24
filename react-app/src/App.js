@@ -7,6 +7,7 @@ import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
+import Notes from './components/notes/Notes'
 import { authenticate } from './store/session';
 import Feed from './components/Feed';
 import UserPosts from './components/posts/UserPosts';
@@ -54,6 +55,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/user/posts' exact={true} >
           <UserPosts />
+        </ProtectedRoute>
+        <ProtectedRoute path='/post/:id/notes' exact={true} >
+          <Notes />
         </ProtectedRoute>
 
         <ProtectedRoute path='/user/likes' exact={true} >
