@@ -50,7 +50,7 @@ class Post(db.Model):
             'description': self.description,
             'type': self.type,
             'link': self.link,
-            "likes": len(self.posts_likes),
+            "liked_by":[likedUser.to_dict()['id'] for likedUser in self.posts_likes],
             'user':self.user.to_dict(),
             'image': self.image.to_dict() if self.image is not None else {}
         }

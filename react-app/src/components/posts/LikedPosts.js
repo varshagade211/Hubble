@@ -5,7 +5,7 @@ import { useDispatch,useSelector } from 'react-redux'
 
 import { NavLink } from 'react-router-dom'
 import Post from './Post'
-import './UserPost.css'
+import './LikedPosts.css'
 
 
 function LikedPosts(){
@@ -20,17 +20,15 @@ function LikedPosts(){
    console.log('in likepost componenet',likedPosts)
 
     return(
-    <div className='userPostContainerWraper'>
-
-        <div className='postIconContainer'>
+    <div className='likedPostContainerWraper'>
+        <div className='likedPostContaner'>
              <div>
-
-                <div className='allFeedPostContainer'>
+             <div className='allLikedPostContainer'>
                 {likedPosts.map((post)=>{
                    return (
-                    <div className="feedPostProfileImgConatiner">
-                    <div className="profileImageContainer">
-                        {post?.user?.profileImage ? <img className='feedProfileImage' src={post?.user?.profileImage} />
+                    <div className="likedPostProfileImgConatiner">
+                    <div className="likedProfileImageContainer">
+                        {post?.user?.profileImage ? <img className='likedProfileImage' src={post?.user?.profileImage} />
                         :<i className ="fa-solid fa-user-astronaut defaultProfileLogo"></i>}
                     </div>
                     <div>
@@ -41,9 +39,9 @@ function LikedPosts(){
                 })}
                 </div>
             </div>
-            <div className='userSideBar'>
-                <div className='userPostNavLink'>
-                <div className='postNavLink'>
+            <div className='likedSideBar'>
+                {/* <div className='userPostNavLink'> */}
+                <div className='likePostNavLink'>
                       <NavLink className={'postBtn'} to={'/user/posts'}> <i className="fa-brands fa-blogger postIcon"></i> Post</NavLink>
                       <hr></hr>
                       <NavLink className={'postBtn'} to={'/user/likes'}> <i class="fa-solid fa-heart postIcon"></i>Likes</NavLink>
@@ -51,8 +49,8 @@ function LikedPosts(){
                       <NavLink className={'postBtn'} to={''}> <i class="fa-solid fa-users postIcon"></i>Follow user</NavLink>
                       <hr></hr>
                 </div>
-                </div>
-                <div className='suggestedUserFollower'>
+                {/* </div> */}
+                <div className='suggestedUserFollowerOnLikedPage'>
                     suggested followers will go here
                 </div>
             </div>
