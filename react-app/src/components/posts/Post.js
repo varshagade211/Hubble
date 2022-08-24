@@ -1,5 +1,5 @@
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
 import {deletePostThunk, createLikeThunkCreator,unLikeThunkCreator} from '../../store/post'
@@ -13,12 +13,14 @@ import {addFollowingThunk} from '../../store/follows'
 function Posts({post}){
     const user = useSelector(state => state?.session?.user)
     const[isfollow , setIsFollow] = useState(false)
-    const[isLiked , setIsLiked] = useState(post?.liked_by.includes(user?.id))
+    const[isLiked , setIsLiked] = useState(post?.liked_by?.includes(user?.id))
     const[isNote, setIsNote] = useState(false)
     const dispatch = useDispatch()
 
 
-
+   useEffect(()=>{
+    setIsLiked(post?.liked_by?.includes(user?.id))
+   },[isLiked])
 
     const deleteHandler = async() =>{
         const response= await dispatch(deletePostThunk(post?.id))
@@ -37,7 +39,7 @@ function Posts({post}){
      const likeHandler = async() =>{
 
 
-        console.log('post', post?.id ,'user',user?.id)
+       
         if(!isLiked){
            await dispatch(createLikeThunkCreator(post?.id,user?.id))
            setIsLiked(true)
