@@ -1,14 +1,13 @@
 .likedPostContainerWraper{
     margin: 10% auto 0 auto;
-    width: 85%;
+    width: 75%;
    }
 
    .likedPostContaner{
         display: grid;
-        grid-template-columns: 3fr 1fr;
+        grid-template-columns: 1fr 1fr;
    }
 /* .allLikedPostContainer{
-
 } */
 
 .likedPostProfileImgConatiner{
@@ -32,6 +31,7 @@
 }
 .likedSideBar{
     margin: 0 0 0 10%;
+    width: 100%;
 }
 .likePostNavLink{
     position: sticky;
