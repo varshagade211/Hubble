@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {getUserFollowing} from '../../store/follows'
 import './followinglist.css'
 import ManageFollowings from './managefollowngs';
+import SuggestedUsers from './unfollowedlist'
 
 
 
@@ -14,14 +15,11 @@ function FollowingList() {
     const [isloaded, setIsloaded] = useState(false);
     const followings = useSelector(state => Object.values(state.follows.followings));
     
-    // const posts = useSelector(state => state?.post?.posts)
-    // console.log("1111111--------", posts)
-    
     
     useEffect(()=>{
         dispatch(getUserFollowing(id)).then(() => setIsloaded(true))
     },[dispatch, id])
-    console.log("followings to render -----", followings)
+    // console.log("followings to render -----", followings)
     return (
         <div class='following-list-container'>
             <div className="following-list">
@@ -30,18 +28,13 @@ function FollowingList() {
                     isloaded  && 
                      followings?.map(user =>(
                         <div key={user.id}>
-                         <ManageFollowings key={user.id} user={user} currentid={id}/>
+                         <ManageFollowings key={user.id} user={user}/>
                          </div>
-                     )
-                        
-                     
-                         
-                            /* <Link key={user.id} to={`/users/${user.id}/posts`}>{user.username}</Link> */
-                            
-                                // <button className="followBtn" onClick={followHandler}>{isfollow?"Follow":"Unfollow"}</button>
-                     )
-               
+                     ))
                  }                    
+            </div>
+            <div className="suggest-user-container">
+                <SuggestedUsers />
             </div>
         </div>
     )
