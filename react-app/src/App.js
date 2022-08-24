@@ -14,6 +14,11 @@ import UserPosts from './components/posts/UserPosts';
 import Home from './components/Home'
 import LikedPosts from './components/posts/LikedPosts'
 
+import FollowingList from './components/follows/followinglist'
+import FollowerList from './components/follows/followerlist'
+import FollowingUserPosts from './components/follows/followinguserposts'
+
+
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -64,7 +69,15 @@ function App() {
            <LikedPosts />
         </ProtectedRoute>
 
-
+        <ProtectedRoute path='/user/:id/followings' exact={true} >
+          <FollowingList/>
+        </ProtectedRoute>
+        <ProtectedRoute path='/user/:id/followers' exact={true} >
+          <FollowerList/>
+        </ProtectedRoute>
+        <ProtectedRoute path='/user/:id/posts' exact={true} >
+          <FollowingUserPosts/>
+        </ProtectedRoute>
 
       </Switch>
     </BrowserRouter>

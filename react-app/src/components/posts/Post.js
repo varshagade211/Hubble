@@ -6,6 +6,7 @@ import EditPostModal from './EditPostModal'
 import Notes from "../notes/Notes"
 // import CreateComment from '../notes/createNote'
 import './Post.css'
+import {addFollowingThunk} from '../../store/follows'
 
 function Posts({post}){
     const user = useSelector(state => state?.session?.user)
@@ -22,9 +23,11 @@ function Posts({post}){
 
      }
 
-    const followHandler = async() =>{
-        setIsFollow((prev) => !prev)
-        // follow dispatch will be here
+    const handleFollowing = async(e) =>{
+         e.preventDefault();
+         setIsFollow(true)
+
+         dispatch(addFollowingThunk(user.id, post.user.id))
      }
 
      const likeHandler = async() =>{
@@ -85,7 +88,7 @@ function Posts({post}){
                     <div className="followLikeNoteLinkCotainer">
 
                         <div>
-                            <button className="followBtn" onClick={followHandler}>{isfollow?"Follow":"Unfollow"}</button>
+                           {!isfollow && <button className="followBtn" onClick={handleFollowing} >Follow</button>}
                         </div>
                         <div>
                           <button className="noteIcon" onClick={noteHandler}><i className="fa-solid fa-pen-to-square notepenIcon"></i></button>
