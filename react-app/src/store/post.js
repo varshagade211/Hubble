@@ -126,8 +126,8 @@ export const createPostThunkCreator = (post) => async (dispatch) => {
 }
 
 export const editPostThunkCreator = (post) => async (dispatch) => {
-  console.log('from edit thunk...........', post)
-  const response = await fetch(`/api/posts//user/post/${post.postId}`, {
+
+  const response = await fetch(`/api/posts/user/post/${post.postId}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
