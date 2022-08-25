@@ -5,6 +5,7 @@ import CreatePostModal from './CreatePostModal'
 import { NavLink } from 'react-router-dom'
 import Post from './Post'
 import './UserPost.css'
+import SuggestedUsers from '../follows/unfollowedlist'
 
 
 function UserPosts(){
@@ -81,7 +82,7 @@ function UserPosts(){
 
             </div>
             <div className='suggestedUserFollower'>
-                suggested followers will go here
+                <SuggestedUsers />
             </div>
 
         </div>

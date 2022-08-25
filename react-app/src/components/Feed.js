@@ -5,6 +5,7 @@ import Post from './posts/Post'
 import { NavLink } from 'react-router-dom'
 import CreatePostModal from './posts/CreatePostModal'
 import './Feed.css'
+import SuggestedUsers from './follows/unfollowedlist'
 
 function Feed(){
     const dispatch = useDispatch()
@@ -86,7 +87,7 @@ function Feed(){
                       <hr></hr>
                 </div>
                 <div className='suggestedFollower'>
-                    suggested followers will go here
+                    <SuggestedUsers />
                 </div>
 
         </div>
