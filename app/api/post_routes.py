@@ -25,6 +25,8 @@ def validation_errors_to_error_messages(validation_errors):
 @login_required
 def posts():
     posts = Post.query.all()
+    # print([likedUser.to_dict() for likedUser in self.posts_likes])
+
     return {'posts':[post.to_dict() for post in posts]}
 
 
@@ -119,6 +121,7 @@ def delete_post(post_id):
     db.session.commit()
     return {'message': 'Post Deleted'}
 
+# create and delete like routes-
 
 
 @post_routes.route('/<int:postId>/like', methods=["PUT"])
@@ -126,6 +129,7 @@ def delete_post(post_id):
 def like(postId):
     user = User.query.get(current_user.id)
     post = Post.query.get(postId)
+
     isUserLikes = False
     for likedUser in post.posts_likes:
         if(likedUser.id == current_user.id ):
@@ -154,3 +158,4 @@ def unlike(postId):
         post.posts_likes.remove(user)
         db.session.commit()
     return {"likes":post.to_dict()}
+

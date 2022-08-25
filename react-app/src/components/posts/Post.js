@@ -1,37 +1,55 @@
-
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import {deletePostThunk} from '../../store/post'
+import {deletePostThunk, createLikeThunkCreator,unLikeThunkCreator} from '../../store/post'
 import EditPostModal from './EditPostModal'
 import Notes from "../notes/Notes"
 // import CreateComment from '../notes/createNote'
 import './Post.css'
+import { addFollowingThunk, updateUnfollowed } from '../../store/follows'
 
-function Posts({post}){
-    const[isfollow , setIsFollow] = useState(false)
-    const[isLiked , setIsLiked] = useState(false)
+function Posts({post, unfollowList}){
+    const user = useSelector(state => state?.session?.user)
+    // const[isfollow , setIsFollow] = useState(followingList.includes(post.user.id))
+    const[isLiked , setIsLiked] = useState(post?.liked_by?.includes(user?.id))
     const[isNote, setIsNote] = useState(false)
     const dispatch = useDispatch()
-    const user = useSelector(state => state?.session?.user)
+    
+    let isfollow = !unfollowList?.includes(post.user.id)
+    // console.log("on post to check following_user", isfollow)
 
-
+   useEffect(()=>{
+    setIsLiked(post?.liked_by?.includes(user?.id))
+    
+   },[isLiked])
 
     const deleteHandler = async() =>{
-        const response= await dispatch(deletePostThunk(post.id))
+        const response= await dispatch(deletePostThunk(post?.id))
 
      }
 
-    const followHandler = async() =>{
-        setIsFollow((prev) => !prev)
-        // follow dispatch will be here
+    const handleFollowing = async(e) =>{
+         e.preventDefault();
+        //  setIsFollow(true)
+        if(!isfollow) {
+
+            dispatch(addFollowingThunk(user.id, post.user.id))
+            dispatch(updateUnfollowed(post.user.id))
+        }
      }
 
      const likeHandler = async() =>{
-        setIsLiked((prev) => !prev)
 
+
+       
+        if(!isLiked){
+           await dispatch(createLikeThunkCreator(post?.id,user?.id))
+           setIsLiked(true)
+        }else{
+           await dispatch(unLikeThunkCreator(post?.id,user?.id))
+           setIsLiked(false)
+        }
         // like dispatch will be here
-
-     }
+    }
 
      const noteHandler = async() =>{
         setIsNote((prev) => !prev)
@@ -43,7 +61,13 @@ function Posts({post}){
     return(
         <div className={"postOuterContainer"}>
             <div className="postContainer" key={post.id}>
+                <div className="usernameandfollowbtn">
+
                 <h3 className="postUserName">{post?.user?.username}</h3>
+                
+                           {(isfollow === false)&& <button className="followBtn" onClick={handleFollowing} >Follow</button>}
+                       
+                </div>
 
                 {post?.type === 'text' &&<h3 className="postTitle"><i className="fa-solid fa-star titleStar"></i> {post?.title}</h3>}
                 { post?.type === 'text' &&<div className="postDiscriptionContainer"> <p className="postDiscription">{post?.description}</p></div>}
@@ -77,9 +101,6 @@ function Posts({post}){
                     <div className="followLikeNoteLinkCotainer">
 
                         <div>
-                            <button className="followBtn" onClick={followHandler}>{isfollow?"Follow":"Unfollow"}</button>
-                        </div>
-                        <div>
                           <button className="noteIcon" onClick={noteHandler}><i className="fa-solid fa-pen-to-square notepenIcon"></i></button>
                         </div>
 
@@ -89,7 +110,7 @@ function Posts({post}){
                             </button>
                         </div>
                         <div className="likeContainer">
-                            <p className="likes">{post.likes}</p>
+                            <p className="likes">{post?.liked_by?.length}</p>
                         </div>
 
 

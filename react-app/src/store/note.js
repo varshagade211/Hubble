@@ -33,11 +33,6 @@ const editNote = (updatedComment) => {
 // --------------------------------------------thunk action creator---------------------------------------
 
 export const editComment = (data, id) => async (dispatch) => {
-    console.log("DATA", data)
-    
-   
- 
-
     const response = await fetch(`/api/note/${id}`, {
       method: 'PUT',
       headers: {
@@ -45,16 +40,16 @@ export const editComment = (data, id) => async (dispatch) => {
       },
       body: JSON.stringify({
         description: data.description,
-       
+
       }),
 
-      
-  
+
+
     })
 
-    
+
     const updatedComment = await response.json();
-    console.log("!!UPDATED COMMENT!!", updatedComment)
+
     return dispatch(editNote(updatedComment));
 }
 
@@ -64,10 +59,10 @@ export const getAllNotesByPostId = (id) => async (dispatch) => {
     if (response.ok) {
 
         const payload = await response.json();
-        // console.log("THIS IS PAYLOAD",payload.note)
 
-        dispatch(loadNotes(payload.note))   
-        
+
+        dispatch(loadNotes(payload.note))
+
     }
 }
 
@@ -77,11 +72,11 @@ export const getAllNotes = () => async (dispatch) => {
     if (response.ok) {
 
         const comment = await response.json();
-        
+
 
         dispatch(loadNotes(comment.note))
-         
-        
+
+
     }
 }
 
@@ -106,7 +101,6 @@ export const noteDelete = (id) => async (dispatch) => {
     });
     if (response.ok) {
         const res = await response.json();
-        console.log("!!!RESPOSE DELETE ROUTE!!",res.noteId)
         dispatch(deleteNote(res.noteId));
         return res;
     }
@@ -122,14 +116,14 @@ const notesReducer = (state = initialState, action) => {
     switch (action.type) {
 
         case LOAD:
-            
+
             newState = {...state, notes:[...action?.payload]};
-            
+
             action?.payload?.forEach((note) => { newState[note?.id] = note });
             return newState;
 
         case CREATE:
-            
+
             newState = {...state, notes:[...state?.notes, ...action?.payload?.note]};
             newState[action?.payload.id] = action?.payload?.note
             return newState;
@@ -137,24 +131,35 @@ const notesReducer = (state = initialState, action) => {
         case DELETE: {
 
           let newNote = state?.notes?.filter(note => { return note?.id !== action?.id})
-         
+
              newState = {...state, notes:[...newNote]}
              return newState;
         }
 
         case EDIT: {
+           state?.notes?.forEach((note, i)=>{
 
+<<<<<<< HEAD
            
            state?.notes?.forEach((note, i)=>{ 
             
+=======
+>>>>>>> main
             if(note?.id === action?.updatedComment?.id)
-            
+
             state?.notes?.splice(i, 1, action?.updatedComment)
             })
+<<<<<<< HEAD
     
            newState = {...state, notes:[...state?.notes]}
            newState[action?.updatedComment?.id] = action?.updatedComment
            
+=======
+        //    always do line 155 BEFORE line 156 to return updated state
+        newState = {...state, notes:[...state?.notes]}
+        newState[action?.updatedComment?.id] = action?.updatedComment
+
+>>>>>>> main
            return newState
         }
 

@@ -1,0 +1,49 @@
+.likedPostContainerWraper{
+    margin: 10% auto 0 auto;
+
+    width: 80%;
+   }
+
+   .likedPostContaner{
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+   }
+/* .allLikedPostContainer{
+} */
+
+.likedPostProfileImgConatiner{
+    display: grid;
+    grid-template-columns:50px 4fr;
+    column-gap:20px ;
+}
+
+.likedProfileImageContainer{
+    width:50px;
+    height:50px;
+    text-align: center;
+    margin-top:1rem;
+
+}
+.likedProfileImage{
+    width:50px;
+    height:50px;
+    background-color: none;
+    border-radius: 50%;
+}
+.likedSideBar{
+    margin: 0 0 0 10%;
+
+}
+.likePostNavLink{
+    position: sticky;
+    top: 5rem;
+    margin: 1rem 0 0 0;
+
+}
+.suggestedUserFollowerOnLikedPage{
+    position: sticky;
+    top: 20rem;
+    width:100%;
+    min-height: 100px;
+    /* background-color: white; */
+}

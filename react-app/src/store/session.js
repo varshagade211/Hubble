@@ -1,6 +1,7 @@
 // constants
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
+const GET_ALL_USERS = 'session/GET_ALL_USER'
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -10,8 +11,19 @@ const setUser = (user) => ({
 const removeUser = () => ({
   type: REMOVE_USER,
 })
+const getAllUserAction = (users) => ({
+   type: GET_ALL_USERS,
+   users
+})
+const initialState = { user: null};
 
-const initialState = { user: null };
+export const getAllUsers = () => async(dispatch) => {
+  const response = await fetch('/api/users/', {
+      headers: {}
+    });
+  const users = await response.json()
+  dispatch(getAllUserAction(users.users))
+}
 
 export const authenticate = () => async (dispatch) => {
   const response = await fetch('/api/auth/', {
@@ -24,13 +36,13 @@ export const authenticate = () => async (dispatch) => {
     if (data.errors) {
       return;
     }
-  
+
     dispatch(setUser(data));
   }
 }
 
 export const login = (email, password) => async (dispatch) => {
-  
+
   const response = await fetch('/api/auth/login', {
     method: 'POST',
     headers: {
@@ -41,8 +53,8 @@ export const login = (email, password) => async (dispatch) => {
       password
     })
   });
- 
-  
+
+
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data))
@@ -84,7 +96,7 @@ export const signUp = (username, email, password, profileImage) => async (dispat
       profileImage
     }),
   });
-  
+
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data))
@@ -105,6 +117,12 @@ export default function reducer(state = initialState, action) {
       return { user: action.payload }
     case REMOVE_USER:
       return { user: null }
+    case GET_ALL_USERS:
+      let newState={...state}
+      action?.users?.forEach(user => {
+        newState[user?.id]= user
+      })
+      return newState
     default:
       return state;
   }

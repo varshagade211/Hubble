@@ -58,7 +58,7 @@ function CreateTextPostForm({type, setShowModal}){
 
                 <input type="text" className="textTypeTitalInput" placeholder='Title'value={title} onChange={(e)=> setTitle(e.target.value)}/>
 
-               {errors.title &&
+               {errors?.title &&
                     <div className="error">
                         {errors?.title?.map((error, ind) => (
                             <div key={ind}>{error}</div>

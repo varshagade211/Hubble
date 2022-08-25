@@ -1,95 +1,138 @@
 .feedContainerWraper{
- margin: 10% auto 0 auto;
- width: 75%;
-}
-.feedContaner{
-     display: grid;
-     grid-template-columns: 3fr 1fr;
-     /* position: relative; */
+    margin: 10% auto 0 auto;
+    width: 80%;
+   }
+   .feedContaner{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        /* position: relative; */
 
 
-}
+   }
 
-.createPostIconConainer{
+   .createPostIconConainer{
+       display: grid;
+
+       grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+       background-color: white;
+       margin: 0 0 0 1.3rem;
+       border-radius: 7px;
+
+   }
+
+   .createPostIcon{
+       padding-top: 10px;
+       /* padding: 10px; */
+       text-align: center;
+       border-right: 1px solid rgba(0, 0, 0, 0.316);
+   }
+
+
+   .sideBar{
+       margin: 0 0 0 10%;
+       /* width: 70%; */
+
+   }
+   .postNavLink{
+       position: sticky;
+       top: 5rem;
+       /* margin: 4rem 0 0 0; */
+
+   }
+   .suggestedFollower{
+       position: sticky;
+       top: 15rem;
+       width:100%;
+       min-height: 100px;
+
+   }
+   .postBtn{
+       color: white;
+       text-decoration: none;
+       font-size: 1.2rem;
+
+   }
+
+   .postIcon{
+       font-size: 1.2rem;
+       margin: 0 0.5rem 0 0rem;
+   }
+   .sidebarLikeIcon{
+       font-size: 1.2rem;
+       margin: 0 0.5rem 0 0rem;
+       color: red;
+   }
+
+   .profileImageContainer{
+       width:50px;
+       height:50px;
+       text-align: center;
+       margin-top:1rem;
+
+   }
+   .feedProfileImage{
+    width:50px;
+    height:50px;
+    background-color: none;
+    border-radius: 50%;
+    margin: 1rem 0 0 0;
+    cursor: pointer;
+
+   }
+
+   .defaultProfileLogo{
+       font-size: 3rem;
+       color: white;
+       border-radius: 50%;
+       background-color: none;
+       width: 50px;
+       height: 50px;
+       margin-top: 0.5rem;
+       /* border: 1px solid whitesmoke; */
+   }
+
+   .feedPostProfileImgConatiner{
+       display: grid;
+       grid-template-columns:50px 4fr;
+       column-gap:20px ;
+   }
+
+   .createIconAndImageContainer{
     display: grid;
+    grid-template-columns:50px 4fr;
+   }
 
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    background-color: white;
-     margin: 0 0 0 4.3rem
 
-}
-
-.createPostIcon{
-    padding: 10px;
-    padding: 10px;
-    text-align: center;
-    border-right: 1px solid rgba(0, 0, 0, 0.316);
-}
-
-.suggestedFollower{
-    background-color: white;
-}
-
-.sideBar{
-    margin: 0 0 0 10%;
-
-}
-.postNavLink{
-    position: sticky;
-    top: 5rem;
-
-}
-.suggestedFollower{
-    position: sticky;
-    top: 20rem;
-    width:100%;
-    min-height: 100px;
-}
-.postBtn{
-    color: white;
-    text-decoration: none;
-    font-size: 1.2rem;
+.feedUserProfileImage{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
 
 }
 
-.postIcon{
-    font-size: 1.2rem;
-    margin: 0 0.5rem 0 0rem;
-}
-.sidebarLikeIcon{
-    font-size: 1.2rem;
-    margin: 0 0.5rem 0 0rem;
-    color: red;
-}
-
-.profileImageContainer{
+.feedUserProfileImage{
     width:50px;
     height:50px;
     text-align: center;
     margin-top:1rem;
-
-}
-.feedProfileImage{
- width:50px;
- height:50px;
- background-color: none;
- border-radius: 50%;
-
 }
 
-.defaultProfileLogo{
-    font-size: 3rem;
-    color: white;
-    border-radius: 50%;
-    background-color: none;
-    width: 50px;
-    height: 50px;
-    margin-top: 0.5rem;
-    /* border: 1px solid whitesmoke; */
+
+
+.followBtnUserandPostNameContainer{
+    background-color: white;
+    border-radius:10px;
+    background-color: white;
+    margin: 1rem 0 0 0;
 }
 
-.feedPostProfileImgConatiner{
-    display: grid;
-    grid-template-columns:50px 4fr;
-    column-gap:20px ;
+.followBtnAndUserNameContainer{
+    display: flex;
 }
+
+.feedUseName{
+    margin: 1rem 0 0 1rem;
+}
+
+
+
