@@ -20,13 +20,13 @@ function Posts({post, unfollowList}){
     const[isLiked , setIsLiked] = useState(post?.liked_by?.includes(user?.id))
     const[isNote, setIsNote] = useState(false)
     const dispatch = useDispatch()
-    
+
     let isfollow = !unfollowList?.includes(post.user.id)
     // console.log("on post to check following_user", isfollow)
 
    useEffect(()=>{
     setIsLiked(post?.liked_by?.includes(user?.id))
-    
+
    },[isLiked])
 
     const deleteHandler = async() =>{
@@ -57,6 +57,11 @@ function Posts({post, unfollowList}){
         }
     }
 
+    const noteHandler = async() =>{
+        setIsNote((prev) => !prev)
+        // note dispatch will be here
+
+     }
 
 
 
