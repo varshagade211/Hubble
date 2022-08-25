@@ -8,10 +8,14 @@ import EditPostModal from './EditPostModal'
 import Notes from "../notes/Notes"
 // import CreateComment from '../notes/createNote'
 import './Post.css'
+
 import { addFollowingThunk, updateUnfollowed } from '../../store/follows'
+
 
 function Posts({post, unfollowList}){
     const user = useSelector(state => state?.session?.user)
+
+
     // const[isfollow , setIsFollow] = useState(followingList.includes(post.user.id))
     const[isLiked , setIsLiked] = useState(post?.liked_by?.includes(user?.id))
     const[isNote, setIsNote] = useState(false)
@@ -42,10 +46,8 @@ function Posts({post, unfollowList}){
      }
 
 
-     const likeHandler = async() =>{
 
-
-       
+    const likeHandler = async() =>{
         if(!isLiked){
            await dispatch(createLikeThunkCreator(post?.id,user?.id))
            setIsLiked(true)
@@ -53,15 +55,9 @@ function Posts({post, unfollowList}){
            await dispatch(unLikeThunkCreator(post?.id,user?.id))
            setIsLiked(false)
         }
-        // like dispatch will be here
     }
 
-     const noteHandler = async() =>{
 
-        setIsNote((prev) => !prev)
-        // note dispatch will be here
-
-    }
 
 
     return(
@@ -106,9 +102,6 @@ function Posts({post, unfollowList}){
                     </div>
                     <div className="followLikeNoteLinkCotainer">
 
-                        {/* <div>
-                           {(isfollow === false)&& <button className="followBtn" onClick={handleFollowing} >Follow</button>}
-                        </div> */}
                         <div>
                           <button className="noteIcon" onClick={noteHandler}><i className="fa-solid fa-pen-to-square notepenIcon"></i></button>
                         </div>
@@ -117,6 +110,7 @@ function Posts({post, unfollowList}){
                             <button className="likeBtn"  onClick={likeHandler}>{isLiked ? <i className="fa-solid fa-heart likedIcon"></i>:
                               <i className="fa-regular fa-heart dislikeIcon"></i>}
                             </button>
+
                         </div>
                         <div className="likeContainer">
                             <p className="likes">{post?.liked_by?.length}</p>

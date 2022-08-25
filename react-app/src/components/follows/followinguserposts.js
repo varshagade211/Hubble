@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { allPostThunkCreator } from "../../store/post";
+import { getAllUsers } from "../../store/session";
 import { NavLink, useParams } from "react-router-dom";
 import Post from "../posts/Post";
 import SuggestedUsers from "./unfollowedlist";
@@ -9,6 +10,7 @@ import "./followinguserposts.css";
 function FollowingUserPosts() {
   const dispatch = useDispatch();
   const posts = useSelector((state) => state?.post?.posts);
+  const users = useSelector(state => state?.session)
   const { id } = useParams();
 //   console.log("rom following use to get id----", typeof(parseInt(id)))
 //   const user = useSelector((state) => state?.follows[parseInt(id)]);
@@ -16,15 +18,16 @@ function FollowingUserPosts() {
   useEffect(() => {
     (async () => {
       await dispatch(allPostThunkCreator());
+      await dispatch(getAllUsers())
     })();
   }, [dispatch]);
 
   const user_posts = [];
-  let user;
+  let user = users[id]
   posts.forEach((post) => {
     if (post.user.id === parseInt(id)) {
       user_posts.push(post);
-      user = post.user
+      // user = post.user
     }
   });
 
@@ -82,4 +85,3 @@ function FollowingUserPosts() {
 }
 
 export default FollowingUserPosts;
-

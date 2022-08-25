@@ -38,7 +38,7 @@ function SuggestedUsers() {
                   )}
                 </div>
                 <Link className="suggest-users-name" key={user.id} to={`/users/${user.id}/posts`}>
-                  {user.username}
+                  {user?.username}
                 </Link>
               </div>
               <div className="follow-btn" >
@@ -76,4 +76,3 @@ const FollowClick = (listeduser) => {
 
 
 export default SuggestedUsers;
-

@@ -1,11 +1,12 @@
 .likedPostContainerWraper{
     margin: 10% auto 0 auto;
-    width: 75%;
+
+    width: 80%;
    }
 
    .likedPostContaner{
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 2fr 1fr;
    }
 /* .allLikedPostContainer{
 } */
@@ -31,11 +32,12 @@
 }
 .likedSideBar{
     margin: 0 0 0 10%;
-    width: 100%;
+
 }
 .likePostNavLink{
     position: sticky;
     top: 5rem;
+    margin: 1rem 0 0 0;
 
 }
 .suggestedUserFollowerOnLikedPage{

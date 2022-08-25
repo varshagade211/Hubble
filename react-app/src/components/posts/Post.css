@@ -59,6 +59,7 @@ display: block;
     align-items: center;
 }
 .followBtn{
+
     margin: 1rem 0 0 0.5rem;
     background-color: white;
     border:none;
@@ -67,6 +68,7 @@ display: block;
     cursor: pointer;
     font-size: 1rem;
     font-weight: bold;
+
 }
 .likeBtn{
     background-color:white;
@@ -77,6 +79,7 @@ display: block;
 .likedIcon{
     color: red;
     font-size: 1.5rem;
+    cursor: pointer;
 }
 .dislikeIcon{
     color:black;

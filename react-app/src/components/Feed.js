@@ -2,16 +2,19 @@ import {allPostThunkCreator} from '../store/post'
 import {useEffect} from 'react'
 import {useSelector,useDispatch} from 'react-redux'
 import Post from './posts/Post'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useHistory } from 'react-router-dom'
 import CreatePostModal from './posts/CreatePostModal'
 import './Feed.css'
 import SuggestedUsers from './follows/unfollowedlist'
 import {getUnfollowed} from '../store/follows'
 
+
 function Feed(){
     const dispatch = useDispatch()
+    const history = useHistory()
     const posts = useSelector(state => state?.post?.posts)
     const user = useSelector(state => state?.session?.user)
+
     const unfollowedList = useSelector(state => state?.follows?.unfollowed)
     
     
@@ -22,9 +25,9 @@ function Feed(){
         (async()=>{
             await dispatch(allPostThunkCreator())
                 dispatch(getUnfollowed(user.id))
-
         })();
     },[dispatch]);
+
 
 
 
@@ -65,17 +68,21 @@ function Feed(){
             <div className='allFeedPostContainer'>
                 {posts.map((post)=>{
                    return (
-                    <div className="feedPostProfileImgConatiner">
-                    <div className="profileImageContainer">
-                        {post?.user?.profileImage ? <img className='feedProfileImage' src={post?.user?.profileImage} />
-                        :<i className ="fa-solid fa-user-astronaut defaultProfileLogo"></i>}
+                   <div className="feedPostProfileImgConatiner">
+                        <div className="profileImageContainer"onClick={()=>history.push(`/user/${user?.id}/posts`)}>
+                            {post?.user?.profileImage ? <img className='feedProfileImage' src={post?.user?.profileImage} />
+                            :<i className ="fa-solid fa-user-astronaut defaultProfileLogo"></i>}
+                        </div>
+                        <div>
+                            <Post  post={post} />
+                        </div>
                     </div>
+
                     <div>
                       <Post post={post} unfollowList={unfollowidList}/>
                     </div>
-
-
                    </div>
+
                    )
                 })}
 

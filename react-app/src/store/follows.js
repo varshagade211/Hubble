@@ -153,7 +153,7 @@ const followsReducer = (state = initialState, action) => {
         case DELETE_UNFOLLOWED:
 
             let unfollowArr = Object.values(state.unfollowed)
-     
+
             let updatedArr = unfollowArr.filter(user => user.id !== action.id)
             newState = {...state, followings:[...state?.followings], followers:[...state?.followers], unfollowed:[...updatedArr]}
             return newState;
