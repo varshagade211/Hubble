@@ -97,10 +97,12 @@ function Posts({post}){
 
                 </div>
                 {isNote && <div className='notesDiv'>
+                    
                     <hr></hr>
-                    {/* <CreateComment post={post}/> */}
+                    <div className='backcolor'>
+                    
                     <Notes post={post}/>
-
+                    </div>
                 </div>}
 
 

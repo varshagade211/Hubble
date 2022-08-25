@@ -1,19 +1,101 @@
-.Notes{
-    border: 2px solid black;
-    font-size: 500px;
-
+.commentcontainer{
+    display: flex;
+    flex-direction: row;
+    gap: 10px 20px;
+    
 }
 
-.deleteIconBtn{
+.deleteEditBtn{
+    display: flex;
+    flex-direction: row;
     
+}
+
+.editnote {
+ display: flex;
+ align-items: flex-end;
+ 
+}
+
+.delete{
     border: none;
     cursor: pointer;
-    
-
-
+    display: flex;
+    align-items: flex-end;
+    background-color:  #f0efef;
+    color:  #6225697c;
 }
-.deleteIconBtn:hover{
+.note {
+    background-color:  #f0efef;
+    border: none;
+    cursor: pointer;
+    color:  #62256950;
+}
+
+.deletePenIcon:hover{
     background-color: rgba(128, 128, 128, 0.181);
     border-radius: 50%;
+    
 }
 
+
+
+.Notes{
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+    gap: 100px 20px;
+    
+    
+}
+.description {
+    border: 2px solid #62256950;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 5px;
+    color: rgba(57, 56, 70, 0.833);
+}
+
+
+
+.default{
+    font-size: 3rem;
+    color: rgb(52, 51, 64);
+    border-radius: 50%;
+    background-color: none;
+    width: 60px;
+    height: 60px;
+    margin-top: 0.5rem;
+    /* border: 1px solid whitesmoke; */
+}
+
+.ProfileImage{
+    font-size: 3rem;
+    border-radius: 50%;
+    background-color: none;
+    width: 50px;
+    height: 50px;
+    margin-top: 0.5rem;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    margin-right: 10px;
+    border: 2px solid rgb(52, 51, 64);
+}
+
+
+
+
+.img{
+    font-size: 3rem;
+    color: rgba(52, 51, 64, 0.521);
+    border-radius: 50%;
+    background-color: none;
+    width: 50px;
+    height: 50px;
+    margin-top: 0.5rem;
+    margin-left: 20px;
+    margin-right: 10px;
+    padding: 5px;
+
+    
+}

@@ -144,16 +144,17 @@ const notesReducer = (state = initialState, action) => {
 
         case EDIT: {
 
-           console.log("ACTION.NOTE", action?.updatedComment)
+           
            state?.notes?.forEach((note, i)=>{ 
             
             if(note?.id === action?.updatedComment?.id)
             
             state?.notes?.splice(i, 1, action?.updatedComment)
             })
-        //    always do line 155 BEFORE line 156 to return updated state
+    
+           newState = {...state, notes:[...state?.notes]}
            newState[action?.updatedComment?.id] = action?.updatedComment
-           const newState = {...state, notes:[...state?.notes]}
+           
            return newState
         }
 

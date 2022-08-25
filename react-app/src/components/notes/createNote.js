@@ -1,11 +1,11 @@
 import { useState } from "react"
 import { createNote } from '../../store/note'
-import {allPostThunkCreator} from '../../store/post'
+import { allPostThunkCreator } from '../../store/post'
 import { useDispatch, useSelector } from 'react-redux'
 import './createNote.css'
 
 
-const CreateComment = ({ post }) => {
+const CreateComment = ({ post }, {userImage}) => {
 
     const dispatch = useDispatch()
     const [description, setDescription] = useState('');
@@ -14,7 +14,8 @@ const CreateComment = ({ post }) => {
 
 
     let post_id = post.id
-
+    const user = useSelector(state => state?.session?.user)
+    const user_id = useSelector(state => state?.session?.user?.id)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -29,7 +30,7 @@ const CreateComment = ({ post }) => {
         }
 
         const data = {
-  
+
             description
 
         };
@@ -47,14 +48,21 @@ const CreateComment = ({ post }) => {
 
     return (
         <>
+        <div className='imagecomment'>
+            { user?.profileImage ?
+
+                <img className='CreateImage' src={user?.profileImage} />
+
+
+                :
+                <i className="fa-solid fa-user-astronaut default"></i>
+            }
 
             <div className="createcommentDiv">
-
                 <form onSubmit={handleSubmit} className='createCommentForm' >
-                    <ul> {errors.map((error, i) => (<li key={i}>{error}</li>))}</ul>
+                    <div  className="errors" >{errors.map((error, i) => (<div className="errors" key={i}>{error}</div>))}</div>
+                    
                     <label>
-
-
                         <textarea
 
                             id="commentInput"
@@ -63,11 +71,11 @@ const CreateComment = ({ post }) => {
                             onChange={(e) => setDescription(e.target.value)}
                             required
                         />
-
                     </label>
                     <button className='button' type="submit" >Post</button>
                 </form>
             </div>
+         </div>    
         </>
     )
 }

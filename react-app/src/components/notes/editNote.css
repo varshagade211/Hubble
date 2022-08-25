@@ -1,0 +1,32 @@
+#editcomment {
+    border: none;
+    height: 25px;
+    width: 450px;
+    color: rgb(255 255 255 / 63%);
+    background-color: #57546573;
+    display: flex;
+    flex-direction: row;
+    /* align-content: center; */
+    padding: 10px 0px 10px 0px;
+    margin-top: 150px;
+    margin-left: 20px;
+    border-radius: 20px;
+}
+
+.create {
+    background-color: #554e5d;
+}
+
+#modal-content {
+    position: absolute;
+   
+    border-radius: 10px;
+    width: 500px;
+    overflow-y: auto;
+    height: 300px;
+    
+        background-image: url("https://upload.wikimedia.org/wikipedia/commons/e/e4/StarfieldSimulation.gif");
+        background-color: #000000;
+      
+
+}
