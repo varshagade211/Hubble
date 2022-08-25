@@ -60,8 +60,8 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            'profileImage':self.profile_image,
-            'posts': self.posts.to_dict()
+            'profileImage':self.profile_image
+            # 'posts': self.posts.to_dict()
         }
 
    
