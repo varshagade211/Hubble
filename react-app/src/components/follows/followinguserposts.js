@@ -5,7 +5,7 @@ import { getAllUsers } from "../../store/session";
 import { NavLink, useParams } from "react-router-dom";
 import Post from "../posts/Post";
 import SuggestedUsers from "./unfollowedlist";
-import "./followinguserposts.css";
+import "../posts/UserPost.css";
 
 function FollowingUserPosts() {
   const dispatch = useDispatch();
@@ -34,9 +34,9 @@ function FollowingUserPosts() {
 
 
   return (
-    <div className="followinguserPostContainerWraper">
-      <div className="followingusermainpage">
-        <div className="userImageContainer">
+    <div className="userPostContainerWraper">
+      <div className="userImageContainer">
+        
           {user?.profileImage ? (
             <img className="userImage" src={user?.profileImage} />
           ) : (
@@ -46,15 +46,13 @@ function FollowingUserPosts() {
           <p className="userName">{user?.username}</p>
 
         </div>
-        <div>
-          {user_posts.map((post) => {
+        <div className='postIconContainer'>
+
+        <div className='userPostContainer'>
+          { user_posts ?
+          user_posts.map((post) => {
             return <Post post={post} />;
-          })}
-        </div>
-
-      </div>
-
-
+          }): (<p> No post yet.. </p>)}
       <div className="userSideBar">
         <div className="userPostNavLink">
           <div className="postNavLink">
@@ -80,6 +78,12 @@ function FollowingUserPosts() {
         </div>
 
       </div>
+        </div>
+        </div>
+
+      {/* </div> */}
+
+
     </div>
   );
 }
