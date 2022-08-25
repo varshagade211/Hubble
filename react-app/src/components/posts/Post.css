@@ -60,7 +60,7 @@ display: block;
 }
 .followBtn{
     margin: 1rem 0 0 0.5rem;
-    background-color: white;
+    background-color: transparent;
     border:none;
     /* padding: 0.5rem 1rem 0.5rem 1rem; */
     color: #0275d8;

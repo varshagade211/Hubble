@@ -137,29 +137,19 @@ const notesReducer = (state = initialState, action) => {
         }
 
         case EDIT: {
-           state?.notes?.forEach((note, i)=>{
+           
 
-<<<<<<< HEAD
            
            state?.notes?.forEach((note, i)=>{ 
             
-=======
->>>>>>> main
             if(note?.id === action?.updatedComment?.id)
 
             state?.notes?.splice(i, 1, action?.updatedComment)
             })
-<<<<<<< HEAD
     
            newState = {...state, notes:[...state?.notes]}
            newState[action?.updatedComment?.id] = action?.updatedComment
            
-=======
-        //    always do line 155 BEFORE line 156 to return updated state
-        newState = {...state, notes:[...state?.notes]}
-        newState[action?.updatedComment?.id] = action?.updatedComment
-
->>>>>>> main
            return newState
         }
 
