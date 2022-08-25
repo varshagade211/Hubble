@@ -37,7 +37,7 @@ function SuggestedUsers() {
                     <i className="fa-solid fa-user-astronaut default"></i>
                   )}
                 </div>
-                <Link className="suggest-users-name" key={user.id} to={`/users/${user.id}/posts`}>
+                <Link className="suggest-users-name" key={user.id} to={`/user/${user.id}/posts`}>
                   {user?.username}
                 </Link>
               </div>
