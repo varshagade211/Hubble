@@ -29,4 +29,6 @@ function CreatePostModal({type}) {
   );
 }
 
+
+
 export default CreatePostModal;

@@ -1,5 +1,5 @@
 .postOuterContainer{
-    background-color: white;
+    background: #f0efef;
     border-radius:10px;
     margin: 1rem 0 0 0;
 }
@@ -60,7 +60,7 @@ display: block;
 }
 .followBtn{
     margin: 1rem 0 0 0.5rem;
-    background-color: white;
+    background-color: transparent;
     border:none;
     /* padding: 0.5rem 1rem 0.5rem 1rem; */
     color: #0275d8;
@@ -69,7 +69,7 @@ display: block;
     font-weight: bold;
 }
 .likeBtn{
-    background-color:white;
+    background-color: #c5d5c500;
     border:none;
     padding: 0.5rem 1rem 0.5rem 1rem;
     color: white;
@@ -79,7 +79,7 @@ display: block;
     font-size: 1.5rem;
 }
 .dislikeIcon{
-    color:black;
+    color:   #622569;
     font-size: 1.5rem;
 }
 
@@ -94,10 +94,10 @@ display: block;
 }
 
 .noteIcon{
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0);
     border: none;
     cursor: pointer;
-
+    color:   #622569;
 
 }
 
@@ -131,8 +131,11 @@ display: block;
 
 
 .notesDiv{
-    /* width:400px; */
+    
     min-height: 200px;
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    overflow-y: scroll; /* Add vertical scrollbar */
+    background: #f0efef;
 }
 
 .likeContainer{
@@ -143,6 +146,10 @@ display: block;
     color: black;
 }
 
+.backcolor{
+    background: #f0efef;
+
+}
 .usernameandfollowbtn{
     display: flex;
 

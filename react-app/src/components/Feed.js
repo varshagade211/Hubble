@@ -64,6 +64,7 @@ function Feed(){
             </div>
             <div className='allFeedPostContainer'>
                 {posts.map((post)=>{
+                    
                    return (
                     <div className="feedPostProfileImgConatiner">
                     <div className="profileImageContainer">
