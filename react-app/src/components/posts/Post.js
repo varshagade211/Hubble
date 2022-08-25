@@ -16,7 +16,7 @@ function Posts({post, unfollowList}){
     const dispatch = useDispatch()
     
     let isfollow = !unfollowList?.includes(post.user.id)
-    console.log("on post to check following_user", isfollow)
+    // console.log("on post to check following_user", isfollow)
 
    useEffect(()=>{
     setIsLiked(post?.liked_by?.includes(user?.id))
@@ -62,7 +62,13 @@ function Posts({post, unfollowList}){
     return(
         <div className={"postOuterContainer"}>
             <div className="postContainer" key={post.id}>
+                <div className="usernameandfollowbtn">
+
                 <h3 className="postUserName">{post?.user?.username}</h3>
+                {/* <div> */}
+                           {(isfollow === false)&& <button className="followBtn" onClick={handleFollowing} >Follow</button>}
+                        {/* </div> */}
+                </div>
 
                 {post?.type === 'text' &&<h3 className="postTitle"><i className="fa-solid fa-star titleStar"></i> {post?.title}</h3>}
                 { post?.type === 'text' &&<div className="postDiscriptionContainer"> <p className="postDiscription">{post?.description}</p></div>}
@@ -95,9 +101,9 @@ function Posts({post, unfollowList}){
                     </div>
                     <div className="followLikeNoteLinkCotainer">
 
-                        <div>
+                        {/* <div>
                            {(isfollow === false)&& <button className="followBtn" onClick={handleFollowing} >Follow</button>}
-                        </div>
+                        </div> */}
                         <div>
                           <button className="noteIcon" onClick={noteHandler}><i className="fa-solid fa-pen-to-square notepenIcon"></i></button>
                         </div>
