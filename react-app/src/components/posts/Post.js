@@ -6,18 +6,21 @@ import EditPostModal from './EditPostModal'
 import Notes from "../notes/Notes"
 // import CreateComment from '../notes/createNote'
 import './Post.css'
-import {addFollowingThunk} from '../../store/follows'
+import { addFollowingThunk, updateUnfollowed } from '../../store/follows'
 
-function Posts({post}){
+function Posts({post, unfollowList}){
     const user = useSelector(state => state?.session?.user)
-    const[isfollow , setIsFollow] = useState(false)
+    // const[isfollow , setIsFollow] = useState(followingList.includes(post.user.id))
     const[isLiked , setIsLiked] = useState(post?.liked_by?.includes(user?.id))
     const[isNote, setIsNote] = useState(false)
     const dispatch = useDispatch()
-
+    
+    let isfollow = !unfollowList?.includes(post.user.id)
+    console.log("on post to check following_user", isfollow)
 
    useEffect(()=>{
     setIsLiked(post?.liked_by?.includes(user?.id))
+    
    },[isLiked])
 
     const deleteHandler = async() =>{
@@ -27,9 +30,12 @@ function Posts({post}){
 
     const handleFollowing = async(e) =>{
          e.preventDefault();
-         setIsFollow(true)
+        //  setIsFollow(true)
+        if(!isfollow) {
 
-         dispatch(addFollowingThunk(user.id, post.user.id))
+            dispatch(addFollowingThunk(user.id, post.user.id))
+            dispatch(updateUnfollowed(post.user.id))
+        }
      }
 
      const likeHandler = async() =>{
@@ -90,7 +96,7 @@ function Posts({post}){
                     <div className="followLikeNoteLinkCotainer">
 
                         <div>
-                           {!isfollow && <button className="followBtn" onClick={handleFollowing} >Follow</button>}
+                           {(isfollow === false)&& <button className="followBtn" onClick={handleFollowing} >Follow</button>}
                         </div>
                         <div>
                           <button className="noteIcon" onClick={noteHandler}><i className="fa-solid fa-pen-to-square notepenIcon"></i></button>
