@@ -5,8 +5,10 @@ const DELETE_POST = 'posts/DELETE_POST'
 const CREATE_POST = 'posts/CREATE_POST'
 const EDIT_POST = 'post/EDIT_POST'
 const GET_ALL_LIKED_POSTS = 'posts/GET_ALL_LIKED_POSTS'
+
 const CREATE_LIKE = 'posts/CREATE_LIKE'
 const UNLIKE_POST = 'posts/UNLIKE_POST'
+
 // ---------------------------------------------action creator-----------------------------------
 const getPosts = (posts) => {
    return{
@@ -49,6 +51,7 @@ const getAllLikedPosts = (likedPosts) => {
   }
 }
 
+
 const createLikePost = (likedPost,userId) => {
   return{
     type:CREATE_LIKE,
@@ -64,6 +67,7 @@ const unLikePost = (unLikedPost,userId) => {
     userId
   }
 }
+
 // --------------------------------------------thunk action creator---------------------------------------
  export const allPostThunkCreator = () => async(dispatch) => {
     const response = await fetch('/api/posts/', {
@@ -158,6 +162,7 @@ export const editPostThunkCreator = (post) => async (dispatch) => {
 
 }
 
+
   export const getAllLikedThunkCreator = (id) => async(dispatch) => {
     const response = await fetch(`/api/users/${id}/likes`, {
        headers: {}
@@ -166,6 +171,7 @@ export const editPostThunkCreator = (post) => async (dispatch) => {
 
      dispatch(getAllLikedPosts(posts.likes))
   }
+
 
   export const createLikeThunkCreator = (postId, userId) => async(dispatch) => {
 
@@ -290,6 +296,17 @@ export default function reducer(state = initialState, action) {
 
         let sortedLikedPosts = state?.likedPosts?.filter((post) => post?.id !== action?.unLikedPost?.id)
         newState= {...state, posts:[...state?.posts], userPosts:[...state?.userPosts], likedPosts : [...sortedLikedPosts]}
+        return newState
+      }
+      case CREATE_LIKE:{
+        // state?.likedPosts?.forEach((user, i) => {
+        //   if (user?.id === action?.user_id) {
+        //     newState= {...state, posts:[...state?.posts], userPosts:[...state?.userPosts], likedPosts:[...state.likedPosts]}
+        //     return newState
+        //   }
+        // })
+        state[action?.post?.id] = action?.post
+        newState = {...state, posts:[...state?.posts], userPosts:[...state?.userPosts], likedPosts:[...state?.likedPosts, ...action?.post]}
         return newState
       }
       default:{

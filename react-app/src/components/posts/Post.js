@@ -1,7 +1,9 @@
 
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
+
 import {deletePostThunk, createLikeThunkCreator,unLikeThunkCreator} from '../../store/post'
+
 import EditPostModal from './EditPostModal'
 import Notes from "../notes/Notes"
 // import CreateComment from '../notes/createNote'
@@ -25,12 +27,14 @@ function Posts({post}){
 
      }
 
+
     const handleFollowing = async(e) =>{
          e.preventDefault();
          setIsFollow(true)
 
          dispatch(addFollowingThunk(user.id, post.user.id))
      }
+
 
      const likeHandler = async() =>{
 
@@ -47,10 +51,11 @@ function Posts({post}){
     }
 
      const noteHandler = async() =>{
+
         setIsNote((prev) => !prev)
         // note dispatch will be here
 
-     }
+    }
 
 
     return(
@@ -97,8 +102,8 @@ function Posts({post}){
                         </div>
 
                         <div>
-                            <button className="likeBtn"  onClick={likeHandler}>{isLiked ? <i class="fa-solid fa-heart likedIcon"></i>:
-                              <i class="fa-regular fa-heart dislikeIcon"></i>}
+                            <button className="likeBtn"  onClick={likeHandler}>{isLiked ? <i className="fa-solid fa-heart likedIcon"></i>:
+                              <i className="fa-regular fa-heart dislikeIcon"></i>}
                             </button>
                         </div>
                         <div className="likeContainer">
