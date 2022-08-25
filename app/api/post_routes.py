@@ -123,6 +123,7 @@ def delete_post(post_id):
 
 # create and delete like routes-
 
+
 @post_routes.route('/<int:postId>/like', methods=["PUT"])
 @login_required
 def like(postId):
@@ -157,3 +158,4 @@ def unlike(postId):
         post.posts_likes.remove(user)
         db.session.commit()
     return {"likes":post.to_dict()}
+

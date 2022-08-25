@@ -9,10 +9,10 @@ import {
 import "./unfollowedlist.css";
 
 function SuggestedUsers() {
-//   const { id } = useParams();
+
   const user = useSelector(state => state.session.user)
   const dispatch = useDispatch();
-  // const [isloaded, setIsloaded] = useState(false);
+  
   const suggest_users = useSelector((state) =>
     Object.values(state.follows.unfollowed)
   );
@@ -54,7 +54,7 @@ function SuggestedUsers() {
 
 const FollowClick = (listeduser) => {
 
-  // console.log("listeduser--------", listeduser.listeduser.id)
+  
   const dispatch = useDispatch();
   const current_user = useSelector((state) => state?.session?.user);
 
