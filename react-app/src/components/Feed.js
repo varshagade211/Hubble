@@ -6,6 +6,7 @@ import { NavLink, useHistory } from 'react-router-dom'
 import CreatePostModal from './posts/CreatePostModal'
 import './Feed.css'
 import SuggestedUsers from './follows/unfollowedlist'
+import {getUnfollowed} from '../store/follows'
 
 
 function Feed(){
@@ -13,13 +14,17 @@ function Feed(){
     const history = useHistory()
     const posts = useSelector(state => state?.post?.posts)
     const user = useSelector(state => state?.session?.user)
-    const followings = useSelector(state => state?.follows?.followings);
-    console.log("Followings : ", followings)
+
+    const unfollowedList = useSelector(state => state?.follows?.unfollowed)
+    
+    
+    let unfollowidList= unfollowedList.map(user => user.id)
+   
 
     useEffect(()=>{
         (async()=>{
-
             await dispatch(allPostThunkCreator())
+                dispatch(getUnfollowed(user.id))
         })();
     },[dispatch]);
 
@@ -72,6 +77,12 @@ function Feed(){
                             <Post  post={post} />
                         </div>
                     </div>
+
+                    <div>
+                      <Post post={post} unfollowList={unfollowidList}/>
+                    </div>
+                   </div>
+
                    )
                 })}
 
