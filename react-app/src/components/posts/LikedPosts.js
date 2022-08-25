@@ -6,6 +6,7 @@ import { useDispatch,useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import Post from './Post'
 import './LikedPosts.css'
+import SuggestedUsers from '../follows/unfollowedlist'
 
 
 function LikedPosts(){
@@ -53,7 +54,7 @@ function LikedPosts(){
                 </div>
                 {/* </div> */}
                 <div className='suggestedUserFollowerOnLikedPage'>
-                    suggested followers will go here
+                 <SuggestedUsers />
                 </div>
             </div>
         </div>

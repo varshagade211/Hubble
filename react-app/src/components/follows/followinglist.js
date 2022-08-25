@@ -24,6 +24,8 @@ function FollowingList() {
         <div class='following-list-container'>
             <div className="following-list">
                 <div className="following-list-title"> {followings.length} Following</div>
+                <div className="following-list-bar-container">
+
                  {
                     isloaded  &&
                      followings?.map(user =>(
@@ -31,7 +33,10 @@ function FollowingList() {
                          <ManageFollowings key={user.id} user={user}/>
                          </div>
                      ))
-                 }
+
+                 }                    
+                </div>
+
             </div>
             <div className="suggest-user-container">
                 <SuggestedUsers />
