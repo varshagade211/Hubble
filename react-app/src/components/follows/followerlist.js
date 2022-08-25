@@ -6,6 +6,7 @@ import "./followerlist.css";
 import SuggestedUsers from './unfollowedlist'
 
 function FollowerList() {
+
   const { id } = useParams();
   const dispatch = useDispatch();
 
@@ -42,6 +43,7 @@ function FollowerList() {
                   {user.username}
                 </Link>
               </div>
+
             </div>
           </div>
         ))}
@@ -54,4 +56,6 @@ function FollowerList() {
   );
 }
 
+
 export default FollowerList;
+

@@ -29,6 +29,7 @@ function FollowingUserPosts() {
   });
 
 
+
   return (
     <div className="followinguserPostContainerWraper">
       <div className="followingusermainpage">
@@ -40,13 +41,16 @@ function FollowingUserPosts() {
           )}
 
           <p className="userName">{user?.username}</p>
+
         </div>
         <div>
           {user_posts.map((post) => {
             return <Post post={post} />;
           })}
         </div>
+
       </div>
+
 
       <div className="userSideBar">
         <div className="userPostNavLink">
@@ -71,9 +75,11 @@ function FollowingUserPosts() {
         <div className="suggestedUserFollower">
           <SuggestedUsers />
         </div>
+
       </div>
     </div>
   );
 }
 
 export default FollowingUserPosts;
+

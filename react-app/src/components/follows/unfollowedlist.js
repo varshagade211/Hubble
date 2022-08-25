@@ -17,6 +17,7 @@ function SuggestedUsers() {
     Object.values(state.follows.unfollowed)
   );
 
+
   useEffect(() => {
     dispatch(getUnfollowed(user.id));
   }, [dispatch, user.id]);
@@ -43,6 +44,7 @@ function SuggestedUsers() {
               <div className="follow-btn" >
                 <FollowClick listeduser={user} />
               </div>
+
             </div>
           ))}
       </div>
@@ -51,9 +53,11 @@ function SuggestedUsers() {
 }
 
 const FollowClick = (listeduser) => {
+
   // console.log("listeduser--------", listeduser.listeduser.id)
   const dispatch = useDispatch();
   const current_user = useSelector((state) => state?.session?.user);
+
 
   const handleFollowing = async (e) => {
     e.preventDefault();
@@ -70,4 +74,6 @@ const FollowClick = (listeduser) => {
   );
 };
 
+
 export default SuggestedUsers;
+

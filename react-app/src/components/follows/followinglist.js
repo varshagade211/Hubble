@@ -14,12 +14,12 @@ function FollowingList() {
     const dispatch = useDispatch();
     const [isloaded, setIsloaded] = useState(false);
     const followings = useSelector(state => Object.values(state.follows.followings));
-    
-    
+
+
     useEffect(()=>{
         dispatch(getUserFollowing(id)).then(() => setIsloaded(true))
     },[dispatch, id])
-    // console.log("followings to render -----", followings)
+  
     return (
         <div class='following-list-container'>
             <div className="following-list">
@@ -27,14 +27,16 @@ function FollowingList() {
                 <div className="following-list-bar-container">
 
                  {
-                    isloaded  && 
+                    isloaded  &&
                      followings?.map(user =>(
                         <div key={user.id}>
                          <ManageFollowings key={user.id} user={user}/>
                          </div>
                      ))
+
                  }                    
                 </div>
+
             </div>
             <div className="suggest-user-container">
                 <SuggestedUsers />
@@ -44,5 +46,3 @@ function FollowingList() {
 }
 
 export default FollowingList
-
-

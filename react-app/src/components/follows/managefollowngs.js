@@ -9,6 +9,7 @@ const ManageFollowings = (user) => {
   const dispatch = useDispatch();
   const { id } = useParams();
 
+
   let list_user = user.user;
 
   const unfollowHandler = async (e) => {
@@ -31,6 +32,7 @@ const ManageFollowings = (user) => {
           <Link className="list-user-name" key={user.id} to={`/user/${list_user.id}/posts`}>
             {list_user.username}
           </Link>
+
         </div>
       </div>
       <div className="unfollow-btn">
@@ -40,4 +42,6 @@ const ManageFollowings = (user) => {
   );
 };
 
+
 export default ManageFollowings;
+

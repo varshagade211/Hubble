@@ -4,13 +4,13 @@ import { editComment } from '../../store/note'
 
 
 function EditComment({ comment }) {
-    console.log("!!DESCRIPTION FRONT!!", comment.description)
-    
+
+
 
     const dispatch = useDispatch()
     const [description, setDescription] = useState(comment?.description);
 
-    
+
 
 
     const handleSubmit = (e) => {
@@ -21,7 +21,7 @@ function EditComment({ comment }) {
             description: description
         }
 
-        console.log("!!DESCRIPTION FRONT!!", data)
+    
         return dispatch(editComment(data, comment.id))
     }
 

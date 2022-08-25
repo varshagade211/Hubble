@@ -47,7 +47,7 @@ export const getUserFollowing= (id) => async dispatch => {
     const response = await fetch(`/api/users/${id}/followings`);
     if (response.ok) {
         const data = await response.json();
-        // console.log('data from backend before dispatch---', data)
+
         dispatch(loadFollowings(data.followings));
         return response;
     }
@@ -58,7 +58,7 @@ export const getUserFollowers= (id) => async dispatch => {
     const response = await fetch(`/api/users/${id}/followers`);
     if (response.ok) {
         const data = await response.json();
- 
+
         dispatch(loadFollowers(data.followers));
         return response;
     }
@@ -68,7 +68,7 @@ export const getUnfollowed= (id) => async dispatch => {
     const response = await fetch(`/api/users/${id}/unfollowed`);
     if (response.ok) {
         const data = await response.json();
- 
+
         dispatch(loadUnfollowed(data.unfollowed));
         return response;
     }
@@ -80,7 +80,7 @@ export const removeFollowing = (userId, removeId) => async dispatch => {
     });
     if (response.ok) {
         const data = await response.json();
- 
+
         dispatch(deleteFollowing(data.followings));
         return response;
     }
@@ -92,7 +92,6 @@ export const addFollowingThunk = (userId, newfollowId) => async dispatch => {
     });
     if (response.ok) {
         const data = await response.json();
-        console.log("data from thunk--------- ", data)
         dispatch(addFollowing(data.followings));
         return response;
     }
@@ -102,71 +101,71 @@ const initialState = { followings: [], followers: [], unfollowed: []}
 const followsReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
-        case LOAD_FOLLOWINGS:  
-           
+        case LOAD_FOLLOWINGS:
+
             newState = {...state, followings:[...action?.followings], followers:[...state?.followers], unfollowed:[...state?.unfollowed] }
             action?.followings?.forEach(user => {
-                // console.log('inside reducer, user ---', user)
-                
+
+
                 newState[user?.id] = user
             })
             return newState;
 
 
-        case LOAD_FOLLOWERS:  
+        case LOAD_FOLLOWERS:
             newState = {...state, followings:[...state?.followings], followers:[...action?.followers], unfollowed:[...state?.unfollowed]}
-            
+
             action?.followers?.forEach(user => {
-                
+
                 newState[user?.id] = user
             })
             return newState;
 
-        case LOAD_UNFOLLOWED:  
+        case LOAD_UNFOLLOWED:
             newState = {...state, followings:[...state?.followings], followers:[...state?.followers], unfollowed:[...action?.unfollowed]}
-            
+
             action?.unfollowed?.forEach(user => {
-                
+
                 newState[user?.id] = user
             })
             return newState;
 
-        case DELETE_FOLLOWING:  
-            
+        case DELETE_FOLLOWING:
+
             newState = {...state, followings:[...action?.followings], followers:[...state?.followers]}
-            
+
             action?.followers?.forEach(user => {
-                
+
                 newState[user.id] = user
             })
             return newState;
 
-        case ADD_FOLLOWING:  
-            // console.log("action?.followings-------", action?.followings)
+        case ADD_FOLLOWING:
+
             newState = {...state, followings:[...action?.followings], followers:[...state?.followers]}
-            
+
             action?.followers?.forEach(user => {
-                
+
                 newState[user.id] = user
             })
             return newState;
 
-        case DELETE_UNFOLLOWED:  
-            
+        case DELETE_UNFOLLOWED:
+
             let unfollowArr = Object.values(state.unfollowed)
-            // console.log("-------unfollowArr------", unfollowArr)
+     
             let updatedArr = unfollowArr.filter(user => user.id !== action.id)
             newState = {...state, followings:[...state?.followings], followers:[...state?.followers], unfollowed:[...updatedArr]}
             return newState;
 
-        case ADD_UNFOLLOWED:  
-           
+        case ADD_UNFOLLOWED:
+
             let unfollow = Object.values(state.unfollowed)
-            
+
             unfollow.push(action.user)
-            
+
             newState = {...state, followings:[...state?.followings], followers:[...state?.followers], unfollowed:[...unfollow]}
-            
+
             return newState;
 
 

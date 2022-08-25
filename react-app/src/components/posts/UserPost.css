@@ -1,4 +1,3 @@
-
 .userImage{
     border-radius: 50%;
     width: 100px;
@@ -23,12 +22,12 @@
 
 .userPostContainerWraper{
     margin: 10% auto 0 auto;
-    width: 70%;
+    width: 75%;
    }
 
 .postIconContainer{
         display: grid;
-        grid-template-columns: 2fr 1fr;
+        grid-template-columns: 1fr 1fr;
 
 }
 
@@ -38,7 +37,7 @@
 }
 .suggestedUserFollower{
     position: sticky;
-    top: 21rem;
+    top: 15rem;
     width:100%;
     min-height: 100px;
     /* background-color: white; */
@@ -50,6 +49,7 @@
        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
        background-color: white;
        width: 100%;
+       border-radius: 7px;
 
    }
 
@@ -64,7 +64,7 @@
 
 .userSideBar{
        margin: 0 0 0 10%;
-
+       width: 100%;
    }
 
 
@@ -83,6 +83,6 @@
 .userProfileLogo{
     font-size: 4rem;
     color:white;
-    margin: 0 0rem 0 2rem;
+
 
 }

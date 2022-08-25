@@ -126,8 +126,8 @@ export const createPostThunkCreator = (post) => async (dispatch) => {
 }
 
 export const editPostThunkCreator = (post) => async (dispatch) => {
-  console.log('from edit thunk...........', post)
-  const response = await fetch(`/api/posts//user/post/${post.postId}`, {
+
+  const response = await fetch(`/api/posts/user/post/${post.postId}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -163,29 +163,28 @@ export const editPostThunkCreator = (post) => async (dispatch) => {
        headers: {}
     });
     const posts = await response.json()
-    // console.log('in like thunk.....', posts.likes)
+
      dispatch(getAllLikedPosts(posts.likes))
   }
 
   export const createLikeThunkCreator = (postId, userId) => async(dispatch) => {
-    console.log('inside create')
+
     const response = await fetch(`/api/posts/${postId}/like`, {
         method: 'PUT',
         headers: {}
       });
     const likes = await response.json()
-    console.log('response', likes.like)
     dispatch(createLikePost(likes.like,userId))
 }
 
 export const unLikeThunkCreator = (postId,userId) => async(dispatch) => {
-  console.log('inside create')
+
   const response = await fetch(`/api/posts/${postId}/like`, {
       method: 'DELETE',
 
     });
   const likes = await response.json()
-  console.log('response', likes.likes)
+
   dispatch(unLikePost(likes.likes,userId))
 }
 // ----------------------------------------reducer----------------------------------------------------
@@ -265,22 +264,29 @@ export default function reducer(state = initialState, action) {
       }
 
       case UNLIKE_POST:{
+
         state?.posts?.forEach((post => {
           if(post?.id === action?.unLikedPost?.id){
+
             let myIndex = post?.liked_by?.indexOf(action?.userId);
             if (myIndex !== -1) {
               post?.liked_by?.splice(myIndex, 1);
             }
+
           }
         }))
         state?.userPosts?.forEach((post => {
           if(post?.id === action?.unLikedPost?.id){
+
             let myIndex = post?.liked_by?.indexOf(action?.userId);
+
             if (myIndex !== -1) {
               post?.liked_by?.splice(myIndex, 1);
             }
+
           }
         }))
+
 
         let sortedLikedPosts = state?.likedPosts?.filter((post) => post?.id !== action?.unLikedPost?.id)
         newState= {...state, posts:[...state?.posts], userPosts:[...state?.userPosts], likedPosts : [...sortedLikedPosts]}

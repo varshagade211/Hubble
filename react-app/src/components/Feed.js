@@ -10,7 +10,7 @@ import SuggestedUsers from './follows/unfollowedlist'
 function Feed(){
     const dispatch = useDispatch()
     const posts = useSelector(state => state?.post?.posts)
-    const user_id = useSelector(state => state?.session?.user?.id)
+    const user = useSelector(state => state?.session?.user)
 
     useEffect(()=>{
         (async()=>{
@@ -19,29 +19,41 @@ function Feed(){
         })();
     },[dispatch]);
 
-   
+
 
     return(
         <div className='feedContainerWraper'>
         <div className='feedContaner'>
           <div>
+            <div className='createIconAndImageContainer'>
+            <div className='feedUserProfileImageContainer'>
+            {user?.profileImage ? <img className='feedUserProfileImage' src={user?.profileImage} />
+                        :<i className ="fa-solid fa-user-astronaut userProfileLogo"></i>}
+
+            </div>
+
             <div className='createPostIconConainer'>
                 <div className='createPostIcon'>
                     <CreatePostModal type={'text'}/>
+                    <p> Text </p>
                 </div>
                 <div  className='createPostIcon'>
                     <CreatePostModal type={'image'}/>
+                    <p> Image </p>
                 </div>
                 <div  className='createPostIcon'>
                     <CreatePostModal type={'link'}/>
+                    <p>Link </p>
                 </div>
                 <div  className='createPostIcon'>
                     <CreatePostModal type={'quote'}/>
+                    <p>Quote</p>
                 </div>
                 <div  className='createPostIcon'>
                     <CreatePostModal type={'chat'}/>
+                    <p> Chat </p>
                 </div>
-
+            </div>
             </div>
             <div className='allFeedPostContainer'>
                 {posts.map((post)=>{
@@ -69,7 +81,9 @@ function Feed(){
                       <hr></hr>
                       <NavLink className={'postBtn'} to={'/user/likes'}> <i class="fa-solid fa-heart postIcon"></i>Likes</NavLink>
                       <hr></hr>
-                      <NavLink className={'postBtn'} to={`/user/${user_id}/followings`}> <i class="fa-solid fa-users postIcon"></i>Follow user</NavLink>
+                      <NavLink className={'postBtn'} to={`/user/${user?.id}/followings`}> <i class="fa-solid fa-users postIcon"></i>Following </NavLink>
+                      <hr></hr>
+                      <NavLink className={'postBtn'} to={`/user/${user?.id}/followers`}> <i class="fa-solid fa-users postIcon"></i>Follower</NavLink>
                       <hr></hr>
                 </div>
                 <div className='suggestedFollower'>
