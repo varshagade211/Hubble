@@ -1,3 +1,4 @@
+
 import {userPostThunkCreator} from '../../store/post'
 import { useEffect } from 'react'
 import { useDispatch,useSelector } from 'react-redux'
@@ -20,12 +21,15 @@ function UserPosts(){
     return(
         <div className='userPostContainerWraper'>
             <div className='userImageContainer'>
+            <div className="addoncontainer">
                 <div className="postUserImage">
+                
                     {user?.profileImage ? <img className='userImage' src={user?.profileImage} />
                     :<i className ="fa-solid fa-user-astronaut userProfileLogo"></i>}
                 </div>
                 <div className="postUserName">
                     <p className='userName'>{user?.username}</p>
+                 </div>
                 </div>
             </div>
             <div className='postIconContainer'>
@@ -62,6 +66,7 @@ function UserPosts(){
         </div>
 
     )
+
 }
 
-export default UserPosts
+export default UserPosts;

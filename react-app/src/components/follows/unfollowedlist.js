@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getUnfollowed,
@@ -13,8 +13,13 @@ function SuggestedUsers() {
   const user = useSelector(state => state?.session?.user)
   const dispatch = useDispatch();
 
-  const suggest_users = useSelector((state) =>state?.follows?.unfollowed
+  
+  const all_unfollowuser = useSelector((state) =>
+    Object.values(state.follows.unfollowed)
+
   );
+
+  const suggest_users = all_unfollowuser.slice(0, 5)
 
 
   useEffect(() => {
@@ -36,7 +41,9 @@ function SuggestedUsers() {
                     <i className="fa-solid fa-user-astronaut default"></i>
                   )}
                 </div>
+
                 <Link className="suggest-users-name" key={user?.id} to={`/user/${user?.id}/posts`}>
+
                   {user?.username}
                 </Link>
               </div>

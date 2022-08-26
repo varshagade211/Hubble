@@ -16,6 +16,10 @@ function LikedPosts(){
     const history = useHistory()
     const likedPosts= useSelector( state => state?.post?.likedPosts)
     const user = useSelector(state => state?.session?.user)
+    const unfollowedList = useSelector(state => state?.follows?.unfollowed)
+    
+    let unfollowidList= unfollowedList.map(user => user.id)
+    
     useEffect(()=>{
         dispatch(getAllLikedThunkCreator(user?.id))
     },[dispatch])
@@ -23,7 +27,6 @@ function LikedPosts(){
 
 
     return(
-
         <div className='likedPostContainerWraper'>
             <div className='likedPostContaner'>
                 <div>
@@ -36,17 +39,15 @@ function LikedPosts(){
                                     :<i className ="fa-solid fa-user-astronaut defaultProfileLogo"></i>}
                                 </div>
                                 <div>
-                                    <Post post={post}/>
+                                    <Post post={post} unfollowList={unfollowidList}/>
                                 </div>
                             </div>)
                         })}
-
                     </div>
                 </div>
                 <div className='likeSidebarContainer'>
                     <SideBar />
                 </div>
-
             </div>
         </div>)
 }

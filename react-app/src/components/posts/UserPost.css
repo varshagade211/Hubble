@@ -7,14 +7,16 @@
 }
 
 .userImageContainer{
-    margin: 0 0 3% 26%;
-    display: flex;
-    flex-direction: column;
+    /* margin: 0 0 3% 26%; */
+    /* display: flex;
+    flex-direction: column; */
+    /* align-items: center; */
+    width: 100%;
 
 }
 .userName{
     color:white;
-    margin: 3% 0 3% 5%;
+    margin: 3% 0 3% 0%;
 }
 
 
@@ -62,8 +64,17 @@
 }
 
 .userProfileLogo{
+    margin: auto 0;
     font-size: 4rem;
     color:white;
 
+}
 
+.addoncontainer{
+    width: 66%;
+    text-align: center;
+     display: flex;
+    flex-direction: column; 
+    align-items: center;
+    margin-top: 20px;
 }

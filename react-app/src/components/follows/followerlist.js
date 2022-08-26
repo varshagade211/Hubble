@@ -3,19 +3,21 @@ import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserFollowers } from "../../store/follows";
 import "./followerlist.css";
-import SuggestedUsers from './unfollowedlist'
+
+import SideBar from '../SideBar';
 
 function FollowerList() {
 
-  const { id } = useParams();
+//   const { id } = useParams();
   const dispatch = useDispatch();
+  const user = useSelector((state) => state?.session?.user);
 
   const followers = useSelector((state) => state?.follows?.followers
   );
 
   useEffect(() => {
-    dispatch(getUserFollowers(id));
-  }, [dispatch, id]);
+    dispatch(getUserFollowers(user.id));
+  }, [dispatch, user.id]);
 
   return (
     <div className="follower-list-container">
@@ -48,9 +50,10 @@ function FollowerList() {
         ))}
         </div>
       </div>
-      <div className="suggest-user-container">
-                <SuggestedUsers />
-            </div>
+      <div className="userSideBar follows">
+         <SideBar />
+        </div>
+     
     </div>
   );
 }

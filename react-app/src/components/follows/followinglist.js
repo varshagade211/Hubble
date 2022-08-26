@@ -1,24 +1,25 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
-import {getUserFollowing} from '../../store/follows'
-import './followinglist.css'
+import {getUserFollowing} from '../../store/follows';
+import './followinglist.css';
 import ManageFollowings from './managefollowngs';
-import SuggestedUsers from './unfollowedlist'
+import SideBar from '../SideBar';
 
 
 
 
 function FollowingList() {
-    const {id} = useParams()
+    // const {id} = useParams()
     const dispatch = useDispatch();
     const [isloaded, setIsloaded] = useState(false);
-    const followings = useSelector(state => state?.follows?.followings);
 
+    const followings = useSelector(state => Object.values(state.follows.followings));
+    const user = useSelector((state) => state?.session?.user);
 
     useEffect(()=>{
-        dispatch(getUserFollowing(id)).then(() => setIsloaded(true))
-    },[dispatch, id])
+        dispatch(getUserFollowing(user.id)).then(() => setIsloaded(true))
+    },[dispatch, user.id])
+  
 
     return (
         <div class='following-list-container'>
@@ -38,9 +39,10 @@ function FollowingList() {
                 </div>
 
             </div>
-            <div className="suggest-user-container">
-                <SuggestedUsers />
-            </div>
+            <div className="userSideBar follows">
+            <SideBar />
+        </div>
+            
         </div>
     )
 }
