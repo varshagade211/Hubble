@@ -25,7 +25,7 @@ function FollowingUserPosts() {
   const user_posts = [];
   let user = users[id]
   posts.forEach((post) => {
-    if (post.user.id === parseInt(id)) {
+    if (post?.user?.id === parseInt(id)) {
       user_posts.push(post);
       // user = post.user
     }
@@ -47,7 +47,7 @@ function FollowingUserPosts() {
 
         </div>
         <div>
-          {user_posts.map((post) => {
+          {user_posts?.map((post) => {
             return <Post post={post} />;
           })}
         </div>
@@ -59,17 +59,17 @@ function FollowingUserPosts() {
         <div className="userPostNavLink">
           <div className="postNavLink">
             <NavLink className={"postBtn"} to={"/user/posts"}>
-              {" "}
+
               <i className="fa-brands fa-blogger postIcon"></i> Post
             </NavLink>
             <hr></hr>
             <NavLink className={"postBtn"} to={"/user/likes"}>
-              {" "}
+
               <i class="fa-solid fa-heart postIcon"></i>Likes
             </NavLink>
             <hr></hr>
             <NavLink className={"postBtn"} to={""}>
-              {" "}
+             
               <i class="fa-solid fa-users postIcon"></i>Follow user
             </NavLink>
             <hr></hr>

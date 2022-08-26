@@ -14,7 +14,7 @@ function Posts({post, unfollowList}){
     const[isNote, setIsNote] = useState(false)
     const dispatch = useDispatch()
 
-    let isfollow = !unfollowList?.includes(post.user.id)
+    let isfollow = !unfollowList?.includes(post?.user?.id)
     // console.log("on post to check following_user", isfollow)
 
    useEffect(()=>{
@@ -32,8 +32,8 @@ function Posts({post, unfollowList}){
         //  setIsFollow(true)
         if(!isfollow) {
 
-            dispatch(addFollowingThunk(user.id, post.user.id))
-            dispatch(updateUnfollowed(post.user.id))
+            dispatch(addFollowingThunk(user?.id, post?.user?.id))
+            dispatch(updateUnfollowed(post?.user?.id))
         }
      }
 
@@ -61,7 +61,7 @@ function Posts({post, unfollowList}){
 
     return(
         <div className={"postOuterContainer"}>
-            <div className="postContainer" key={post.id}>
+            <div className="postContainer" key={post?.id}>
                 <div className="usernameandfollowbtn">
 
                 <h3 className="postUserName">{post?.user?.username}</h3>
@@ -79,7 +79,7 @@ function Posts({post, unfollowList}){
                 </div>}
 
                 {post?.type === 'quote' && <p className="postQuote">"{post?.title}"</p>}
-                { post?.type === 'quote' && <h4 className="quoteDesc postDiscription"> - {post?.description}</h4>}
+                { post?.type === 'quote' && <h4 className="quoteDesc postDiscription"> - {post?.description ? post?.description : 'Anonymous'}</h4>}
 
                 { post?.type === 'link' && <h3 className="postTitle"> <i className="fa-solid fa-star titleStar"></i>  {post?.title} </h3>}
                 {post?.type === 'link' && <a className="postLink" href={post?.link}>{post?.title}</a>}
@@ -119,10 +119,10 @@ function Posts({post, unfollowList}){
 
                 </div>
                 {isNote && <div className='notesDiv'>
-                    
+
                     <hr></hr>
                     <div className='backcolor'>
-                    
+
                     <Notes post={post}/>
                     </div>
                 </div>}

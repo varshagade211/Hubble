@@ -57,14 +57,14 @@ function Notes({ post }) {
             <CreateComment post={post} userImage={userImage} />
 
 
-            {comments.map((comment) => {
-    
+            {comments?.map((comment) => {
+
                 return (
                     <div className="commentcontainer">
 
 
 
-         
+
 
 
                         <div className="Notes">
@@ -72,11 +72,11 @@ function Notes({ post }) {
 
                         {comment?.post_id === id ?
                          <div>
-                        {users.filter(user => user.id === comment.user_id ).map(filteredUser => (
+                        {users?.filter(user => user?.id === comment?.user_id )?.map(filteredUser => (
                         <div>
                         {filteredUser?.profileImage ? <img className='ProfileImage' src={filteredUser?.profileImage} />
                                         : <i className="fa-solid fa-user-astronaut img"></i>}
-                        </div>             
+                        </div>
                          ))}
                          </div>
                          : null}
@@ -95,7 +95,7 @@ function Notes({ post }) {
                         </div>
                         <div className="deleteEditBtn">
                             {comment?.user_id === user_id && comment?.post_id === id ?
-                                <button className="delete" onClick={removeComment(comment.id)}><i className="fa-solid fa-trash deletePenIcon"></i></button>
+                                <button className="delete" onClick={removeComment(comment?.id)}><i className="fa-solid fa-trash deletePenIcon"></i></button>
                                 : null
                             }
 
@@ -106,7 +106,7 @@ function Notes({ post }) {
                                 {<button  className={'note'} onClick={() =>setShowModal(true)}><i className="fa-solid fa-pen-to-square notepenIcon"></i></button>}
                                     {showModal && (
                                       <Modal onClose={() => setShowModal(false)}>
-                                         <EditComment comment={comment} id={comment.id} setShowModal={setShowModal} />
+                                         <EditComment comment={comment} id={comment?.id} setShowModal={setShowModal} />
 
 
                                       </Modal>

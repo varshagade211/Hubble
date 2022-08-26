@@ -10,8 +10,7 @@ function FollowerList() {
   const { id } = useParams();
   const dispatch = useDispatch();
 
-  const followers = useSelector((state) =>
-    Object.values(state.follows.followers)
+  const followers = useSelector((state) => state?.follows?.followers
   );
 
   useEffect(() => {
@@ -21,15 +20,15 @@ function FollowerList() {
   return (
     <div className="follower-list-container">
       <div className="follower-list">
-        <div className="follower-list-title"> {followers.length} Followers</div>
+        <div className="follower-list-title"> {followers?.length} Followers</div>
         <div className="follow-users">
 
         {followers?.map((user) => (
-          <div key={user.id} className="follower-users-bar">
+          <div key={user?.id} className="follower-users-bar">
             <div className="list-user-info">
               <div className="list-user-icon">
-                {user.profileImage ? (
-                  <img src={user.profileImage} alt="profile_image" />
+                {user?.profileImage ? (
+                  <img src={user?.profileImage} alt="profile_image" />
                 ) : (
                   <i className="fa-solid fa-user-astronaut default"></i>
                 )}
@@ -37,10 +36,10 @@ function FollowerList() {
               <div className="list-user-name">
                 <Link
                   className="list-user-name"
-                  key={user.id}
-                  to={`/user/${user.id}/posts`}
+                  key={user?.id}
+                  to={`/user/${user?.id}/posts`}
                 >
-                  {user.username}
+                  {user?.username}
                 </Link>
               </div>
 
@@ -58,4 +57,3 @@ function FollowerList() {
 
 
 export default FollowerList;
-

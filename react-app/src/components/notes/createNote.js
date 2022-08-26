@@ -13,7 +13,7 @@ const CreateComment = ({ post }, {userImage}) => {
 
 
 
-    let post_id = post.id
+    let post_id = post?.id
     const user = useSelector(state => state?.session?.user)
     const user_id = useSelector(state => state?.session?.user?.id)
 
@@ -60,8 +60,8 @@ const CreateComment = ({ post }, {userImage}) => {
 
             <div className="createcommentDiv">
                 <form onSubmit={handleSubmit} className='createCommentForm' >
-                    <div  className="errors" >{errors.map((error, i) => (<div className="errors" key={i}>{error}</div>))}</div>
-                    
+                    <div  className="errors" >{errors?.map((error, i) => (<div className="errors" key={i}>{error}</div>))}</div>
+
                     <label>
                         <textarea
 
@@ -75,7 +75,7 @@ const CreateComment = ({ post }, {userImage}) => {
                     <button className='button' type="submit" >Post</button>
                 </form>
             </div>
-         </div>    
+         </div>
         </>
     )
 }
