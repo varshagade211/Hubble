@@ -42,26 +42,11 @@ function Feed(){
                             :<i className ="fa-solid fa-user-astronaut userProfileLogo"></i>}
                         </div>
                         <div className='createPostIconConainer'>
-                            <div className='createPostIcon'>
                                 <CreatePostModal type={'text'}/>
-                                <p> Text </p>
-                            </div>
-                            <div  className='createPostIcon'>
                                 <CreatePostModal type={'image'}/>
-                                <p> Image </p>
-                            </div>
-                            <div  className='createPostIcon'>
                                 <CreatePostModal type={'link'}/>
-                                <p>Link </p>
-                            </div>
-                            <div  className='createPostIcon'>
                                 <CreatePostModal type={'quote'}/>
-                                <p>Quote</p>
-                            </div>
-                            <div  className='createPostIcon'>
                                 <CreatePostModal type={'chat'}/>
-                                <p> Chat </p>
-                            </div>
                         </div>
                     </div>
                     <div className='allFeedPostContainer'>

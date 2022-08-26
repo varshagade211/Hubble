@@ -13,7 +13,8 @@ const Home = () => {
   }
   return (
     <div className='loginSignupLinks'>
-
+         <h3 className='siteDescription'>To infinity and beyond! A space oriented social media site. If you're a lonely planet, orbiting a solar system far, far away from others... we offer a place to connect.</h3>
+         <p className='demoLoginInstu'>If you do not wish to sign up, click the log-in button to log in as demo user</p>
         <div className='loginBtnWrapper'>
         <NavLink to='/login' className={'loginLi'} exact={true} activeClassName='active'>
             Login
