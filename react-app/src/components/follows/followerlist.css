@@ -1,7 +1,5 @@
 .follower-list-container {
     position: relative;
-    /* color:red; */
-    /* background-color: beige; */
     top:90px;
     height:100%;
     width:75%;
@@ -11,7 +9,7 @@
 }
 
 .follower-list {
-    /* background-color: rgb(65, 65, 47); */
+    
     color: white;
     display: flex;
     flex-direction: column;

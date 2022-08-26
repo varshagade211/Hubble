@@ -13,9 +13,7 @@ function FollowingUserPosts() {
   const posts = useSelector((state) => state?.post?.posts);
   const users = useSelector((state) => state?.session);
   const { id } = useParams();
-  //   console.log("rom following use to get id----", typeof(parseInt(id)))
-  //   const user = useSelector((state) => state?.follows[parseInt(id)]);
-  //   console.log("from following user page to get following user----",user)
+  
   useEffect(() => {
     (async () => {
       await dispatch(allPostThunkCreator());

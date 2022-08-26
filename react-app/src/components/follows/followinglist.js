@@ -66,9 +66,7 @@ function FollowingList() {
             <SuggestedUsers />
           </div>
         </div>
-            {/* <div className="suggest-user-container">
-                <SuggestedUsers />
-            </div> */}
+            
         </div>
     )
 }

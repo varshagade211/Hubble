@@ -4,7 +4,7 @@ import { useParams, Link } from "react-router-dom";
 import { removeFollowing, addUnfollowed } from "../../store/follows";
 
 const ManageFollowings = (user) => {
-  // console.log("in ManageFollowings user state passed in ----", user)
+  
 
   const dispatch = useDispatch();
   const currentuser = useSelector(state => state?.session?.user)

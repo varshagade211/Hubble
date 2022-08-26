@@ -9,13 +9,13 @@ import { addFollowingThunk, updateUnfollowed } from '../../store/follows'
 
 function Posts({post, unfollowList}){
     const user = useSelector(state => state?.session?.user)
-    // const[isfollow , setIsFollow] = useState(followingList.includes(post.user.id))
+   
     const[isLiked , setIsLiked] = useState(post?.liked_by?.includes(user?.id))
     const[isNote, setIsNote] = useState(false)
     const dispatch = useDispatch()
     
     let isfollow = !unfollowList?.includes(post.user.id)
-    // console.log("on post to check following_user", isfollow)
+    
 
    useEffect(()=>{
     setIsLiked(post?.liked_by?.includes(user?.id))
@@ -29,7 +29,7 @@ function Posts({post, unfollowList}){
 
     const handleFollowing = async(e) =>{
          e.preventDefault();
-        //  setIsFollow(true)
+        
         if(!isfollow) {
 
             dispatch(addFollowingThunk(user.id, post.user.id))
