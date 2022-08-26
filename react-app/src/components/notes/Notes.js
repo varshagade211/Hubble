@@ -2,8 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { getAllNotes, noteDelete } from '../../store/note'
 import { useEffect, useState } from 'react'
 import CreateComment from '../notes/createNote'
-import EditComment from '../notes/editNote'
-import { Modal } from '../../context/Modal';
+import EditNoteModal from "./editNoteModal"
 import './Notes.css'
 
 
@@ -51,7 +50,7 @@ function Notes({ post }) {
 
 
             {comments.map((comment) => {
-
+                 
                 return (
                     <div className="commentcontainer">
 
@@ -75,7 +74,7 @@ function Notes({ post }) {
                                 : null}
 
                             {comment?.post_id === id ?
-
+                                 
                                 <div className="description">
                                     {comment?.description}
                                 </div>
@@ -110,20 +109,11 @@ function Notes({ post }) {
 
 
                             {comment?.user_id === user_id && comment?.post_id === id ?
+
+                              
+                             
                                 <div className="editnote" >
-
-                                    {<button className={'note'} onClick={() => setShowModal(true)}><i className="fa-solid fa-pen-to-square notepenIcon" > </i></button>}
-
-
-                                    {showModal && (
-
-                                        <Modal editmodal={'editmodal'} onClose={() => setShowModal(false)}>
-
-                                            <EditComment comment={comment} id={comment.id} setShowModal={setShowModal} />
-
-
-                                        </Modal>
-                                    )}
+                                  <EditNoteModal comment={comment}/>
 
                                 </div>
                                 : null
