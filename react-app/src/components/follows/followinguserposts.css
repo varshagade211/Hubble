@@ -1,5 +1,6 @@
-.followinguserPostContainerWraper{
-    margin: 10% auto 0 auto;
-    width: 70%;
+.nopostyet{
+    color: whitesmoke;
+    font-style: italic;
+    font-size: 25px
    }
 

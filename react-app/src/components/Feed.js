@@ -21,7 +21,7 @@ function Feed(){
     useEffect(()=>{
         (async()=>{
             await dispatch(allPostThunkCreator())
-                dispatch(getUnfollowed(user.id))
+            await dispatch(getUnfollowed(user.id))
 
         })();
     },[dispatch]);

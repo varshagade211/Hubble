@@ -13,9 +13,11 @@ function SuggestedUsers() {
   const user = useSelector(state => state.session.user)
   const dispatch = useDispatch();
   
-  const suggest_users = useSelector((state) =>
+  const all_unfollowuser = useSelector((state) =>
     Object.values(state.follows.unfollowed)
   );
+
+  const suggest_users = all_unfollowuser.slice(0, 5)
 
 
   useEffect(() => {
