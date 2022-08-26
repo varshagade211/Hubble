@@ -18,7 +18,9 @@
 }
 .loginFormBtn,.demoUserBtn{
     margin: 0.8rem 0 0rem 0;
+
 }
+
 
 .error{
     color: red;
@@ -32,6 +34,7 @@
   background-color: rgba(255, 255, 255, 0.014);
   border: 1px solid white;
   font-size: 1rem;
+  cursor: pointer;
 }
 
 

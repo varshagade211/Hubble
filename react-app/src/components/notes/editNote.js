@@ -6,7 +6,7 @@ import updateImage from '../../image/update.svg'
 
 function EditComment({ comment, setShowModal }) {
 
-    
+
 
     const dispatch = useDispatch()
     const [description, setDescription] = useState(comment?.description);
@@ -16,7 +16,7 @@ function EditComment({ comment, setShowModal }) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        
+
 
         let validateErrors = [];
         if (description.length < 5) validateErrors.push('comment must be longer than 5 characters');
@@ -34,14 +34,14 @@ function EditComment({ comment, setShowModal }) {
         }
 
 
-        dispatch(editComment(data, comment.id))
+        dispatch(editComment(data, comment?.id))
 
-    
-        
+
+
             setShowModal(false)
-        
-            
-        
+
+
+
     }
 
     return (
@@ -49,8 +49,10 @@ function EditComment({ comment, setShowModal }) {
             
             <div className="header">Post Your Update</div>
          <form onSubmit={handleSubmit} className='createUpdate'>
+
             
             <ul> {errors.map((error, i) => (<li className="editerrors" key={i}>{error}</li>))}</ul>
+
             <label>
 
 

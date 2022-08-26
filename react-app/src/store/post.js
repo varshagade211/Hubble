@@ -119,6 +119,7 @@ export const createPostThunkCreator = (post) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
+    console.log("Fetched Data : ", data)
     dispatch(createPost(data))
     return null;
   } else if (response.status < 500) {
@@ -208,7 +209,7 @@ export default function reducer(state = initialState, action) {
         newState= {...state, posts:[...action?.posts], userPosts:[...state?.userPosts], likedPosts:[...state?.likedPosts]}
 
         action?.posts?.forEach((post)=>{
-          newState[post.id] = post
+          newState[post?.id] = post
         })
         return newState
       }
@@ -221,8 +222,8 @@ export default function reducer(state = initialState, action) {
         let newPosts = state?.posts?.filter((post) => post?.id !== action?.postId)
         let newUserPosts = state?.userPosts?.filter((post) => post?.id !== action?.postId)
         let newLikedPosts = state?.likedPosts?.filter((post) => post?.id !== action?.postId)
-        console.log("NEW LIKED POST", newLikedPosts)
         newState = {...state, posts: [...newPosts], userPosts: [...newUserPosts], likedPosts: [...newLikedPosts]}
+
         return newState
       }
       case CREATE_POST:{

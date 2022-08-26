@@ -13,13 +13,13 @@ function Posts({post, unfollowList}){
     const[isLiked , setIsLiked] = useState(post?.liked_by?.includes(user?.id))
     const[isNote, setIsNote] = useState(false)
     const dispatch = useDispatch()
-    
+
     let isfollow = !unfollowList?.includes(post?.user?.id)
     // console.log("on post to check following_user", isfollow)
 
    useEffect(()=>{
     setIsLiked(post?.liked_by?.includes(user?.id))
-    
+
    },[isLiked])
 
     const deleteHandler = async() =>{
@@ -40,7 +40,7 @@ function Posts({post, unfollowList}){
      const likeHandler = async() =>{
 
 
-       
+
         if(!isLiked){
            await dispatch(createLikeThunkCreator(post?.id,user?.id))
            setIsLiked(true)
@@ -51,7 +51,8 @@ function Posts({post, unfollowList}){
         // like dispatch will be here
     }
 
-     const noteHandler = async() =>{
+
+    const noteHandler = async() =>{
         setIsNote((prev) => !prev)
         // note dispatch will be here
 
@@ -64,9 +65,9 @@ function Posts({post, unfollowList}){
                 <div className="usernameandfollowbtn">
 
                 <h3 className="postUserName">{post?.user?.username}</h3>
-                
+
                            {(isfollow === false)&& <button className="followBtn" onClick={handleFollowing} >Follow</button>}
-                       
+
                 </div>
 
                 {post?.type === 'text' &&<h3 className="postTitle"><i className="fa-solid fa-star titleStar"></i> {post?.title}</h3>}
@@ -78,7 +79,7 @@ function Posts({post, unfollowList}){
                 </div>}
 
                 {post?.type === 'quote' && <p className="postQuote">"{post?.title}"</p>}
-                { post?.type === 'quote' && <h4 className="quoteDesc postDiscription"> - {post?.description}</h4>}
+                { post?.type === 'quote' && <h4 className="quoteDesc postDiscription"> - {post?.description ? post?.description : 'Anonymous'}</h4>}
 
                 { post?.type === 'link' && <h3 className="postTitle"> <i className="fa-solid fa-star titleStar"></i>  {post?.title} </h3>}
                 {post?.type === 'link' && <a className="postLink" href={post?.link}>{post?.title}</a>}
@@ -118,10 +119,10 @@ function Posts({post, unfollowList}){
 
                 </div>
                 {isNote && <div className='notesDiv'>
-                    
+
                     <hr></hr>
                     <div className='backcolor'>
-                    
+
                     <Notes post={post}/>
                     </div>
                 </div>}
