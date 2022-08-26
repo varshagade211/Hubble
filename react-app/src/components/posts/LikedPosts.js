@@ -25,7 +25,7 @@ function LikedPosts(){
         <div className='likedPostContaner'>
              <div>
              <div className='allLikedPostContainer'>
-                {likedPosts.map((post)=>{
+                {likedPosts?.map((post)=>{
                    return (
                     <div className="likedPostProfileImgConatiner">
                     <div className="likedProfileImageContainer">

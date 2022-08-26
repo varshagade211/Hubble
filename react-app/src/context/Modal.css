@@ -16,7 +16,7 @@
     right: 0;
     left: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.555);
   }
 
   #modal-content {
@@ -28,3 +28,5 @@
     /* height: 530px; */
     min-height: 100px;
   }
+
+  

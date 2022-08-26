@@ -63,7 +63,7 @@ function UserPosts(){
             </div>
         <div className='userPostContainer'>
 
-            {userPosts.map((post)=>{
+            {userPosts?.map((post)=>{
                 return <Post post={post}/>
             })}
         </div>
@@ -73,11 +73,11 @@ function UserPosts(){
 
                       <NavLink className={'postBtn'} to={'/user/posts'}> <i className="fa-brands fa-blogger postIcon"></i> Post</NavLink>
                       <hr></hr>
-                      <NavLink className={'postBtn'} to={'/user/likes'}> <i class="fa-solid fa-heart postIcon"></i>Likes</NavLink>
+                      <NavLink className={'postBtn'} to={'/user/likes'}> <i className="fa-solid fa-heart postIcon"></i>Likes</NavLink>
                       <hr></hr>
-                      <NavLink className={'postBtn'} to={`/user/${user?.id}/followings`}> <i class="fa-solid fa-users postIcon"></i>Following </NavLink>
+                      <NavLink className={'postBtn'} to={`/user/${user?.id}/followings`}> <i className="fa-solid fa-users postIcon"></i>Following </NavLink>
                       <hr></hr>
-                      <NavLink className={'postBtn'} to={`/user/${user?.id}/followers`}> <i class="fa-solid fa-users postIcon"></i>Follower </NavLink>
+                      <NavLink className={'postBtn'} to={`/user/${user?.id}/followers`}> <i className="fa-solid fa-users postIcon"></i>Follower </NavLink>
                       <hr></hr>
 
             </div>

@@ -15,13 +15,13 @@ function Feed(){
     const unfollowedList = useSelector(state => state?.follows?.unfollowed)
     
     
-    let unfollowidList= unfollowedList.map(user => user.id)
+    let unfollowidList= unfollowedList.map(user => user?.id)
    
 
     useEffect(()=>{
         (async()=>{
             await dispatch(allPostThunkCreator())
-                dispatch(getUnfollowed(user.id))
+                dispatch(getUnfollowed(user?.id))
 
         })();
     },[dispatch]);
@@ -87,11 +87,11 @@ function Feed(){
                 <div className='postNavLink'>
                       <NavLink className={'postBtn'} to={'/user/posts'}> <i className="fa-brands fa-blogger postIcon"></i> Post</NavLink>
                       <hr></hr>
-                      <NavLink className={'postBtn'} to={'/user/likes'}> <i class="fa-solid fa-heart postIcon"></i>Likes</NavLink>
+                      <NavLink className={'postBtn'} to={'/user/likes'}> <i className="fa-solid fa-heart postIcon"></i>Likes</NavLink>
                       <hr></hr>
-                      <NavLink className={'postBtn'} to={`/user/${user?.id}/followings`}> <i class="fa-solid fa-users postIcon"></i>Following </NavLink>
+                      <NavLink className={'postBtn'} to={`/user/${user?.id}/followings`}> <i className="fa-solid fa-users postIcon"></i>Following </NavLink>
                       <hr></hr>
-                      <NavLink className={'postBtn'} to={`/user/${user?.id}/followers`}> <i class="fa-solid fa-users postIcon"></i>Follower</NavLink>
+                      <NavLink className={'postBtn'} to={`/user/${user?.id}/followers`}> <i className="fa-solid fa-users postIcon"></i>Follower</NavLink>
                       <hr></hr>
                 </div>
                 <div className='suggestedFollower'>

@@ -14,7 +14,7 @@ function Posts({post, unfollowList}){
     const[isNote, setIsNote] = useState(false)
     const dispatch = useDispatch()
     
-    let isfollow = !unfollowList?.includes(post.user.id)
+    let isfollow = !unfollowList?.includes(post?.user?.id)
     // console.log("on post to check following_user", isfollow)
 
    useEffect(()=>{
@@ -32,8 +32,8 @@ function Posts({post, unfollowList}){
         //  setIsFollow(true)
         if(!isfollow) {
 
-            dispatch(addFollowingThunk(user.id, post.user.id))
-            dispatch(updateUnfollowed(post.user.id))
+            dispatch(addFollowingThunk(user?.id, post?.user?.id))
+            dispatch(updateUnfollowed(post?.user?.id))
         }
      }
 
@@ -60,7 +60,7 @@ function Posts({post, unfollowList}){
 
     return(
         <div className={"postOuterContainer"}>
-            <div className="postContainer" key={post.id}>
+            <div className="postContainer" key={post?.id}>
                 <div className="usernameandfollowbtn">
 
                 <h3 className="postUserName">{post?.user?.username}</h3>
