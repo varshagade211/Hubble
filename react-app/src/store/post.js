@@ -74,7 +74,8 @@ const unLikePost = (unLikedPost,userId) => {
         headers: {}
       });
     const posts = await response.json()
-    dispatch(getPosts(posts.posts))
+    console.log("------POST", posts)
+    dispatch(getPosts(posts?.posts))
 }
 
 export const userPostThunkCreator = () => async(dispatch) => {
@@ -82,7 +83,7 @@ export const userPostThunkCreator = () => async(dispatch) => {
       headers: {}
     });
   const posts = await response.json()
-  dispatch(getUserPost(posts.posts))
+  dispatch(getUserPost(posts?.posts))
 }
 
 export const deletePostThunk = (postId) => async (dispatch) => {
@@ -92,7 +93,9 @@ export const deletePostThunk = (postId) => async (dispatch) => {
 
   })
   const message = await response.json()
+  console.log("------ DELTE THUNK", response, "--------MESSAGE", message )
   dispatch(deleteUserPost(postId))
+  
 
   return response
 }
@@ -116,6 +119,7 @@ export const createPostThunkCreator = (post) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
+    console.log("Fetched Data : ", data)
     dispatch(createPost(data))
     return null;
   } else if (response.status < 500) {
@@ -200,9 +204,12 @@ export default function reducer(state = initialState, action) {
     let newState
     switch (action.type) {
       case GET_ALL_POSTS:{
+        // console.log('-------------STATE', state)
+        // console.log('-------------ACTION.POST', action?.posts)
         newState= {...state, posts:[...action?.posts], userPosts:[...state?.userPosts], likedPosts:[...state?.likedPosts]}
+
         action?.posts?.forEach((post)=>{
-          newState[post.id] = post
+          newState[post?.id] = post
         })
         return newState
       }
@@ -215,7 +222,10 @@ export default function reducer(state = initialState, action) {
         let newPosts = state?.posts?.filter((post) => post?.id !== action?.postId)
         let newUserPosts = state?.userPosts?.filter((post) => post?.id !== action?.postId)
         let newLikedPosts = state?.likedPosts?.filter((post) => post?.id !== action?.postId)
-        newState = {...state, posts:newPosts,userPosts:newUserPosts,likedPosts:newLikedPosts}
+
+        newState = {...state, posts: [...newPosts], userPosts: [...newUserPosts], likedPosts: [...newLikedPosts]}
+
+
         return newState
       }
       case CREATE_POST:{

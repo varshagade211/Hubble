@@ -14,6 +14,7 @@ function FollowingList() {
     // const {id} = useParams()
     const dispatch = useDispatch();
     const [isloaded, setIsloaded] = useState(false);
+
     const followings = useSelector(state => Object.values(state.follows.followings));
     const user = useSelector((state) => state?.session?.user);
 
@@ -21,21 +22,22 @@ function FollowingList() {
         dispatch(getUserFollowing(user.id)).then(() => setIsloaded(true))
     },[dispatch, user.id])
   
+
     return (
         <div class='following-list-container'>
             <div className="following-list">
-                <div className="following-list-title"> {followings.length} Following</div>
+                <div className="following-list-title"> {followings?.length} Following</div>
                 <div className="following-list-bar-container">
 
                  {
                     isloaded  &&
                      followings?.map(user =>(
-                        <div key={user.id}>
-                         <ManageFollowings key={user.id} user={user}/>
+                        <div key={user?.id}>
+                         <ManageFollowings key={user?.id} user={user}/>
                          </div>
                      ))
 
-                 }                    
+                 }
                 </div>
 
             </div>

@@ -13,7 +13,7 @@ const CreateComment = ({ post }, {userImage}) => {
 
 
 
-    let post_id = post.id
+    let post_id = post?.id
     const user = useSelector(state => state?.session?.user)
     const user_id = useSelector(state => state?.session?.user?.id)
 
@@ -58,11 +58,14 @@ const CreateComment = ({ post }, {userImage}) => {
                 <i className="fa-solid fa-user-astronaut default"></i>
             }
 
-            <div className="createcommentDiv">
+            
                 <form onSubmit={handleSubmit} className='createCommentForm' >
-                    <div  className="errors" >{errors.map((error, i) => (<div className="errors" key={i}>{error}</div>))}</div>
+
+
+                    {errors.map((error, i) => (<div className="errors" key={i}>{error}</div>))}
                     
-                    <label>
+                    <div className="createcommentDiv">
+
                         <textarea
 
                             id="commentInput"
@@ -71,11 +74,12 @@ const CreateComment = ({ post }, {userImage}) => {
                             onChange={(e) => setDescription(e.target.value)}
                             required
                         />
-                    </label>
+                   
                     <button className='button' type="submit" >Post</button>
+                 </div>
                 </form>
-            </div>
-         </div>    
+             </div>    
+
         </>
     )
 }

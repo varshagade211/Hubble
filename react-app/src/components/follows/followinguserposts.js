@@ -7,6 +7,7 @@ import Post from "../posts/Post";
 import SuggestedUsers from "./unfollowedlist";
 // import "../posts/UserPost.css";
 import './followinguserposts.css'
+import SideBar from '../SideBar'
 
 function FollowingUserPosts() {
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ function FollowingUserPosts() {
   const user_posts = [];
   let user = users[id];
   posts.forEach((post) => {
-    if (post.user.id === parseInt(id)) {
+    if (post?.user?.id === parseInt(id)) {
       user_posts.push(post);
       // user = post.user
     }
@@ -46,6 +47,7 @@ function FollowingUserPosts() {
       </div>
       <div className="postIconContainer">
         <div>
+
           <div className="userPostContainer">
             {user_posts.length !== 0 ? (
               user_posts.map((post) => {
@@ -55,34 +57,10 @@ function FollowingUserPosts() {
              <div className="nopostyet">No post at this moment...</div>
             )}
           </div>
+
         </div>
-        <div className="userSideBar">
-          <div className="userPostNavLink">
-            <NavLink className={"postBtn"} to={"/user/posts"}>
-              {" "}
-              <i className="fa-brands fa-blogger postIcon"></i> Post
-            </NavLink>
-            <hr></hr>
-            <NavLink className={"postBtn"} to={"/user/likes"}>
-              {" "}
-              <i class="fa-solid fa-heart postIcon"></i>Likes
-            </NavLink>
-            <hr></hr>
-            <NavLink className={"postBtn"} to={`/user/followings`}>
-              {" "}
-              <i class="fa-solid fa-users postIcon"></i>Following{" "}
-            </NavLink>
-            <hr></hr>
-            <NavLink className={"postBtn"} to={`/user/followers`}>
-              {" "}
-              <i class="fa-solid fa-users postIcon"></i>Follower{" "}
-            </NavLink>
-            <hr></hr>
-          </div>
-          <div className="suggestedUserFollower">
-            <SuggestedUsers />
-          </div>
-        </div>
+        
+        <SideBar />
       </div>
 
     </div>
