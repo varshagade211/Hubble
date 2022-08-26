@@ -56,7 +56,7 @@ function CreateTextPostForm({type, setShowModal}){
             {/* Text type post form */}
            {type === 'text' && <div>
 
-                <input type="text" className="textTypeTitalInput" placeholder='Title'value={title} onChange={(e)=> setTitle(e.target.value)}/>
+                <input type="text" className="createTextTypeTitalInput" placeholder='Title'value={title} onChange={(e)=> setTitle(e.target.value)}/>
 
                {errors?.title &&
                     <div className="error">
@@ -70,7 +70,7 @@ function CreateTextPostForm({type, setShowModal}){
            {type === 'text' && <div>
 
 
-                <textarea placeholder='Your Text Here' className="textDescriptionInput"  rows={5} value={description} onChange={(e)=> setDescription(e.target.value)}/>
+                <textarea placeholder='Your Text Here' className="CreateTextDescriptionInput"  rows={5} value={description} onChange={(e)=> setDescription(e.target.value)}/>
                     {errors?.description &&
                     <div className="error">
                         {errors?.description?.map((error, ind) => (
@@ -83,7 +83,7 @@ function CreateTextPostForm({type, setShowModal}){
               {/* quote type post form */}
            {type === 'quote' && <div>
 
-                <input type="text" placeholder='"Quote"' className="textTypeTitalInput" value={title} onChange={(e)=> setTitle(e.target.value)}/>
+                <input type="text" placeholder='"Quote"' className="createTextTypeTitalInput" value={title} onChange={(e)=> setTitle(e.target.value)}/>
 
                {errors.title &&
                     <div className="error">
@@ -95,7 +95,7 @@ function CreateTextPostForm({type, setShowModal}){
             </div>}
 
            {type === 'quote' && <div>
-                <input  placeholder="-Source"  className="textDescriptionInput" value={description} onChange={(e)=> setDescription(e.target.value)}/>
+                <input  placeholder="-Source"  className="CreateTextDescriptionInput" value={description} onChange={(e)=> setDescription(e.target.value)}/>
                     {errors?.description &&
                     <div>
                         {errors?.description?.map((error, ind) => (
@@ -107,7 +107,9 @@ function CreateTextPostForm({type, setShowModal}){
               {/* Image type post form */}
             {type === 'image' && <div>
 
-                <input type="text" placeHolder='Title' className="textTypeTitalInput" value={title} onChange={(e)=> setTitle(e.target.value)}/>
+
+                <input type="text" placeholder='Title' className="textTypeTitalInput" value={title} onChange={(e)=> setTitle(e.target.value)}/>
+
 
                {errors.title &&
                     <div className="error">
@@ -120,7 +122,7 @@ function CreateTextPostForm({type, setShowModal}){
             {type === 'image' &&
 
                  <div>
-                    <input type = 'text'  className="textDescriptionInput"  placeholder="Image Url" value={image} onChange={(e)=> setImageUrl(e.target.value)}/>
+                    <input type = 'text'  className="CreateTextDescriptionInput"  placeholder="Image Url" value={image} onChange={(e)=> setImageUrl(e.target.value)}/>
                     {errors?.image &&
                     <div className="error">
                         {errors?.image?.map((error, ind) => (
@@ -129,7 +131,7 @@ function CreateTextPostForm({type, setShowModal}){
                     </div>}
             </div>}
             {type === 'image' && <div>
-                <textarea placeholder='Your Text Here' className="textDescriptionInput"  rows={5} value={description} onChange={(e)=> setDescription(e.target.value)}/>
+                <textarea placeholder='Your Text Here' className="CreateTextDescriptionInput"  rows={5} value={description} onChange={(e)=> setDescription(e.target.value)}/>
                     {errors?.description &&
                     <div className="error">
                     {errors?.description?.map((error, ind) => (
@@ -142,7 +144,7 @@ function CreateTextPostForm({type, setShowModal}){
             {/* Link type post form */}
             {type === 'link' && <div>
 
-                <input type="text" placeholder="Title" className="textTypeTitalInput" value={title} onChange={(e)=> setTitle(e.target.value)}/>
+                <input type="text" placeholder="Title" className="createTextTypeTitalInput" value={title} onChange={(e)=> setTitle(e.target.value)}/>
 
                {errors.title &&
                     <div className="error">
@@ -155,7 +157,7 @@ function CreateTextPostForm({type, setShowModal}){
 
             {type === 'link' &&
              <div>
-                <input type="text" placeholder='Add Link' className="textDescriptionInput" value={link} onChange={(e)=> setLink(e.target.value)}/>
+                <input type="text" placeholder='Add Link' className="CreateTextDescriptionInput" value={link} onChange={(e)=> setLink(e.target.value)}/>
 
                 {errors?.link &&
                     <div className="error">
@@ -166,7 +168,7 @@ function CreateTextPostForm({type, setShowModal}){
                 }
             </div>}
             {type === 'link' && <div>
-                <textarea placeholder='Your Text Here' className="textDescriptionInput"  rows={5} value={description} onChange={(e)=> setDescription(e.target.value)}/>
+                <textarea placeholder='Your Text Here' className="CreateTextDescriptionInput"  rows={5} value={description} onChange={(e)=> setDescription(e.target.value)}/>
                     {errors?.description &&
                     <div className="error">
                     {errors?.description?.map((error, ind) => (
@@ -179,7 +181,7 @@ function CreateTextPostForm({type, setShowModal}){
 
             {type === 'chat' &&
             <div>
-                <input type="text" className="textTypeTitalInput" placeholder='Title'value={title} onChange={(e)=> setTitle(e.target.value)}/>
+                <input type="text" className="createTextTypeTitalInput" placeholder='Title'value={title} onChange={(e)=> setTitle(e.target.value)}/>
                 {errors.title &&
                     <div className="error">
                      {errors?.title?.map((error, ind) => (
@@ -190,7 +192,7 @@ function CreateTextPostForm({type, setShowModal}){
             </div>}
 
             {type === 'chat' && <div>
-                <textarea placeholder="Saturn: Hello Jupiter&#10;Jupiter: Hello Saturn" className="textDescriptionInput"  rows={5} value={description} onChange={(e)=> setDescription(e.target.value)}/>
+                <textarea placeholder="Saturn: Hello Jupiter&#10;Jupiter: Hello Saturn" className="CreateTextDescriptionInput"  rows={5} value={description} onChange={(e)=> setDescription(e.target.value)}/>
 
                 {errors?.description &&
                     <div className="error">

@@ -69,15 +69,18 @@ function App() {
            <LikedPosts />
         </ProtectedRoute>
 
-        <ProtectedRoute path='/user/:id/followings' exact={true} >
+        <ProtectedRoute path='/user/followings' exact={true} >
           <FollowingList/>
         </ProtectedRoute>
-        <ProtectedRoute path='/user/:id/followers' exact={true} >
+        <ProtectedRoute path='/user/followers' exact={true} >
           <FollowerList/>
         </ProtectedRoute>
         <ProtectedRoute path='/user/:id/posts' exact={true} >
           <FollowingUserPosts/>
         </ProtectedRoute>
+        {/* <Route path='*' exact={true}>
+              <h2 style={{color:'white',backgroundColor:'red'}}>404 Page not found</h2>
+        </Route> */}
 
       </Switch>
     </BrowserRouter>

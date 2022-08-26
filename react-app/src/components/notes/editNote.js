@@ -2,10 +2,11 @@ import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { editComment } from '../../store/note'
 import './editNote.css'
+import updateImage from '../../image/update.svg'
 
 function EditComment({ comment, setShowModal }) {
 
-    
+
 
     const dispatch = useDispatch()
     const [description, setDescription] = useState(comment?.description);
@@ -15,7 +16,7 @@ function EditComment({ comment, setShowModal }) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        
+
 
         let validateErrors = [];
         if (description.length < 5) validateErrors.push('comment must be longer than 5 characters');
@@ -33,23 +34,29 @@ function EditComment({ comment, setShowModal }) {
         }
 
 
-        dispatch(editComment(data, comment.id))
+        dispatch(editComment(data, comment?.id))
 
-    
-        
+
+
             setShowModal(false)
-        
-            
-        
+
+
+
     }
 
     return (
+        <div className="notemodel">
+            
+            <div className="header">Post Your Update</div>
          <form onSubmit={handleSubmit} className='createUpdate'>
-            <ul> {errors.map((error, i) => (<li key={i}>{error}</li>))}</ul>
+
+            
+            <ul> {errors.map((error, i) => (<li className="editerrors" key={i}>{error}</li>))}</ul>
+
             <label>
 
 
-                <input
+                <textarea
 
                     id="editcomment"
                     type="text"
@@ -60,8 +67,9 @@ function EditComment({ comment, setShowModal }) {
 
             </label>
 
-            <button className='create' type="submit">Update</button>
+            <button className='create' type="submit">Post</button>
         </form>
+        </div>
     )
 }
 

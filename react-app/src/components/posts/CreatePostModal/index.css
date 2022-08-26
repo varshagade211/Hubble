@@ -49,3 +49,15 @@
 .chatIcon:hover{
     transform: translateY(-0.2rem);
 }
+
+
+
+.createPostModal {
+    position: absolute;
+    background-color:white;
+    border-radius: 10px;
+    max-width: 100vw;
+    overflow-y:auto;
+    /* height: 530px; */
+    min-height: 100px;
+  }
