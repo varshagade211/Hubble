@@ -6,8 +6,6 @@ import './editNote.css'
 
 function EditComment({ comment, setShowModal, id }) {
 
-
-
     const dispatch = useDispatch()
     const [description, setDescription] = useState(comment?.description);
     // const[isNote, setIsNote] = useState(false)
@@ -44,11 +42,11 @@ function EditComment({ comment, setShowModal, id }) {
 
     return (
         <div className="notemodel">
-            
+
             <div className="header">Post Your Update</div>
          <form onSubmit={handleSubmit} className='createUpdate'>
 
-            
+
             <ul> {errors.map((error, i) => (<li className="editerrors" key={i}>{error}</li>))}</ul>
 
             <label>

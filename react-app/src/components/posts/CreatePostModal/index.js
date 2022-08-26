@@ -13,11 +13,28 @@ function CreatePostModal({type}) {
   return (
     <>
 
-      {type==='text' && <button  className={'createPosttBtn'} onClick={() =>setShowModal(true)}><i className="fa-brands fa-amilia textIcon"></i></button>}
-      {type==='image' && <button className={'createPosttBtn'}  onClick={() =>setShowModal(true)}><i className="fa-solid fa-camera cameraIcon"></i></button>}
-      {type==='link' && <button className={'createPosttBtn'} onClick={() =>setShowModal(true)}><i className="fa-solid fa-link linkIcon"></i></button>}
-      {type==='quote' && <button  className={'createPosttBtn'} onClick={() =>setShowModal(true)}><i className="fa-solid fa-quote-left quoteIcon"></i></button>}
-      {type==='chat' && <button  className={'createPosttBtn'} onClick={() =>setShowModal(true)}><i className="fa-solid fa-comment-dots chatIcon"></i></button>}
+      {type==='text' && <div className='createUserPostIcon' onClick={() =>setShowModal(true)}>
+      <button  className={'createPosttBtn'} ><i className="fa-brands fa-amilia textIcon"></i></button>
+       <p>Text</p>
+      </div>}
+
+      {type==='image' && <div className='createUserPostIcon' onClick={() =>setShowModal(true)}>
+        <button className={'createPosttBtn'} ><i className="fa-solid fa-camera cameraIcon"></i></button>
+         <p> Image </p>
+      </div>}
+      {type==='link' && <div className='createUserPostIcon' onClick={() =>setShowModal(true)}>
+       <button className={'createPosttBtn'} onClick={() =>setShowModal(true)}><i className="fa-solid fa-link linkIcon"></i></button>
+       <p>Link </p>
+       </div>}
+      {type==='quote' && <div className='createUserPostIcon' onClick={() =>setShowModal(true)}>
+       <button  className={'createPosttBtn'} onClick={() =>setShowModal(true)}><i className="fa-solid fa-quote-left quoteIcon"></i></button>
+       <p>Quote</p>
+       </div>
+       }
+      {type==='chat' && <div className='createUserPostIcon' onClick={() =>setShowModal(true)}>
+        <button  className={'createPosttBtn'} onClick={() =>setShowModal(true)}><i className="fa-solid fa-comment-dots chatIcon"></i></button>
+        <p> Chat </p>
+        </div>}
       {showModal && (
         <Modal className={"createPostModal"} onClose={() => setShowModal(false)}>
            <CreatePostForm type = {type} setShowModal={setShowModal} />

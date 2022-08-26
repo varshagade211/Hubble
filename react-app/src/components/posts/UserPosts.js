@@ -35,26 +35,11 @@ function UserPosts(){
             <div className='postIconContainer'>
                 <div>
                     <div className='createUserPostIconConainer'>
-                        <div className='createUserPostIcon'>
                             <CreatePostModal type={'text'}/>
-                            <p> Text </p>
-                        </div>
-                        <div  className='createUserPostIcon'>
                             <CreatePostModal type={'image'}/>
-                            <p> Image </p>
-                        </div>
-                        <div  className='createUserPostIcon'>
                             <CreatePostModal type={'link'}/>
-                            <p>Link </p>
-                        </div>
-                        <div  className='createUserPostIcon'>
                             <CreatePostModal type={'quote'}/>
-                            <p>Quote</p>
-                        </div>
-                        <div  className='createUserPostIcon'>
                             <CreatePostModal type={'chat'}/>
-                            <p> Chat </p>
-                        </div>
                     </div>
                      <div className='userPostContainer'>
                      {!userPosts?.length && <h3 className='noPostTxt'>No post yet,  please create some posts............</h3>}
