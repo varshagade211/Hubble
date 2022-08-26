@@ -74,7 +74,8 @@ const unLikePost = (unLikedPost,userId) => {
         headers: {}
       });
     const posts = await response.json()
-    dispatch(getPosts(posts.posts))
+    console.log("------POST", posts)
+    dispatch(getPosts(posts?.posts))
 }
 
 export const userPostThunkCreator = () => async(dispatch) => {
@@ -82,7 +83,7 @@ export const userPostThunkCreator = () => async(dispatch) => {
       headers: {}
     });
   const posts = await response.json()
-  dispatch(getUserPost(posts.posts))
+  dispatch(getUserPost(posts?.posts))
 }
 
 export const deletePostThunk = (postId) => async (dispatch) => {
@@ -92,7 +93,9 @@ export const deletePostThunk = (postId) => async (dispatch) => {
 
   })
   const message = await response.json()
+  console.log("------ DELTE THUNK", response, "--------MESSAGE", message )
   dispatch(deleteUserPost(postId))
+  
 
   return response
 }
@@ -200,7 +203,10 @@ export default function reducer(state = initialState, action) {
     let newState
     switch (action.type) {
       case GET_ALL_POSTS:{
+        // console.log('-------------STATE', state)
+        // console.log('-------------ACTION.POST', action?.posts)
         newState= {...state, posts:[...action?.posts], userPosts:[...state?.userPosts], likedPosts:[...state?.likedPosts]}
+
         action?.posts?.forEach((post)=>{
           newState[post.id] = post
         })
@@ -214,8 +220,9 @@ export default function reducer(state = initialState, action) {
         delete state?.action?.postId
         let newPosts = state?.posts?.filter((post) => post?.id !== action?.postId)
         let newUserPosts = state?.userPosts?.filter((post) => post?.id !== action?.postId)
-        let newLikedPosts = state?.userLikedPosts?.filter((post) => post?.id !== action?.postId)
-        newState = {...state, posts:newPosts,userPosts:newUserPosts,likedPosts:newLikedPosts}
+        let newLikedPosts = state?.likedPosts?.filter((post) => post?.id !== action?.postId)
+        console.log("NEW LIKED POST", newLikedPosts)
+        newState = {...state, posts: [...newPosts], userPosts: [...newUserPosts], likedPosts: [...newLikedPosts]}
         return newState
       }
       case CREATE_POST:{

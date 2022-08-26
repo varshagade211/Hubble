@@ -26,7 +26,7 @@ export function ModalProvider({ children }) {
   );
 }
 
-export function Modal({ onClose, children }) {
+export function Modal({ onClose, children, editmodal }) {
 
   const modalNode = useContext(ModalContext);
 
@@ -37,7 +37,10 @@ export function Modal({ onClose, children }) {
     <div id="modal">
        
       <div id="modal-background" onClick={onClose} />
-      <div id="modal-content">
+      {/* <div id="modal-content">
+        {children}
+      </div> */}
+      <div className={editmodal} >
         {children}
       </div>
     </div>,
