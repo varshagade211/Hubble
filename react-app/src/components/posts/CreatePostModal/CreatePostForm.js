@@ -108,7 +108,7 @@ function CreateTextPostForm({type, setShowModal}){
             {type === 'image' && <div>
 
 
-                <input type="text" placeholder='Title' className="textTypeTitalInput" value={title} onChange={(e)=> setTitle(e.target.value)}/>
+                <input type="text" placeholder='Title' className="createTextTypeTitalInput" value={title} onChange={(e)=> setTitle(e.target.value)}/>
 
 
                {errors.title &&
