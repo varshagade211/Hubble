@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { editComment } from '../../store/note'
+import { editComment } from '../../../store/note'
 import './editNote.css'
-import updateImage from '../../image/update.svg'
 
-function EditComment({ comment, setShowModal }) {
+
+function EditComment({ comment, setShowModal, id }) {
 
 
 
@@ -29,14 +29,12 @@ function EditComment({ comment, setShowModal }) {
         }
 
         const data = {
-            id: comment.id,
+            id: id,
             description: description
         }
 
 
-        dispatch(editComment(data, comment?.id))
-
-
+        dispatch(editComment(data, id))
 
             setShowModal(false)
 
