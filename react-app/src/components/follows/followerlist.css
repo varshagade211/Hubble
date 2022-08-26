@@ -2,12 +2,12 @@
     position: relative;
     /* color:red; */
     /* background-color: beige; */
-    top:80px;
+    top:90px;
     height:100%;
     width:75%;
     margin: auto;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
 }
 
 .follower-list {

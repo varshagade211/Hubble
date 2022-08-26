@@ -7,15 +7,13 @@ const ManageFollowings = (user) => {
   // console.log("in ManageFollowings user state passed in ----", user)
 
   const dispatch = useDispatch();
-  const { id } = useParams();
-
-
+  const currentuser = useSelector(state => state?.session?.user)
   let list_user = user.user;
 
   const unfollowHandler = async (e) => {
     e.preventDefault();
 
-    dispatch(removeFollowing(id, list_user.id));
+    dispatch(removeFollowing(currentuser.id, list_user.id));
     dispatch(addUnfollowed(list_user));
   };
   return (

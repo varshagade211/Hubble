@@ -75,15 +75,18 @@
 .follow-btn{
     width: 90px;
     height: 100%;
+    margin-top: 10px;
 }
 
 .follow-btn button{
+    
     color: #00B8FF;
     border: none;
     font-weight: bold;
     width: 100%;
     height: 100%;
     background-color: transparent;
+   
 }
 
 .follow-btn button:hover{

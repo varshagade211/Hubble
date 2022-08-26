@@ -73,12 +73,12 @@ function UserPosts() {
               <i class="fa-solid fa-heart postIcon"></i>Likes
             </NavLink>
             <hr></hr>
-            <NavLink className={"postBtn"} to={`/user/${user?.id}/followings`}>
+            <NavLink className={"postBtn"} to={`/user/followings`}>
               {" "}
               <i class="fa-solid fa-users postIcon"></i>Following{" "}
             </NavLink>
             <hr></hr>
-            <NavLink className={"postBtn"} to={`/user/${user?.id}/followers`}>
+            <NavLink className={"postBtn"} to={`/user/followers`}>
               {" "}
               <i class="fa-solid fa-users postIcon"></i>Follower{" "}
             </NavLink>

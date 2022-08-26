@@ -2,12 +2,14 @@
     position: relative;
     /* color:red; */
     /* background-color: beige; */
-    top:80px;
+    top:90px;
     height:100%;
     width:75%;
     margin: auto;
-    display: flex;
-    justify-content: space-between;
+    /* display: flex;
+    justify-content: space-between; */
+    display: grid;
+    grid-template-columns: 2fr 1fr;
 }
 
 .following-list {
@@ -15,7 +17,7 @@
     color: white;
     display: flex;
     flex-direction: column;
-    width: 55%;
+    width: 80%;
     margin-left: 40px;
 
 }
@@ -116,4 +118,11 @@
 .unfollow-btn button:hover{
     text-decoration: underline;
     /* background-color: rgba(219, 217, 217, 0.726); */
+}
+
+.userSideBar.follows{
+  
+   width: 90%;
+   margin: auto;
+    margin-top:50px
 }
