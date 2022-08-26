@@ -120,7 +120,7 @@ function Notes({ post }) {
 
                                     {showModal && (
 
-                                        <Modal editmodal={'editmodal'} onClose={() => setShowModal(false)}>
+                                        <Modal className={'editmodal'} onClose={() => setShowModal(false)}>
 
                                             <EditComment comment={comment} id={comment.id} setShowModal={setShowModal} />
 

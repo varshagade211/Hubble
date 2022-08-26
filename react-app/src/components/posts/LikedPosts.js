@@ -27,29 +27,27 @@ function LikedPosts(){
 
 
     return(
-
-    <div className='likedPostContainerWraper'>
-        <div className='likedPostContaner'>
-             <div>
-             <div className='allLikedPostContainer'>
-                {likedPosts.map((post)=>{
-                   return (
-                    <div className="likedPostProfileImgConatiner">
-                    <div className="likedProfileImageContainer">
-                        {post?.user?.profileImage ? <img className='likedProfileImage' src={post?.user?.profileImage} />
-                        :<i className ="fa-solid fa-user-astronaut defaultProfileLogo"></i>}
-                    </div>
-                    <div>
-                      <Post post={post} unfollowList={unfollowidList}/>
-
+        <div className='likedPostContainerWraper'>
+            <div className='likedPostContaner'>
+                <div>
+                    <div className='allLikedPostContainer'>
+                        {likedPosts?.map((post)=>{
+                        return (
+                            <div className="likedPostProfileImgConatiner">
+                                <div className="likedProfileImageContainer" onClick={()=> history.push(`/user/${user?.id}/posts`)}>
+                                    {post?.user?.profileImage ? <img className='likedProfileImage' src={post?.user?.profileImage} />
+                                    :<i className ="fa-solid fa-user-astronaut defaultProfileLogo"></i>}
+                                </div>
+                                <div>
+                                    <Post post={post} unfollowList={unfollowidList}/>
+                                </div>
+                            </div>)
+                        })}
                     </div>
                 </div>
-
                 <div className='likeSidebarContainer'>
                     <SideBar />
-
                 </div>
-
             </div>
         </div>)
 }

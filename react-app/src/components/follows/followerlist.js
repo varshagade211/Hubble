@@ -3,8 +3,8 @@ import { useParams, Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserFollowers } from "../../store/follows";
 import "./followerlist.css";
-import SuggestedUsers from './unfollowedlist'
-import { NavLink } from "react-router-dom";
+
+import SideBar from '../SideBar';
 
 function FollowerList() {
 
@@ -51,31 +51,7 @@ function FollowerList() {
         </div>
       </div>
       <div className="userSideBar follows">
-          <div className="userPostNavLink">
-            <NavLink className={"postBtn"} to={"/user/posts"}>
-              {" "}
-              <i className="fa-brands fa-blogger postIcon"></i> Post
-            </NavLink>
-            <hr></hr>
-            <NavLink className={"postBtn"} to={"/user/likes"}>
-              {" "}
-              <i class="fa-solid fa-heart postIcon"></i>Likes
-            </NavLink>
-            <hr></hr>
-            <NavLink className={"postBtn"} to={`/user/followings`}>
-              {" "}
-              <i class="fa-solid fa-users postIcon"></i>Following{" "}
-            </NavLink>
-            <hr></hr>
-            <NavLink className={"postBtn"} to={`/user/followers`}>
-              {" "}
-              <i class="fa-solid fa-users postIcon"></i>Follower{" "}
-            </NavLink>
-            <hr></hr>
-          </div>
-          <div className="suggestedUserFollower">
-            <SuggestedUsers />
-          </div>
+         <SideBar />
         </div>
      
     </div>
