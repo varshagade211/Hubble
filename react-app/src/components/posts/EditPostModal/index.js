@@ -8,7 +8,7 @@ import './index.css'
 function EditPostModal({type , post}) {
   const [showModal, setShowModal] = useState(false);
 
- 
+
 
   return (
     <>
@@ -16,7 +16,7 @@ function EditPostModal({type , post}) {
       <button className='editIconBtn' onClick={() =>setShowModal(true)}><i className="fa-solid fa-pen editPenIcon"></i></button>
 
       {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
+        <Modal className={"editPostModal"} onClose={() => setShowModal(false)}>
            <EditPostForm type = {type} post={post} setShowModal={setShowModal}/>
 
 

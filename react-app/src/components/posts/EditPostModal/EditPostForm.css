@@ -1,17 +1,33 @@
 
-
-.textTypeTitalInput,.textDescriptionInput{
-    width: 90%;
-    border: none;
-    margin-top: 2rem;
-
+.editFormContainer{
+    min-width:400px;
+    min-height: 200px;
+    text-align: center;
+    margin-top: 1rem;
 
 }
-.textTypeTitalInput {
+.editTextTypeTitalInput{
+    width: 90%;
+    border: none;
+    margin: 0 0 0 2rem;
+    font-size: 1.2rem ;
+
+}
+
+
+.editTextDescriptionInput{
+    width: 90%;
+    border: none;
+    margin: 2rem 0 1.5rem 2rem;
+    height:auto;
+    font-size: 1rem ;
+
+}
+/* .textTypeTitalInput {
     display: block;
     width: 400px;
     padding: 0 20px;
-}
+} */
 
 textarea:focus, input:focus{
     outline: none;
@@ -23,4 +39,9 @@ textarea:focus, input:focus{
     color: white;
     padding:0.3rem 0.5rem 0.3rem 0.5rem;
     font-size: 1rem;
+    cursor: pointer;
+}
+
+.editFormMessage{
+    color: #0275d8;
 }

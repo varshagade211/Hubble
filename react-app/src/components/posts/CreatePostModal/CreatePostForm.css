@@ -6,33 +6,37 @@
     text-align: center;
     margin-top: 1rem;
 }
-.textTypeTitalInput,.textDescriptionInput{
+.createTextTypeTitalInput{
+    margin: 2rem 0 0 0.5rem;
     width: 90%;
     border: none;
-    margin-top: 2rem;
+}
+
+
+.CreateTextDescriptionInput{
+    width: 90%;
+    border: none;
+    margin: 2rem 0 0 1.5rem;
+    height:auto;
 
 
 }
 
-.textTypeTitalInput {
+.createTextTypeTitalInput {
     display: block;
     width: 400px;
     padding: 0 20px;
 }
 
-.textTypeTitalInput,
-.textTypeTitalInput::placeholder {
+.createTextTypeTitalInput,
+.createTextTypeTitalInput::placeholder {
 
     font-size: 1.5rem ;
 
 }
-.textDescriptionInput{
-    height:auto;
-    margin:1rem 0 1rem 0;
-}
 
-.textDescriptionInput,
-.textDescriptionInput::placeholder {
+.CreateTextDescriptionInput,
+.CreateTextDescriptionInput::placeholder {
     font-size: 1rem ;
 
 }
@@ -48,6 +52,7 @@ textarea:focus, input:focus{
     color: white;
     padding:0.3rem 0.5rem 0.3rem 0.5rem;
     font-size: 1rem;
+    cursor: pointer;
 }
 
 .error{

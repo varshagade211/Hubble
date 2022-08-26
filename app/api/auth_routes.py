@@ -62,6 +62,7 @@ def sign_up():
         db.session.add(user)
         db.session.commit()
         login_user(user)
+        print('------------signup user in api auth route', user.to_dict())
         return user.to_dict()
     print('signup error........',form.errors)
     return {'errors': form.errors}, 401

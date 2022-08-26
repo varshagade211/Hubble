@@ -19,7 +19,7 @@ function CreatePostModal({type}) {
       {type==='quote' && <button  className={'createPosttBtn'} onClick={() =>setShowModal(true)}><i className="fa-solid fa-quote-left quoteIcon"></i></button>}
       {type==='chat' && <button  className={'createPosttBtn'} onClick={() =>setShowModal(true)}><i className="fa-solid fa-comment-dots chatIcon"></i></button>}
       {showModal && (
-        <Modal onClose={() => setShowModal(false)}>
+        <Modal className={"createPostModal"} onClose={() => setShowModal(false)}>
            <CreatePostForm type = {type} setShowModal={setShowModal} />
 
 

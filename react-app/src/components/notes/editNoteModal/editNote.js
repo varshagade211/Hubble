@@ -6,7 +6,7 @@ import './editNote.css'
 
 function EditComment({ comment, setShowModal, id }) {
 
-    
+
 
     const dispatch = useDispatch()
     const [description, setDescription] = useState(comment?.description);
@@ -16,7 +16,7 @@ function EditComment({ comment, setShowModal, id }) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        
+
 
         let validateErrors = [];
         if (description.length < 5) validateErrors.push('comment must be longer than 5 characters');
@@ -36,12 +36,10 @@ function EditComment({ comment, setShowModal, id }) {
 
         dispatch(editComment(data, id))
 
-    
-        
             setShowModal(false)
-        
-            
-        
+
+
+
     }
 
     return (
@@ -49,8 +47,10 @@ function EditComment({ comment, setShowModal, id }) {
             
             <div className="header">Post Your Update</div>
          <form onSubmit={handleSubmit} className='createUpdate'>
+
             
             <ul> {errors.map((error, i) => (<li className="editerrors" key={i}>{error}</li>))}</ul>
+
             <label>
 
 

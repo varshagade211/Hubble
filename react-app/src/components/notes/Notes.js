@@ -49,8 +49,10 @@ function Notes({ post }) {
             <CreateComment post={post} userImage={userImage} />
 
 
-            {comments.map((comment) => {
-                 
+
+            {comments?.map((comment) => {
+
+
                 return (
                     <div className="commentcontainer">
 
@@ -61,18 +63,16 @@ function Notes({ post }) {
 
                         <div className="Notes">
 
-
-                            {comment?.post_id === id ?
-                                <div>
-                                    {users.filter(user => user.id === comment.user_id).map(filteredUser => (
-                                        <div>
-                                            {filteredUser?.profileImage ? <img className='ProfileImage' src={filteredUser?.profileImage} />
-                                                : <i className="fa-solid fa-user-astronaut img"></i>}
-                                        </div>
-                                    ))}
-                                </div>
-                                : null}
-
+                        {comment?.post_id === id ?
+                         <div>
+                        {users?.filter(user => user?.id === comment?.user_id )?.map(filteredUser => (
+                        <div>
+                        {filteredUser?.profileImage ? <img className='ProfileImage' src={filteredUser?.profileImage} />
+                                        : <i className="fa-solid fa-user-astronaut img"></i>}
+                        </div>
+                         ))}
+                         </div>
+                         : null}
                             {comment?.post_id === id ?
                                  
                                 <div className="description">
@@ -102,7 +102,10 @@ function Notes({ post }) {
 
                         <div className="deleteEditBtn">
                             {comment?.user_id === user_id && comment?.post_id === id ?
-                                <button className="delete" onClick={removeComment(comment.id)}> <i className="fa-solid fa-trash deletePenIcon"></i></button>
+
+                                <button className="delete" onClick={removeComment(comment?.id)}><i className="fa-solid fa-trash deletePenIcon"></i></button>
+
+                           
                                 : null
                             }
 

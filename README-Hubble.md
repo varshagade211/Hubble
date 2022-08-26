@@ -41,13 +41,17 @@ Created with a frontend of Javascript using React and Redux. As well as a backen
 
 ---
 ---
-... Discussion of two features that show off the team's technical abilities
+## Two features that show off our technical abilities:
+    
+    Navigating the logic and implementing both Followings / Followers and Likes Features proved to be quite challenging.  Implementing features that at their core, are join tables, took extra thought in how to structure appropriately.
 
 ---
 ---
-... Discussion of both challenges faced and the way the team solved them
+## Challenges faced: 
+
+    Working as a team through four features over the course of five days to create a social media site that offers an assortment of options for users is quite the undertaking.  At the core of solving the challenges that came up was our group's adeptness with communication.   
 
 ---
 ---
 
-... photos
+... photos of best code  and pretty, pretty photos of site...
