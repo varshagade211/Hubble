@@ -2,7 +2,7 @@
     background-color: rgba(255, 255, 255, 0.014);
     max-width: 20%;
     min-height:100px;
-    margin:15rem auto auto auto;
+    margin:8rem auto auto auto;
     display: flex;
     flex-direction: column;
 }
@@ -32,4 +32,15 @@
 
 .signUpBtnWrapper:hover{
     box-shadow: 0px 0px 3px 2px white;
+}
+
+.siteDescription{
+  color: #ff66c4;
+  text-align: justify;
+  font-weight: bold;
+}
+
+.demoLoginInstu{
+    color: #ff66c4;
+    text-align: justify;
 }
