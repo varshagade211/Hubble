@@ -23,6 +23,7 @@ function LikedPosts(){
 
 
     return(
+
         <div className='likedPostContainerWraper'>
             <div className='likedPostContaner'>
                 <div>
@@ -39,6 +40,7 @@ function LikedPosts(){
                                 </div>
                             </div>)
                         })}
+
                     </div>
                 </div>
                 <div className='likeSidebarContainer'>

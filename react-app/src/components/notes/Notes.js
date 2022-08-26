@@ -6,12 +6,15 @@ import EditComment from '../notes/editNote'
 import { Modal } from '../../context/Modal';
 import './Notes.css'
 
+
 function Notes({ post }) {
     let id = post.id
     const dispatch = useDispatch()
 
     const comments = useSelector((state) => (state?.note?.notes))
     const userImage = useSelector(state => state?.session?.user.profileImage)
+   
+
     const user_id = useSelector(state => state?.session?.user?.id)
 
     const [showModal, setShowModal] = useState(false);
@@ -42,22 +45,14 @@ function Notes({ post }) {
         dispatch(noteDelete(id))
     }
 
-
-    // const noteHandler = async () => {
-    //     setIsNote((prev) => !prev)
-    //     // note dispatch will be here
-
-    // }
-
-
-
-
     return (
         <>
             <CreateComment post={post} userImage={userImage} />
 
 
+
             {comments?.map((comment) => {
+
 
                 return (
                     <div className="commentcontainer">
@@ -69,7 +64,6 @@ function Notes({ post }) {
 
                         <div className="Notes">
 
-
                         {comment?.post_id === id ?
                          <div>
                         {users?.filter(user => user?.id === comment?.user_id )?.map(filteredUser => (
@@ -80,8 +74,6 @@ function Notes({ post }) {
                          ))}
                          </div>
                          : null}
-
-
                             {comment?.post_id === id ?
 
                                 <div className="description">
@@ -93,26 +85,50 @@ function Notes({ post }) {
                                 : null}
 
                         </div>
+
+                        {comment?.post_id === id && post.user_id === comment.user_id ?
+
+
+
+                            <div className="description">
+                                <h1>original poster</h1>
+                                {comment?.description}
+                            </div>
+
+
+
+                            : null}
+
+
+
                         <div className="deleteEditBtn">
                             {comment?.user_id === user_id && comment?.post_id === id ?
+
                                 <button className="delete" onClick={removeComment(comment?.id)}><i className="fa-solid fa-trash deletePenIcon"></i></button>
+
+                           
                                 : null
                             }
 
 
 
                             {comment?.user_id === user_id && comment?.post_id === id ?
-                               <div className="editnote">
-                                {<button  className={'note'} onClick={() =>setShowModal(true)}><i className="fa-solid fa-pen-to-square notepenIcon"></i></button>}
+                                <div className="editnote" >
+
+                                    {<button className={'note'} onClick={() => setShowModal(true)}><i className="fa-solid fa-pen-to-square notepenIcon" > </i></button>}
+
+
                                     {showModal && (
-                                      <Modal onClose={() => setShowModal(false)}>
-                                         <EditComment comment={comment} id={comment?.id} setShowModal={setShowModal} />
+
+                                        <Modal editmodal={'editmodal'} onClose={() => setShowModal(false)}>
+
+                                            <EditComment comment={comment} id={comment.id} setShowModal={setShowModal} />
 
 
-                                      </Modal>
+                                        </Modal>
                                     )}
 
-                                 </div>
+                                </div>
                                 : null
                             }
                         </div>

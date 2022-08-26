@@ -4,6 +4,8 @@
     width: 450px;
     color: rgba(45, 44, 61, 0.586);
     background-color: #f0efef;
+    margin-left: 30px;
+    
 
 }
 
@@ -16,20 +18,13 @@
     border-radius: 20px;
     width: 600px;
     height: 50px;
-
+    padding-top: 10px;
     margin-top: 0.5rem;
-    margin-bottom: 10px;
-
-
-
+    margin-bottom: 10px; 
 }
 
-.createCommentForm{
-    display: flex;
-    flex-direction: row;
-    padding: 5px 0px 5px 0px;
-   
-}
+
+
 
 .imagecomment{
     display: flex;
@@ -68,19 +63,18 @@
     border: none;
     font-family: sans-serif;
     color:  #622569f0;
-
     font-size: 20px;
     border-radius: 5px;
     padding: 5px 10px 5px 10px;
-    margin-left: 25px;
-    background-color: #f0efef;
+    margin-left: 35px;
+    background-color:  transparent;
+
 
 
 }
 
 .button:hover{
 
-    color: #915a91;
-    border-radius: 5px;
-    text-decoration: underline;
+    color: #915a91;  
 }
+
