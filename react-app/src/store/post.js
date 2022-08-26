@@ -222,7 +222,9 @@ export default function reducer(state = initialState, action) {
         let newPosts = state?.posts?.filter((post) => post?.id !== action?.postId)
         let newUserPosts = state?.userPosts?.filter((post) => post?.id !== action?.postId)
         let newLikedPosts = state?.likedPosts?.filter((post) => post?.id !== action?.postId)
+
         newState = {...state, posts: [...newPosts], userPosts: [...newUserPosts], likedPosts: [...newLikedPosts]}
+
 
         return newState
       }

@@ -16,6 +16,10 @@ function LikedPosts(){
     const history = useHistory()
     const likedPosts= useSelector( state => state?.post?.likedPosts)
     const user = useSelector(state => state?.session?.user)
+    const unfollowedList = useSelector(state => state?.follows?.unfollowed)
+    
+    let unfollowidList= unfollowedList.map(user => user.id)
+    
     useEffect(()=>{
         dispatch(getAllLikedThunkCreator(user?.id))
     },[dispatch])
@@ -24,27 +28,26 @@ function LikedPosts(){
 
     return(
 
-        <div className='likedPostContainerWraper'>
-            <div className='likedPostContaner'>
-                <div>
-                    <div className='allLikedPostContainer'>
-                        {likedPosts?.map((post)=>{
-                        return (
-                            <div className="likedPostProfileImgConatiner">
-                                <div className="likedProfileImageContainer" onClick={()=> history.push(`/user/${user?.id}/posts`)}>
-                                    {post?.user?.profileImage ? <img className='likedProfileImage' src={post?.user?.profileImage} />
-                                    :<i className ="fa-solid fa-user-astronaut defaultProfileLogo"></i>}
-                                </div>
-                                <div>
-                                    <Post post={post}/>
-                                </div>
-                            </div>)
-                        })}
+    <div className='likedPostContainerWraper'>
+        <div className='likedPostContaner'>
+             <div>
+             <div className='allLikedPostContainer'>
+                {likedPosts.map((post)=>{
+                   return (
+                    <div className="likedPostProfileImgConatiner">
+                    <div className="likedProfileImageContainer">
+                        {post?.user?.profileImage ? <img className='likedProfileImage' src={post?.user?.profileImage} />
+                        :<i className ="fa-solid fa-user-astronaut defaultProfileLogo"></i>}
+                    </div>
+                    <div>
+                      <Post post={post} unfollowList={unfollowidList}/>
 
                     </div>
                 </div>
+
                 <div className='likeSidebarContainer'>
                     <SideBar />
+
                 </div>
 
             </div>
