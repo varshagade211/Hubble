@@ -58,6 +58,7 @@ function UserPosts(){
                 </div>
                 <SideBar />
             </div>
+
         </div>
 
     )

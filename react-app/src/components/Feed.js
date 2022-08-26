@@ -16,7 +16,9 @@ function Feed(){
     const unfollowedList = useSelector(state => state?.follows?.unfollowed)
 
 
+
     let unfollowidList= unfollowedList?.map(user => user?.id)
+
 
 
     useEffect(()=>{
@@ -73,6 +75,7 @@ function Feed(){
                         </div>)
                         })}
                     </div>
+
                 </div>
                 <SideBar />
             </div>
