@@ -74,7 +74,11 @@
     width: 66%;
     text-align: center;
      display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     align-items: center;
     margin-top: 20px;
+}
+
+.noPostTxt{
+   color: white;
 }

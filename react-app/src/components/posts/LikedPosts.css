@@ -35,3 +35,7 @@
 .likeSidebarContainer{
     margin-top: 1rem ;
 }
+
+.noLikedPostTxt{
+    color:white;
+}

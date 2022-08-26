@@ -23,7 +23,7 @@ function UserPosts(){
             <div className='userImageContainer'>
             <div className="addoncontainer">
                 <div className="postUserImage">
-                
+
                     {user?.profileImage ? <img className='userImage' src={user?.profileImage} />
                     :<i className ="fa-solid fa-user-astronaut userProfileLogo"></i>}
                 </div>
@@ -57,6 +57,7 @@ function UserPosts(){
                         </div>
                     </div>
                      <div className='userPostContainer'>
+                     {!userPosts?.length && <h3 className='noPostTxt'>No post yet,  please create some posts............</h3>}
                         {userPosts?.map((post)=>{  return <Post post={post}/>})}
                     </div>
                 </div>
