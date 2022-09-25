@@ -95,7 +95,7 @@ export const deletePostThunk = (postId) => async (dispatch) => {
   const message = await response.json()
   console.log("------ DELTE THUNK", response, "--------MESSAGE", message )
   dispatch(deleteUserPost(postId))
-  
+
 
   return response
 }
@@ -229,7 +229,7 @@ export default function reducer(state = initialState, action) {
         return newState
       }
       case CREATE_POST:{
-        newState = {...state,posts:[...state?.posts, action?.post],userPosts:[...state?.userPosts, action?.post],likedPosts:[...state?.likedPosts]}
+        newState = {...state,posts:[ action?.post, ...state?.posts],userPosts:[ action?.post, ...state?.userPosts],likedPosts:[...state?.likedPosts]}
         newState[action?.post?.id] =action?.post
         return newState
       }

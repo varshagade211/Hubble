@@ -26,9 +26,9 @@ function SideBar(){
                 <h3 className='developedByH'>Developed By </h3>
                 <hr></hr>
                 <div className='gitandLinkedInIconHandlerContainer' >
-                   <a href={"https://github.com/GrantChristopherson"} >
+                   <a href={"https://github.com/GrantChristopherson"} target="_blank">
                     <i class="fa-brands fa-github gitHubicon"></i></a>
-                    <a className = {"userLinkedInLink"} href={"https://www.linkedin.com/in/GrantChristopherson-SF"}>
+                    <a className = {"userLinkedInLink"} href={"https://www.linkedin.com/in/GrantChristopherson-SF"} target="_blank">
                     <i class="fa-brands fa-linkedin-in linkedInIcon"></i>
                     </a>
                      <h4 className='developerName'>Grant Christopherson</h4>
@@ -36,24 +36,24 @@ function SideBar(){
                      </div>
                 <hr></hr>
                 <div className='gitandLinkedInIconHandlerContainer'>
-                    <a href={"https://github.com/IsabelArredondo"} ><i class="fa-brands fa-github gitHubicon"></i></a>
-                    <a className = {"userLinkedInLink"} href={"https://www.linkedin.com/in/IsabelArredondo-1107a9186"}>
+                    <a href={"https://github.com/IsabelArredondo"} target="_blank" ><i class="fa-brands fa-github gitHubicon"></i></a>
+                    <a className = {"userLinkedInLink"} href={"https://www.linkedin.com/in/IsabelArredondo-1107a9186"} target="_blank">
                     <i class="fa-brands fa-linkedin-in linkedInIcon"></i> </a>
                     <h4 className='developerName'>Isabel Arredondo</h4>
 
                 </div>
                 <hr></hr>
                 <div className='gitandLinkedInIconHandlerContainer'>
-                     <a href={"https://github.com/reneeluo7 "} ><i class="fa-brands fa-github gitHubicon"></i></a>
-                      <a className = {"userLinkedInLink"} href={"https://www.linkedin.com/in/rongrong-luo-renee"}>
+                     <a href={"https://github.com/reneeluo7 "} target="_blank"><i class="fa-brands fa-github gitHubicon"></i></a>
+                      <a className = {"userLinkedInLink"} href={"https://www.linkedin.com/in/rongrong-luo-renee"} target="_blank">
                         <i class="fa-brands fa-linkedin-in linkedInIcon"></i> </a>
                         <h4 className='developerName'>Renee Luo</h4>
 
                 </div>
                 <hr></hr>
                 <div className='gitandLinkedInIconHandlerContainer'>
-                     <a href={"https://github.com/varshagade211"} ><i class="fa-brands fa-github gitHubicon"></i></a>
-                     <a className = {"userLinkedInLink"} href={"https://www.linkedin.com/in/varsha-gade-7b33aa174/"}>
+                     <a href={"https://github.com/varshagade211"} target="_blank"><i class="fa-brands fa-github gitHubicon"></i></a>
+                     <a className = {"userLinkedInLink"} href={"https://www.linkedin.com/in/varsha-gade-7b33aa174/"} target="_blank">
                      <i class="fa-brands fa-linkedin-in linkedInIcon"></i>  </a>
                      <h4 className='developerName'>Varsha Gade</h4>
 
