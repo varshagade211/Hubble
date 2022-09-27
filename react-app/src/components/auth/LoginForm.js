@@ -46,7 +46,7 @@ const LoginForm = () => {
   return (
   <div className='marginlogin'>
       
-      <h1 className='hubble'><i className="fa-solid fa-star"></i> HUBBLE</h1>
+      <h1 className='hubble'><i id='logicon' className="fa-solid fa-earth-americas"></i> HUBBLE</h1>
     <div className='loginFormContainer'>
 
     <form className='loginForm' onSubmit={onLogin}>

@@ -56,7 +56,7 @@ const SignUpForm = () => {
     
 
     <div className='signUpFormContainer'>
-        <h1 id='signup' ><i className="fa-solid fa-star"></i> HUBBLE</h1> 
+        <h1 id='signup' ><i class="fa-solid fa-earth-americas"></i> HUBBLE</h1> 
     
       <form className='signUpForm' onSubmit={onSignUp} >
         
