@@ -58,7 +58,8 @@
 #main{
     font-size: 60px;
 }
-.fa-star{
+
+.fa-earth-americas{
     color: white;
     font-size: 3rem;
     animation-name: spin;
@@ -68,7 +69,7 @@
     
 }
 
-.fa-star:hover{
+.fa-earth-americas:hover{
     color: #ff66c4;
 }
 
