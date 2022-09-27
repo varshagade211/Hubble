@@ -44,8 +44,11 @@ const LoginForm = () => {
   }
 
   return (
+  <div className='marginlogin'>
+      
+      <h1 className='hubble'><i id='logicon' className="fa-solid fa-earth-americas"></i> HUBBLE</h1>
     <div className='loginFormContainer'>
-      <h1>HUBBLE</h1>
+
     <form className='loginForm' onSubmit={onLogin}>
 
 
@@ -90,12 +93,15 @@ const LoginForm = () => {
         <div className='loginFormBtn'>
           <button className='loginBtn' type='submit'>Login</button>
         </div>
+        
         <div  className='demoUserBtn'>
-        <button className='demoLoginBtn' onClick={demoUser} >Demo User</button>
+        <button className='demoLoginBtn' onClick={demoUser} >Log In as <span className='pink'>Demo User</span> ?</button>
         </div>
 
       </div>
     </form>
+    </div>
+
     </div>
   );
 };

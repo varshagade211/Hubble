@@ -12,7 +12,8 @@ function Notes({ post }) {
 
     const comments = useSelector((state) => (state?.note?.notes))
     const userImage = useSelector(state => state?.session?.user.profileImage)
-
+    
+    // console.log(comments)
 
     const user_id = useSelector(state => state?.session?.user?.id)
 

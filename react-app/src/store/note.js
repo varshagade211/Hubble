@@ -120,6 +120,7 @@ const notesReducer = (state = initialState, action) => {
             newState = {...state, notes:[...action?.payload]};
 
             action?.payload?.forEach((note) => { newState[note?.id] = note });
+            // console.log(newState.notes, 'NOTES NOTES')
             return newState;
 
         case CREATE:

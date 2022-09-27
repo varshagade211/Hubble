@@ -9,14 +9,14 @@ import { addFollowingThunk, updateUnfollowed } from '../../store/follows'
 
 function Posts({post, unfollowList}){
     const user = useSelector(state => state?.session?.user)
-   
+
     const[isLiked , setIsLiked] = useState(post?.liked_by?.includes(user?.id))
     const[isNote, setIsNote] = useState(false)
     const dispatch = useDispatch()
 
-    
+
     let isfollow = !unfollowList?.includes(post?.user?.id)
-    
+
 
 
    useEffect(()=>{
@@ -31,7 +31,7 @@ function Posts({post, unfollowList}){
 
     const handleFollowing = async(e) =>{
          e.preventDefault();
-        
+
         if(!isfollow) {
 
             dispatch(addFollowingThunk(user?.id, post?.user?.id))
@@ -84,7 +84,7 @@ function Posts({post, unfollowList}){
                 { post?.type === 'quote' && <h4 className="quoteDesc postDiscription"> - {post?.description ? post?.description : 'Anonymous'}</h4>}
 
                 { post?.type === 'link' && <h3 className="postTitle"> <i className="fa-solid fa-star titleStar"></i>  {post?.title} </h3>}
-                {post?.type === 'link' && <a className="postLink" href={post?.link}>{post?.title}</a>}
+                {post?.type === 'link' && <a className="postLink" href={post?.link} target="_blank">{post?.title}</a>}
                 { post?.type === 'link' &&<div className="postDiscriptionContainer"> <p  className="postDiscription">{post?.description}</p></div>}
 
                 { post?.type === 'image' && <h3 className="postTitle"><i className="fa-solid fa-star titleStar"></i>  {post?.title} </h3>}
@@ -106,8 +106,8 @@ function Posts({post, unfollowList}){
                         <div>
                           <button className="noteIcon" onClick={noteHandler}><i className="fa-solid fa-pen-to-square notepenIcon"></i></button>
                         </div>
-
-                        <div>
+                        <div className="likeLogoCountContainer">
+                        <div >
                             <button className="likeBtn"  onClick={likeHandler}>{isLiked ? <i class="fa-solid fa-heart likedIcon"></i>:
                               <i class="fa-regular fa-heart dislikeIcon"></i>}
                             </button>
@@ -115,7 +115,7 @@ function Posts({post, unfollowList}){
                         <div className="likeContainer">
                             <p className="likes">{post?.liked_by?.length}</p>
                         </div>
-
+                        </div>
 
                     </div>
 
