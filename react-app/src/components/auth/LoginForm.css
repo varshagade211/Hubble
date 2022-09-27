@@ -1,6 +1,6 @@
 .loginFormContainer{
     background-color: rgba(255, 255, 255, 0.014);
-    max-width: 15%;
+    max-width: 20%;
     min-height: 200px;
     margin: 0.5rem auto auto auto;
     /* margin-top: 1px; */
@@ -21,7 +21,7 @@
 }
 
 #root{
-    margin: 4.5rem auto auto auto;
+    margin: -3.5rem auto auto auto;
 }
 .hubble{
     
