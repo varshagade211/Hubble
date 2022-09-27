@@ -1,5 +1,5 @@
 .loginSignupLinks{
-    background-color: rgba(255, 255, 255, 0.014);
+    
     max-width: 20%;
     min-height:100px;
     margin:8rem auto auto auto;
@@ -16,13 +16,31 @@
     display: block;
 }
 
-
+.or{
+    color: #ff66c4;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 32px;
+}
+.logandsign{
+    display: flex;
+    height: 50%;
+    flex-direction: column;
+    background-color: rgba(112, 109, 109, 0.231);
+    border-radius: 5px;
+    width: max-content;
+    align-self: center;
+    padding: 5%;
+    padding-top: 2%;
+}
 .loginBtnWrapper,.signUpBtnWrapper{
     /* background-color: grey; */
     border: 1px solid white;
     margin: 2rem 0 0rem 0;
     text-align: center;
     padding: 1rem;
+    width: 200px;
+    align-self: center;
 
 }
 
@@ -30,17 +48,82 @@
     box-shadow: 0px 0px 3px 2px white;
 }
 
+.signUpBtnWrapper{
+    margin-bottom: 32px;
+}
+
 .signUpBtnWrapper:hover{
     box-shadow: 0px 0px 3px 2px white;
 }
 
+.fa-star{
+    color: white;
+    font-size: 3rem;
+    animation-name: spin;
+    animation-duration: 5000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    
+}
+
+.fa-star:hover{
+    color: #ff66c4;
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
 .siteDescription{
-  color: #ff66c4;
-  text-align: justify;
-  font-weight: bold;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    /* background-color: beige; */
+    align-self: center;
+    width: 507px;
+    font-size: 25px;
+}
+
+#last.siteDescription{
+    margin-bottom: 35px;
+}
+
+#header.siteDescription{
+    font-size: 90px;
+    width:100%;
+    padding: 10px;
+    
+    margin-bottom: 5%;
+    color: #ff66c4;
 }
 
 .demoLoginInstu{
     color: #ff66c4;
     text-align: justify;
 }
+
+.homecontainer{
+    margin-top: 2rem;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    align-content: center;
+    width: 300%;
+    max-height: min-content;
+}
+
+.logincontainer{
+    width: max-content;
+    height: max-content;
+    background-color: rgba(112, 109, 109, 0.231);
+    padding: 10%;
+}
+
+

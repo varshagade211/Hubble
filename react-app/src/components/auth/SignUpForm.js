@@ -51,11 +51,19 @@ const SignUpForm = () => {
   }
 
   return (
+    <div>
+      
+    
+
     <div className='signUpFormContainer'>
-      <h1>HUBBLE</h1>
+        <h1 id='signup' ><i className="fa-solid fa-star"></i> HUBBLE</h1> 
+    
       <form className='signUpForm' onSubmit={onSignUp} >
+        
         <div>
+          
           <input className='signupInput'
+          
             type='text'
             name='username'
             onChange={updateUsername}
@@ -145,6 +153,7 @@ const SignUpForm = () => {
       </div>
       <button className = 'signupBtn' type='submit'>Sign Up</button>
     </form>
+    </div>
     </div>
   );
 };
