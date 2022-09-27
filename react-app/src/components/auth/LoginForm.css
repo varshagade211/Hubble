@@ -2,7 +2,7 @@
     background-color: rgba(255, 255, 255, 0.014);
     max-width: 15%;
     min-height: 200px;
-    margin: -0.5rem auto auto auto;
+    margin: 0.5rem auto auto auto;
     /* margin-top: 1px; */
     text-align: center;
     padding: 3rem;
@@ -16,9 +16,12 @@
     background-color: rgba(112, 109, 109, 0.231);
     
 }
+.marginlogin{
+    margin-top: 13rem;
+}
 
 #root{
-    margin: 12.5rem auto auto auto;
+    margin: 4.5rem auto auto auto;
 }
 .hubble{
     

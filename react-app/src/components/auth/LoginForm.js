@@ -44,7 +44,7 @@ const LoginForm = () => {
   }
 
   return (
-  <div>
+  <div className='marginlogin'>
       
       <h1 className='hubble'><i className="fa-solid fa-star"></i> HUBBLE</h1>
     <div className='loginFormContainer'>

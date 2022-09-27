@@ -26,7 +26,8 @@ const Home = () => {
            
          
         <div className='logandsign'>
-          <div className='siteDescription'><br></br> Hubble is a space oriented social media site.</div>  <br></br>
+          <div id='main' className='siteDescription'>Hubble</div>
+          <div className='siteDescription'><br></br>A space oriented social media site.</div>  <br></br>
           <div className='siteDescription'>If you're a lonely planet, orbiting a solar system far away from others...</div> <br></br> <div id='last' className='siteDescription'>we offer a place to connect.</div>
         <div className='loginBtnWrapper'>
         <NavLink to='/login' className={'loginLi'} exact={true} activeClassName='active'>

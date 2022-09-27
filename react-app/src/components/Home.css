@@ -55,7 +55,9 @@
 .signUpBtnWrapper:hover{
     box-shadow: 0px 0px 3px 2px white;
 }
-
+#main{
+    font-size: 60px;
+}
 .fa-star{
     color: white;
     font-size: 3rem;
