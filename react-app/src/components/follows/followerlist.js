@@ -15,8 +15,10 @@ function FollowerList() {
 //   const { id } = useParams();
   const dispatch = useDispatch();
   const user = useSelector((state) => state?.session?.user);
-  // const unfollowList = useSelector(state => Object.values(state.follows.unfollowed))
-  // console.log(unfollowList)
+  const unfollowArr = useSelector(state => Object.values(state.follows.unfollowed))
+  
+  let unfollowlist = unfollowArr.map(x => x.id)
+ 
   const followers = useSelector((state) => state?.follows?.followers
   );
   const [isLoaded, setIsLoaded] = useState(false)
@@ -29,7 +31,7 @@ function FollowerList() {
     <div className="follower-list-container">
       <div className="follower-list">
         <div className="follower-list-title"> {followers?.length} Followers</div>
-        <div className="follow-users">
+        {isLoaded && <div className="follow-users">
 
         {followers?.map((user) => (
           <div key={user?.id} className="follower-users-bar">
@@ -50,14 +52,15 @@ function FollowerList() {
                   {user?.username}
                 </Link>
               </div>
-             { <div className="follow-btn" >
-                <FollowClick listeduser={user} />
-              </div>}
+             
 
             </div>
+            { unfollowlist.includes(user.id) && <div className="follow-btn" >
+                <FollowClick listeduser={user} />
+              </div>}
           </div>
         ))}
-        </div>
+        </div>}
       </div>
       <div className="userSideBar follows">
          <SideBar />
