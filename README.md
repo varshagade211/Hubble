@@ -54,4 +54,4 @@ Created with a frontend of Javascript using React and Redux. As well as a backen
 ---
 ---
 
-... photos of best code  and pretty, pretty photos of site...
+... photos of best code  and pretty, pretty photos of site...code .
