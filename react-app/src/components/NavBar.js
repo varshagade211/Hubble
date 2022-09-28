@@ -30,9 +30,17 @@ const NavBar = () => {
             Users
           </NavLink>
         </li> */}
+        <div className='logoutbtn-and-repo'>
+          <div className='repo'> 
+          <a href="https://github.com/varshagade211/Hubble" target="_blank">
+            <i className="fa-brands fa-github gitHubicon" />
+            </a>
+          </div>
+
         {user && <li className='logout'>
           <LogoutButton />
         </li>}
+        </div>
       </ul>
       <hr></hr>
     </nav>

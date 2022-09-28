@@ -8,7 +8,7 @@ note_routes = Blueprint('notes', __name__, "")
 # get all notes DONE
 @note_routes.route("/note/all")
 def get_all_post():
-    notes = Note.query.all()
+    notes = Note.query.order_by(Note.id.desc()).all()
     print("THIS IS NOTES", notes)
     response = [note.to_dict() for note in notes ]
     return {'note': response}
@@ -17,7 +17,7 @@ def get_all_post():
 # get all notes by post id  DONE
 @note_routes.route('/posts/<int:post_id>/notes')
 def one_note(post_id):
-    notes = Note.query.filter(Note.post_id == post_id).all()
+    notes = Note.query.filter(Note.post_id == post_id).order_by(Note.id.desc()).all()
     response = [note.to_dict() for note in notes ]
     return {'note': response}
 

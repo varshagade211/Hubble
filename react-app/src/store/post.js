@@ -74,7 +74,7 @@ const unLikePost = (unLikedPost,userId) => {
         headers: {}
       });
     const posts = await response.json()
-    console.log("------POST", posts)
+
     dispatch(getPosts(posts?.posts))
 }
 
@@ -93,9 +93,8 @@ export const deletePostThunk = (postId) => async (dispatch) => {
 
   })
   const message = await response.json()
-  console.log("------ DELTE THUNK", response, "--------MESSAGE", message )
   dispatch(deleteUserPost(postId))
-  
+
 
   return response
 }
@@ -119,7 +118,6 @@ export const createPostThunkCreator = (post) => async (dispatch) => {
 
   if (response.ok) {
     const data = await response.json();
-    console.log("Fetched Data : ", data)
     dispatch(createPost(data))
     return null;
   } else if (response.status < 500) {
@@ -204,8 +202,6 @@ export default function reducer(state = initialState, action) {
     let newState
     switch (action.type) {
       case GET_ALL_POSTS:{
-        // console.log('-------------STATE', state)
-        // console.log('-------------ACTION.POST', action?.posts)
         newState= {...state, posts:[...action?.posts], userPosts:[...state?.userPosts], likedPosts:[...state?.likedPosts]}
 
         action?.posts?.forEach((post)=>{
@@ -229,7 +225,7 @@ export default function reducer(state = initialState, action) {
         return newState
       }
       case CREATE_POST:{
-        newState = {...state,posts:[...state?.posts, action?.post],userPosts:[...state?.userPosts, action?.post],likedPosts:[...state?.likedPosts]}
+        newState = {...state,posts:[ action?.post, ...state?.posts],userPosts:[ action?.post, ...state?.userPosts],likedPosts:[...state?.likedPosts]}
         newState[action?.post?.id] =action?.post
         return newState
       }

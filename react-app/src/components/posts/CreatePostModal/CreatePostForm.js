@@ -43,6 +43,13 @@ function CreateTextPostForm({type, setShowModal}){
         let data =  await dispatch(createPostThunkCreator(post))
 
         if(data){
+            if(type === 'quote'){
+              data['description'] =['Source is required']
+            }
+            if(type === 'chat'){
+                data['description'] =['Chat is required']
+            }
+            
             setErrors(data)
         }else{
             setShowModal(false)
@@ -97,7 +104,7 @@ function CreateTextPostForm({type, setShowModal}){
            {type === 'quote' && <div>
                 <input  placeholder="-Source"  className="CreateTextDescriptionInput" value={description} onChange={(e)=> setDescription(e.target.value)}/>
                     {errors?.description &&
-                    <div>
+                    <div  className="error">
                         {errors?.description?.map((error, ind) => (
                             <div key={ind}>{error}</div>
                          ))}
@@ -108,7 +115,7 @@ function CreateTextPostForm({type, setShowModal}){
             {type === 'image' && <div>
 
 
-                <input type="text" placeholder='Title' className="textTypeTitalInput" value={title} onChange={(e)=> setTitle(e.target.value)}/>
+                <input type="text" placeholder='Title' className="createTextTypeTitalInput" value={title} onChange={(e)=> setTitle(e.target.value)}/>
 
 
                {errors.title &&

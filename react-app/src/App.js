@@ -17,6 +17,7 @@ import LikedPosts from './components/posts/LikedPosts'
 import FollowingList from './components/follows/followinglist'
 import FollowerList from './components/follows/followerlist'
 import FollowingUserPosts from './components/follows/followinguserposts'
+import NotFound from './components/PageNotFound';
 
 
 function App() {
@@ -49,12 +50,12 @@ function App() {
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
-        <ProtectedRoute path='/users' exact={true} >
+        {/* <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
+        </ProtectedRoute> */}
+        {/* <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
-        </ProtectedRoute>
+        </ProtectedRoute> */}
         <ProtectedRoute path='/posts' exact={true} >
            <Feed />
         </ProtectedRoute>
@@ -78,9 +79,9 @@ function App() {
         <ProtectedRoute path='/user/:id/posts' exact={true} >
           <FollowingUserPosts/>
         </ProtectedRoute>
-        {/* <Route path='*' exact={true}>
-              <h2 style={{color:'white',backgroundColor:'red'}}>404 Page not found</h2>
-        </Route> */}
+        <Route path='*' >
+           <NotFound />
+        </Route>
 
       </Switch>
     </BrowserRouter>

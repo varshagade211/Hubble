@@ -1,8 +1,8 @@
 .loginSignupLinks{
-    background-color: rgba(255, 255, 255, 0.014);
+    
     max-width: 20%;
     min-height:100px;
-    margin:15rem auto auto auto;
+    margin:8rem auto auto auto;
     display: flex;
     flex-direction: column;
 }
@@ -16,13 +16,31 @@
     display: block;
 }
 
-
+.or{
+    color: #ff66c4;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 32px;
+}
+.logandsign{
+    display: flex;
+    height: 50%;
+    flex-direction: column;
+    background-color: rgba(112, 109, 109, 0.231);
+    border-radius: 5px;
+    width: max-content;
+    align-self: center;
+    padding: 5%;
+    padding-top: 2%;
+}
 .loginBtnWrapper,.signUpBtnWrapper{
     /* background-color: grey; */
     border: 1px solid white;
     margin: 2rem 0 0rem 0;
     text-align: center;
     padding: 1rem;
+    width: 200px;
+    align-self: center;
 
 }
 
@@ -30,6 +48,95 @@
     box-shadow: 0px 0px 3px 2px white;
 }
 
+
+
 .signUpBtnWrapper:hover{
     box-shadow: 0px 0px 3px 2px white;
 }
+#main{
+    font-size: 2rem;
+}
+
+.fa-earth-americas{
+    color: white;
+    /* font-size: 1.5rem; */
+    margin-bottom: .5rem;
+    animation-name: spin;
+    animation-duration: 5000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    
+}
+
+#logicon.fa-earth-americas {
+    color: white;
+    font-size: 4rem;
+    margin-bottom: .5rem;
+    animation-name: spin;
+    animation-duration: 5000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    
+}
+
+.fa-earth-americas:hover{
+    color: #ff66c4;
+}
+
+@keyframes spin {
+    from {
+        transform:rotate(0deg);
+    }
+    to {
+        transform:rotate(360deg);
+    }
+}
+
+.siteDescription{
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    /* background-color: beige; */
+    align-self: center;
+    width: 507px;
+    font-size: 1.5rem;
+}
+
+#last.siteDescription{
+    margin-bottom: 35px;
+}
+
+#header.siteDescription{
+    font-size: 3rem;
+    width:100%;
+    padding: 10px;
+    
+    
+    color: #ff66c4;
+}
+
+.demoLoginInstu{
+    color: #ff66c4;
+    text-align: justify;
+}
+
+.homecontainer{
+    margin-top: 2rem;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+    align-content: center;
+    width: 300%;
+    max-height: min-content;
+}
+
+.logincontainer{
+    width: max-content;
+    height: max-content;
+    background-color: rgba(112, 109, 109, 0.231);
+    padding: 10%;
+}
+
+

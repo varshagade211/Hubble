@@ -52,8 +52,10 @@
     border: 2px solid #62256950;
     padding: 20px;
     margin: 10px;
+    max-width: 600px;
     border-radius: 5px;
     color: rgba(57, 56, 70, 0.833);
+    overflow-wrap: break-word;
 }
 
 
@@ -107,8 +109,7 @@ h1 {
     position: absolute;
     border-radius: 10px;
     width: 500px;
-    /* overflow: hidden; */
     height: 300px;
-    background-image: url("https://upload.wikimedia.org/wikipedia/commons/e/e4/StarfieldSimulation.gif");
-    background-color: #000000;
+    /* background-image: url("https://upload.wikimedia.org/wikipedia/commons/e/e4/StarfieldSimulation.gif"); */
+    background-color: white;
 }

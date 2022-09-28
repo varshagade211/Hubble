@@ -110,7 +110,11 @@ display: block;
     border-radius: 50%;
 }
 
+.likeLogoCountContainer{
+    display: flex;
 
+    justify-content: space-between;
+}
 
 /*  */
 
@@ -150,6 +154,7 @@ display: block;
 
 .likes{
     color: black;
+    margin: 0.5rem 0 0 0;
 }
 
 .backcolor{

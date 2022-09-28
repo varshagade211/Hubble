@@ -1,12 +1,10 @@
 import { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { editComment } from '../../store/note'
+import { editComment } from '../../../store/note'
 import './editNote.css'
-import updateImage from '../../image/update.svg'
-
-function EditComment({ comment, setShowModal }) {
 
 
+function EditComment({ comment, setShowModal, id }) {
 
     const dispatch = useDispatch()
     const [description, setDescription] = useState(comment?.description);
@@ -29,14 +27,12 @@ function EditComment({ comment, setShowModal }) {
         }
 
         const data = {
-            id: comment.id,
+            id: id,
             description: description
         }
 
 
-        dispatch(editComment(data, comment?.id))
-
-
+        dispatch(editComment(data, id))
 
             setShowModal(false)
 
@@ -46,11 +42,11 @@ function EditComment({ comment, setShowModal }) {
 
     return (
         <div className="notemodel">
-            
+
             <div className="header">Post Your Update</div>
          <form onSubmit={handleSubmit} className='createUpdate'>
 
-            
+
             <ul> {errors.map((error, i) => (<li className="editerrors" key={i}>{error}</li>))}</ul>
 
             <label>

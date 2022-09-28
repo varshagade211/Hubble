@@ -17,9 +17,9 @@ function LikedPosts(){
     const likedPosts= useSelector( state => state?.post?.likedPosts)
     const user = useSelector(state => state?.session?.user)
     const unfollowedList = useSelector(state => state?.follows?.unfollowed)
-    
+
     let unfollowidList= unfollowedList.map(user => user.id)
-    
+
     useEffect(()=>{
         dispatch(getAllLikedThunkCreator(user?.id))
     },[dispatch])
@@ -31,6 +31,7 @@ function LikedPosts(){
             <div className='likedPostContaner'>
                 <div>
                     <div className='allLikedPostContainer'>
+                        {!likedPosts?.length && <h3 className='noLikedPostTxt'>No liked post yet,  please like some posts............</h3>}
                         {likedPosts?.map((post)=>{
                         return (
                             <div className="likedPostProfileImgConatiner">
@@ -39,6 +40,7 @@ function LikedPosts(){
                                     :<i className ="fa-solid fa-user-astronaut defaultProfileLogo"></i>}
                                 </div>
                                 <div>
+
                                     <Post post={post} unfollowList={unfollowidList}/>
                                 </div>
                             </div>)
