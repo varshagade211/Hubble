@@ -43,3 +43,9 @@
     margin: 0 4rem 0rem 0
 }
 
+.logoutbtn-and-repo{
+    display: flex;
+    gap: 15px;
+    justify-self: center;
+    align-items: center;
+}

@@ -1,6 +1,6 @@
 .follower-list-container {
     position: relative;
-    top:90px;
+    /* top:90px; */
     height:100%;
     width:75%;
     margin: auto;
@@ -13,7 +13,7 @@
     color: white;
     display: flex;
     flex-direction: column;
-    width: 55%;
+    width: 80%;
     margin-left: 40px;
 
 }
