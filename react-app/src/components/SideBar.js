@@ -8,7 +8,10 @@ function SideBar(){
     return(
         <div className="sideBar">
             <div className='userPostNavLink'>
-                <NavLink className={'postBtn'} to={'/user/posts'}> <i className="fa-brands fa-blogger postIcon"></i> Post</NavLink>
+
+                <NavLink className={'postBtn'} to={'/'}><i class="fa-solid fa-house postIcon"></i>Home</NavLink>
+                <hr></hr>
+                <NavLink className={'postBtn'} to={'/user/posts'}> <i className="fa-brands fa-blogger postIcon"></i>Post</NavLink>
                 <hr></hr>
                 <NavLink className={'postBtn'} to={'/user/likes'}> <i className="fa-solid fa-heart postIcon"></i>Likes</NavLink>
                 <hr></hr>
