@@ -4,12 +4,13 @@
     min-height: 200px;
     text-align: center;
     margin-top: 1rem;
+    padding: 1rem;
 
 }
 .editTextTypeTitalInput{
     width: 90%;
     border: none;
-    margin: 0 0 0 2rem;
+    /* margin: 0 0 0 2rem; */
     font-size: 1.2rem ;
 
 }
@@ -18,9 +19,10 @@
 .editTextDescriptionInput{
     width: 90%;
     border: none;
-    margin: 2rem 0 1.5rem 2rem;
+    margin: 2rem 0 1.5rem 0rem;
     height:auto;
     font-size: 1rem ;
+    resize: none;
 
 }
 /* .textTypeTitalInput {

@@ -22,7 +22,7 @@ function FollowingList() {
   
 
     return (
-        <div class='following-list-container'>
+        <div className='following-list-container'>
             <div className="following-list">
                 <div className="following-list-title"> {followings?.length} Following</div>
                 <div className="following-list-bar-container">
@@ -42,7 +42,7 @@ function FollowingList() {
             <div className="userSideBar follows">
             <SideBar />
         </div>
-            
+
         </div>
     )
 }

@@ -10,11 +10,11 @@ function SideBar(){
             <div className='userPostNavLink'>
                 <NavLink className={'postBtn'} to={'/user/posts'}> <i className="fa-brands fa-blogger postIcon"></i> Post</NavLink>
                 <hr></hr>
-                <NavLink className={'postBtn'} to={'/user/likes'}> <i class="fa-solid fa-heart postIcon"></i>Likes</NavLink>
+                <NavLink className={'postBtn'} to={'/user/likes'}> <i className="fa-solid fa-heart postIcon"></i>Likes</NavLink>
                 <hr></hr>
-                <NavLink className={'postBtn'} to={`/user/followings`}> <i class="fa-solid fa-users postIcon"></i>Following </NavLink>
+                <NavLink className={'postBtn'} to={`/user/followings`}> <i className="fa-solid fa-users postIcon"></i>Following </NavLink>
                 <hr></hr>
-                <NavLink className={'postBtn'} to={`/user/followers`}> <i class="fa-solid fa-users postIcon"></i>Follower </NavLink>
+                <NavLink className={'postBtn'} to={`/user/followers`}> <i className="fa-solid fa-users postIcon"></i>Follower </NavLink>
                 <hr></hr>
 
             </div>
@@ -27,34 +27,34 @@ function SideBar(){
                 <hr></hr>
                 <div className='gitandLinkedInIconHandlerContainer' >
                    <a href={"https://github.com/GrantChristopherson"} target="_blank">
-                    <i class="fa-brands fa-github gitHubicon"></i></a>
+                    <i className="fa-brands fa-github gitHubicon"></i></a>
                     <a className = {"userLinkedInLink"} href={"https://www.linkedin.com/in/GrantChristopherson-SF"} target="_blank">
-                    <i class="fa-brands fa-linkedin-in linkedInIcon"></i>
+                    <i className="fa-brands fa-linkedin-in linkedInIcon"></i>
                     </a>
                      <h4 className='developerName'>Grant Christopherson</h4>
 
                      </div>
                 <hr></hr>
                 <div className='gitandLinkedInIconHandlerContainer'>
-                    <a href={"https://github.com/IsabelArredondo"} target="_blank" ><i class="fa-brands fa-github gitHubicon"></i></a>
+                    <a href={"https://github.com/IsabelArredondo"} target="_blank" ><i className="fa-brands fa-github gitHubicon"></i></a>
                     <a className = {"userLinkedInLink"} href={"https://www.linkedin.com/in/IsabelArredondo-1107a9186"} target="_blank">
-                    <i class="fa-brands fa-linkedin-in linkedInIcon"></i> </a>
+                    <i className="fa-brands fa-linkedin-in linkedInIcon"></i> </a>
                     <h4 className='developerName'>Isabel Arredondo</h4>
 
                 </div>
                 <hr></hr>
                 <div className='gitandLinkedInIconHandlerContainer'>
-                     <a href={"https://github.com/reneeluo7 "} target="_blank"><i class="fa-brands fa-github gitHubicon"></i></a>
+                     <a href={"https://github.com/reneeluo7 "} target="_blank"><i className="fa-brands fa-github gitHubicon"></i></a>
                       <a className = {"userLinkedInLink"} href={"https://www.linkedin.com/in/rongrong-luo-renee"} target="_blank">
-                        <i class="fa-brands fa-linkedin-in linkedInIcon"></i> </a>
+                        <i className="fa-brands fa-linkedin-in linkedInIcon"></i> </a>
                         <h4 className='developerName'>Renee Luo</h4>
 
                 </div>
                 <hr></hr>
                 <div className='gitandLinkedInIconHandlerContainer'>
-                     <a href={"https://github.com/varshagade211"} target="_blank"><i class="fa-brands fa-github gitHubicon"></i></a>
+                     <a href={"https://github.com/varshagade211"} target="_blank"><i className="fa-brands fa-github gitHubicon"></i></a>
                      <a className = {"userLinkedInLink"} href={"https://www.linkedin.com/in/varsha-gade-7b33aa174/"} target="_blank">
-                     <i class="fa-brands fa-linkedin-in linkedInIcon"></i>  </a>
+                     <i className="fa-brands fa-linkedin-in linkedInIcon"></i>  </a>
                      <h4 className='developerName'>Varsha Gade</h4>
 
                 </div>

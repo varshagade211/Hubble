@@ -1,5 +1,5 @@
 .loginSignupLinks{
-    
+
     max-width: 20%;
     min-height:100px;
     margin:8rem auto auto auto;
@@ -65,7 +65,7 @@
     animation-duration: 5000ms;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
-    
+
 }
 
 #logicon.fa-earth-americas {
@@ -76,7 +76,7 @@
     animation-duration: 5000ms;
     animation-iteration-count: infinite;
     animation-timing-function: linear;
-    
+
 }
 
 .fa-earth-americas:hover{
@@ -110,8 +110,8 @@
     font-size: 3rem;
     width:100%;
     padding: 10px;
-    
-    
+
+
     color: #ff66c4;
 }
 
@@ -126,7 +126,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
+
     align-content: center;
     width: 300%;
     max-height: min-content;
@@ -140,3 +140,44 @@
 }
 
 
+.footerContaint{
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    /* font-size: 1.2rem; */
+}
+
+.footerLinksContainer{
+    width: 100%;
+    /* display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr; */
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.footer{
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   /* background-color: rgba(112, 109, 109, 0.231); */
+   background-color: rgba(0, 0, 0, 0.63);
+   margin: 2rem 0 0 0;
+   position: fixed;
+   bottom: 0;
+   left:0;
+   right:0;
+   padding: 1rem;
+
+
+}
+
+.footerHeading{
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+.footerProfileIcon{
+    color: white;
+    font-weight: bold;
+    margin: 0 1rem 0 0;
+}
