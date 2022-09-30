@@ -43,7 +43,7 @@ function EditComment({ comment, setShowModal, id }) {
     return (
         <div className="notemodel">
 
-            <div className="header">Post Your Update</div>
+            <h1 className="header">Post Your Update</h1>
          <form onSubmit={handleSubmit} className='createUpdate'>
 
 
@@ -58,10 +58,11 @@ function EditComment({ comment, setShowModal, id }) {
                     type="text"
                     value={description}
                     onChange={(e)=> setDescription(e.target.value)}
-                    required
+                    rows={5}
+                    // required
                 />
 
-            </label>
+            </label><br />
 
             <button className='create' type="submit">Post</button>
         </form>

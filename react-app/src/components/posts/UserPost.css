@@ -82,3 +82,11 @@
 .noPostTxt{
    color: white;
 }
+
+
+@media only screen and (max-width: 1000px)  {
+    .userPostContainerWraper{
+        margin: 10% 1rem 0 2rem;
+        width: 90%;
+    }
+    }

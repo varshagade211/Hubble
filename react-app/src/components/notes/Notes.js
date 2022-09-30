@@ -12,7 +12,7 @@ function Notes({ post }) {
 
     const comments = useSelector((state) => (state?.note?.notes))
     const userImage = useSelector(state => state?.session?.user.profileImage)
-    
+
     // console.log(comments)
 
     const user_id = useSelector(state => state?.session?.user?.id)
@@ -45,89 +45,62 @@ function Notes({ post }) {
         dispatch(noteDelete(id))
     }
 
+    let postComments = comments?.filter(comment => comment?.post_id === id)
+
     return (
         <>
             <CreateComment post={post} userImage={userImage} />
 
-
-
-            {comments?.map((comment) => {
-
-
+            {postComments?.length !== 0  && postComments?.map((comment) => {
                 return (
                     <div className="commentcontainer">
-
-
-
-
-
-
+                        {/* Single comment profile image and description */}
                         <div className="Notes">
-
-                        {comment?.post_id === id ?
-                         <div>
-                        {users?.filter(user => user?.id === comment?.user_id )?.map(filteredUser => (
-                        <div>
-                        {filteredUser?.profileImage ? <img className='ProfileImage' src={filteredUser?.profileImage} />
-                                        : <i className="fa-solid fa-user-astronaut img"></i>}
-                        </div>
-                         ))}
-                         </div>
-                         : null}
-                            {comment?.post_id === id ?
-                                 
-                                <div className="description">
-                                    {comment?.description}
-                                </div>
-
-
-
-                                : null}
-
-                        </div>
-
-                        {comment?.post_id === id && post.user_id === comment.user_id ?
-
-
-
-                            <div className="description">
-                                <h1>original poster</h1>
-                                {comment?.description}
+                            <div className="profileImageAndDescriptionContainer">
+                            {
+                                users?.filter(user => user?.id === comment?.user_id )?.map(filteredUser => (
+                                        filteredUser?.profileImage ? <img className='ProfileImage' src={filteredUser?.profileImage} />
+                                        : <i className="fa-solid fa-user-astronaut img"></i>
+                                ))
+                            }
+                            <div className="description"> {comment?.description} </div>
                             </div>
-
-
-
-                            : null}
-
-
-
-                        <div className="deleteEditBtn">
-                            {comment?.user_id === user_id && comment?.post_id === id ?
-
-                                <button className="delete" onClick={removeComment(comment?.id)}><i className="fa-solid fa-trash deletePenIcon"></i></button>
-
-
-                                : null
-                            }
-
-
-
-                            {comment?.user_id === user_id && comment?.post_id === id ?
-
-                              
-                             
-                                <div className="editnote" >
-                                  <EditNoteModal comment={comment}/>
-
-                                </div>
-                                : null
-                            }
+                            <div className="deleteEditBtn">
+                                { comment?.user_id === user_id &&
+                                    <button className="notesDelete" onClick={removeComment(comment?.id)}><i className="fa-solid fa-trash deletePenIcon"></i></button>
+                                }
+                                { comment?.user_id === user_id &&
+                                    <div className="editnote" >
+                                        <EditNoteModal comment={comment}/>
+                                    </div>
+                                }
+                            </div>
                         </div>
 
+                        {/* { comment?.post_id === id && post.user_id === comment.user_id
+                        ?
+                        <div className="description">
+                            <h1>original poster</h1>{comment?.description}
+                        </div>
+                        : null
+                        } */}
 
+                        {/* Comment edit delete buttons */}
+                        {/* <div className="deleteEditBtn">
+                            { comment?.user_id === user_id && comment?.post_id === id
+                            ?
+                            <button className="delete" onClick={removeComment(comment?.id)}><i className="fa-solid fa-trash deletePenIcon"></i></button>
+                            : null
+                            }
+                            { comment?.user_id === user_id && comment?.post_id === id
+                            ?
+                            <div className="editnote" >
+                                <EditNoteModal comment={comment}/>
+                            </div>
+                            : null
+                            }
+                        </div> */}
                     </div>
-
-
                 )
             })}
 
@@ -139,3 +112,5 @@ function Notes({ post }) {
 }
 
 export default Notes
+
+

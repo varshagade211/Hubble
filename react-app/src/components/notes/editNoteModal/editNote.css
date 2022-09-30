@@ -1,5 +1,5 @@
 #editcomment {
-    border: none;
+    /* border: none;
     height: 50px;
     width: 450px;
     color: rgba(0, 0, 0, 0.78);
@@ -12,31 +12,41 @@
     margin-top: 10px;
     margin-left: 20px;
     border-radius: 20px;
-    overflow: scroll;
-}
+    overflow: scroll; */
+    width: 80%;
+    margin: auto;
+    font-size: 1.1rem;
+    resize: none;
+    padding: 1rem;
 
+}
+.createUpdate{
+    text-align: center;
+}
 .editerrors{
     color: rgba(240, 10, 10, 0.777);
 }
 
 .header {
     color: rgb(4, 4, 4);
-    display: flex;
-    font-size: 25px;
-    justify-content: center;
-    padding: 20px;
-    margin-top: 30px;
+    /* display: flex; */
+    font-size: 1.2rem;
+    /* justify-content: center; */
+    text-align: center;
+    /* padding: 3rem; */
+    margin-top: 2rem;
 }
 
 .create {
     background-color: #000000;
-    width: 80px;
-    height: 40px;
-    /* border-radius: 40%; */
     color: whitesmoke;
-    margin-top: 20px;
-    margin-left: 200px; 
+    font-size: 1.2rem;
+    padding: 0.2rem 0.5rem 0.2rem 0.5rem;
+    cursor: pointer;
+    margin: 1rem 0 0 0;
+    /* width: 80px;
+    height: 40px; */
+    /* border-radius: 40%; */
+    /* margin-top: 20px;
+    margin-left: 200px; */
 }
-
-
-

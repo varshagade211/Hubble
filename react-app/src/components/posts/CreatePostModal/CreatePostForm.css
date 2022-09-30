@@ -58,7 +58,7 @@ textarea:focus, input:focus{
 
 .error{
     margin:1rem 0 1rem 1.5rem;
-    width:200px;
+    /* width:200px; */
     color: red;
     text-align: left;
 }

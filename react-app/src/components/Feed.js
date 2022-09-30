@@ -51,7 +51,7 @@ function Feed(){
                     </div>
                     <div className='allFeedPostContainer'>
                         {posts?.map((post)=>{return (
-                        <div className="feedPostProfileImgConatiner">
+                        <div key={post?.id} className="feedPostProfileImgConatiner">
                             <div className="profileImageContainer" onClick={() =>  history.push(`/user/${post?.user?.id}/posts`)}>
                                 {post?.user?.profileImage ? <img className='feedProfileImage' src={post?.user?.profileImage} />
                                 :<i className ="fa-solid fa-user-astronaut defaultProfileLogo"></i>}

@@ -18,8 +18,7 @@ import FollowingList from './components/follows/followinglist'
 import FollowerList from './components/follows/followerlist'
 import FollowingUserPosts from './components/follows/followinguserposts'
 import NotFound from './components/PageNotFound';
-
-
+import './App.css'
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();
@@ -37,6 +36,7 @@ function App() {
   }
 
   return (
+    <div className="appContainer">
     <BrowserRouter>
       <NavBar />
 
@@ -85,6 +85,7 @@ function App() {
 
       </Switch>
     </BrowserRouter>
+    </div>
   );
 }
 

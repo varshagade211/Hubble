@@ -43,7 +43,7 @@ function UserPosts(){
                     </div>
                      <div className='userPostContainer'>
                      {!userPosts?.length && <h3 className='noPostTxt'>No post yet,  please create some posts............</h3>}
-                        {userPosts?.map((post)=>{  return <Post post={post}/>})}
+                        {userPosts?.map((post)=>{  return <Post key={post?.id} post={post}/>})}
                     </div>
                 </div>
                 <SideBar />
