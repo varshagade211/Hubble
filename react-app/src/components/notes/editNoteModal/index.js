@@ -13,14 +13,14 @@ function EditNoteModal({ comment}) {
     return (
         <>
 
-            
-            {<button className={'note'} onClick={() => setShowModal(true)}><i className="fa-solid fa-pen-to-square notepenIcon" > </i></button>}
+
+          <i onClick={() => setShowModal(true)} className="fa-solid fa-pen-to-square note" > </i>
 
 
             {showModal && (
 
                 <Modal className={'editmodal'} onClose={() => setShowModal(false)}>
-                    
+
                     <EditComment comment={comment} id={comment.id} setShowModal={setShowModal} />
 
 

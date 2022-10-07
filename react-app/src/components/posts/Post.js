@@ -67,8 +67,7 @@ function Posts({post, unfollowList}){
                 <div className="usernameandfollowbtn">
 
                 <h3 className="postUserName">{post?.user?.username}</h3>
-
-                           {(isfollow === false)&& <button className="followBtn" onClick={handleFollowing} >Follow</button>}
+                      {(isfollow === false)&& <button className="followBtn" onClick={handleFollowing} >Follow</button>}
 
                 </div>
 
@@ -104,12 +103,12 @@ function Posts({post, unfollowList}){
                     <div className="followLikeNoteLinkCotainer">
 
                         <div>
-                          <button className="noteIcon" onClick={noteHandler}><i className="fa-solid fa-pen-to-square notepenIcon"></i></button>
+                          <button className="note" onClick={noteHandler}><i className="fa-solid fa-pen-to-square notepenIcon"></i></button>
                         </div>
                         <div className="likeLogoCountContainer">
                         <div >
-                            <button className="likeBtn"  onClick={likeHandler}>{isLiked ? <i class="fa-solid fa-heart likedIcon"></i>:
-                              <i class="fa-regular fa-heart dislikeIcon"></i>}
+                            <button className="likeBtn"  onClick={likeHandler}>{isLiked ? <i className="fa-solid fa-heart likedIcon"></i>:
+                              <i className="fa-regular fa-heart dislikeIcon"></i>}
                             </button>
                         </div>
                         <div className="likeContainer">

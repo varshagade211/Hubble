@@ -71,7 +71,6 @@ function EditPostForm({type,post , setShowModal}){
 
            {type === 'text' && <div>
 
-
                 <textarea  value={description} placeholder="Description"   className="editTextDescriptionInput" onChange={(e)=> setDescription(e.target.value)}/>
                     {errors?.description &&
                      <div className="error">

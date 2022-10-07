@@ -17,9 +17,9 @@ const NavBar = () => {
 
         <li>
           <NavLink to='/' className={'navLi'} exact={true} activeClassName='active'>
-            <i className="fa-brands fa-space-awesome logo"></i>            
+            <i className="fa-brands fa-space-awesome logo"></i>
           </NavLink>
-           
+
         </li>
         <NavLink to='/' className={'navLi'} exact={true} activeClassName='active'>
        <img className='hummbleimg' src={logoImage}></img>
@@ -31,9 +31,9 @@ const NavBar = () => {
           </NavLink>
         </li> */}
         <div className='logoutbtn-and-repo'>
-          <div className='repo'> 
+          <div className='repo'>
           <a href="https://github.com/varshagade211/Hubble" target="_blank">
-            <i className="fa-brands fa-github gitHubicon" />
+            <i className="fa-brands fa-github navBarGithub" />
             </a>
           </div>
 

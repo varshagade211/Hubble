@@ -34,7 +34,7 @@ function LikedPosts(){
                         {!likedPosts?.length && <h3 className='noLikedPostTxt'>No liked post yet,  please like some posts............</h3>}
                         {likedPosts?.map((post)=>{
                         return (
-                            <div className="likedPostProfileImgConatiner">
+                            <div key={post?.id} className="likedPostProfileImgConatiner">
                                 <div className="likedProfileImageContainer" onClick={()=> history.push(`/user/${user?.id}/posts`)}>
                                     {post?.user?.profileImage ? <img className='likedProfileImage' src={post?.user?.profileImage} />
                                     :<i className ="fa-solid fa-user-astronaut defaultProfileLogo"></i>}

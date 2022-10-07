@@ -1,13 +1,18 @@
 #commentInput {
-    border: none;
+    /* border: none; */
     height: 25px;
-    width: 85%;
-    color: rgba(45, 44, 61, 0.586);
-    background-color: #f0efef;
-    margin-left: 30px;
-    resize: none;
 
-    
+    width: 85%;
+    /* color: rgba(45, 44, 61, 0.586); */
+    /* background-color: #f0efef; */
+    margin: 0 1rem 0 1rem;
+
+    resize: none;
+    border: 2px solid black;
+    border-radius: 10px;
+    border: 1.3px solid black;
+    font-size: 1.1rem;
+    padding: 0.3rem;
 
 }
 
@@ -16,25 +21,42 @@
 }
 
 .createCommentForm{
-    border: 2px solid #62256950;
-    border-radius: 20px;
+    /* border: 2px solid #62256950; */
+    /* border-radius: 20px; */
     width: 90%;
-    height: 50px;
-    padding-top: 10px;
-    margin-top: 0.5rem;
-    margin-bottom: 10px; 
+    /* height: 50px; */
+    /* padding-top: 10px; */
+    /* margin-top: 0.5rem;
+    margin-bottom: 10px; */
 }
 
+.notesSubmitbutton{
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 0.2rem 1rem 0.2rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.createcommentDiv{
+    display: flex;
+    justify-content: center;
 
-
+}
 
 .imagecomment{
     display: flex;
     flex-direction: row;
-    padding: 10px 5px 15px 5px;
+    /* padding: 0 1rem 0 1rem; */
+    justify-content: center;
+    align-items: center;
 }
-
-.default{
+.notesError{
+    margin: 0 0 0 7rem;
+    color: red;
+    font-size: 0.9rem;
+}
+/* .default{
     font-size: 3rem;
     color: rgb(141, 47, 184);
     border-radius: 50%;
@@ -46,22 +68,23 @@
     margin-left: 15px;
     margin-right: 10px;
 
-}
+} */
 
 .CreateImage{
-    font-size: 3rem;
+    /* font-size: 3rem; */
     border-radius: 50%;
-    background-color: none;
-    width: 60px;
-    height: 60px;
-    margin-top: 0.5rem;
-    margin-bottom: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
-    border: 2px solid rgb(52, 51, 64);
+    /* background-color: none; */
+    width: 8%;
+    height:8%;
+
+    /* margin-top: 0.5rem; */
+    /* margin-bottom: 10px; */
+    /* margin-left: 10px; */
+    /* margin-right: 10px; */
+    /* border: 2px solid rgb(52, 51, 64); */
 }
 
-.button {
+/* .button {
     border: none;
     font-family: sans-serif;
     color:  #622569f0;
@@ -73,10 +96,9 @@
     cursor: pointer;
 
 
-}
+} */
 
-.button:hover{
+/* .button:hover{
 
-    color: #915a91;  
-}
-
+    color: #915a91;
+} */
